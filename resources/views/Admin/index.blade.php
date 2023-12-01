@@ -92,22 +92,29 @@
                                     <h4 class="font-weight-bolder">Log In</h4>
                                     <p class="mb-0">Log In as Admin</p>
                                 </div>
+                                @if (Session::has('success'))
+                                    <div class="alert alert-success">{{ session::get('success') }}</div>
+                                @endif
                                 <div class="card-body">
-                                    <form role="form">
+                                    <form action="{{ route('admin_login') }}" method="post" role="form">
+                                        @csrf
                                         <div class="mb-3">
-                                            <input type="email" class="form-control form-control-lg"
+                                            <input type="email" class="form-control form-control-lg" name="email"
                                                 placeholder="Email" aria-label="Email">
                                         </div>
                                         <div class="mb-3">
-                                            <input type="email" class="form-control form-control-lg"
+                                            <input type="password" class="form-control form-control-lg" name="password"
                                                 placeholder="Password" aria-label="Password">
                                         </div>
                                         <div class="form-check form-switch">
                                             <input class="form-check-input" type="checkbox" id="rememberMe">
                                             <label class="form-check-label" for="rememberMe">Remember me</label>
                                         </div>
+                                        @if ($errors->has('email'))
+                                            <span class="text-danger">{{ $errors->first('email') }}</span>
+                                        @endif
                                         <div class="text-center">
-                                            <button type="button"
+                                            <button type="submit"
                                                 class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">Log in</button>
                                         </div>
                                     </form>
