@@ -13,14 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('momentComments', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('user_name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->string('role');
+            $table->string('comment');
+            $table->string('likes');
+             $table->string('voice');
+            $table->unsignedBigInteger('Moment');
+            $table->foreign('Moment')->references('id')->on('moments');
+            $table->unsignedBigInteger('User');
+            $table->foreign('User')->references('id')->on('users');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -33,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        //
     }
 };
