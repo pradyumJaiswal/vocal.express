@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Session;
 
-class AdminController extends Controller
+class ManagerController extends Controller
 {
     public function index()
     {
