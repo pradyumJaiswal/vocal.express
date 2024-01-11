@@ -31,12 +31,13 @@
 
 <body class="g-sidenav-show   bg-gray-100">
     <div class="min-height-300 bg-primary position-absolute w-100"></div>
-    @include('Admin.layout.sidebar')
-    <main class="main-content position-relative border-radius-lg ">
+        @include('Admin.layout.sidebar')
+        <main class="main-content position-relative border-radius-lg ">
         @include('Admin.layout.topbar')
         @yield('content')
         @include('Admin.layout.footer')
-        </div>
+    </div>
+       
     </main>
     @include('Admin.layout.bottom_links')
     <!--   Core JS Files   -->

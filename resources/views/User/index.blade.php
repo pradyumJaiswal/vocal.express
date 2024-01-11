@@ -14,7 +14,7 @@
 				<div class="row">
 					<div class="col text-center">
 						<h1 class="home_title">Learn Languages Easily</h1>
-						<div class="home_button trans_200"> <a class="btn btn-primary" data-toggle="modal" href="javascript:void(0)" onclick="openRegisterModal();">Register</a></div>
+						<div class="home_button trans_200"> <a class="btn btn-primary" data-toggle="modal" href="javascript:void(0)" onclick="openRegisterModal();">Get Start</a></div>
 					</div>
 				</div>
 			</div>

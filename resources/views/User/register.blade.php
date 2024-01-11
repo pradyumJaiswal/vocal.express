@@ -97,10 +97,9 @@
 			</div>
 		</div>
 	</div>
-
+	</div>
 	<!-- Footer -->
 
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA">
-</div>
-@endsection
+
 
