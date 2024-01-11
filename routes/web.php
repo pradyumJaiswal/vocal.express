@@ -8,6 +8,10 @@ Route::get('/', function () {
     return view('User.index');
 });
 
+Route::get('/userlogin', function () {
+    return view('User.register');
+});
+
 // Route::get('/login', function () {
 //     return view('Admin.index');
 // });
@@ -25,3 +29,11 @@ Route::get('/addAdmin', function () {
 Route::get('/profile', function () {
     return view('Admin.AdminPages.profile');
 });
+
+
+
+
+
+//-------------------------User Route--------------------------------------//
+
+

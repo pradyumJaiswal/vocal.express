@@ -19,6 +19,14 @@
     <link href="../Admin/assets/css/nucleo-svg.css" rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href="../Admin/assets/css/argon-dashboard.css?v=2.0.4" rel="stylesheet" />
+
+
+    {{-- <link href="{{asset('user/css/bootstrap.css')}}" rel="stylesheet" /> --}}
+
+<link href="{{asset('user/css/login-register.css')}}" rel="stylesheet" /> 
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"> 
+
+
 </head>
 
 <body class="g-sidenav-show   bg-gray-100">
@@ -36,3 +44,6 @@
 </body>
 
 </html>
+<script src="{{asset('user/js/jquery-1.10.2.js')}}" type="text/javascript"></script>
+<script src="{{asset('user/js/bootstrap.js')}}" type="text/javascript"></script>
+<script src="{{asset('user/js/login-register.js')}}" type="text/javascript"></script>
