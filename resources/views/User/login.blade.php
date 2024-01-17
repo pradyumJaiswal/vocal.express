@@ -46,16 +46,18 @@
 		<div class="verticle-center">
 			<div class="login-form">
 				<h4><i class="icofont-key-hole"></i> Login</h4>
-				<form method="post" class="c-form">
-					<input type="text" placeholder="User Name @">
-					<input type="password" placeholder="xxxxxxxxxx">
+				<form method="post" action="{{ route('login') }}" class="c-form">
+				@csrf
+					<input type="email" name="email" placeholder="User Name / Email">
+					<input type="password" placeholder="xxxxxxxxxx" name="password">
 					<div class="checkbox">
 						<input type="checkbox" id="checkbox" checked>
 						<label for="checkbox"><span>Remember Me</span></label>
 					</div>
 					<button class="main-btn" type="submit"><i class="icofont-key"></i> Login</button>
+					<br><a class="account" href="{{Route('Usersignup')}}">Create Account !</a>
 				</form>
-				<a href="{{Route('Usersignup')}}">Have An Account ?</a>
+				<a href="{{Route('Usersignup')}}">Don't Have An Account ?</a>
 			</div>
 		</div>
 		<div class="mockup right"><img src="{{asset('user/images/star-shape.png')}}" alt=""></div>

@@ -84,10 +84,10 @@ $luckybhai = $request->session()->put("$data");
             $redirect = '/Admin/dashboard';
         }
         else if(Auth::user() && Auth::user()->role == 2){
-            $redirect = '/index';
+            $redirect = 'User/vocal.express';
         }
         else{
-            $redirect = '/index';
+            $redirect = 'User/vocal.express';
         }
         return $redirect;
     }

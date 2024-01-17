@@ -81,6 +81,7 @@
             </div>
         </div>
     </div>
+    </div>
 </footer><!-- footer -->
 
 <div class="bottombar">

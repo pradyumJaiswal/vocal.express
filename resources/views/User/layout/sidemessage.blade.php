@@ -1,4 +1,7 @@
-<!-- side slide message & popup -->
+
+
+@if(!empty(auth()->user()) && auth()->user()->role==3)
+                               <!-- side slide message & popup -->
 <div class="chat-box">
     <div class="chat-head">
         <h4>New Messages</h4>
@@ -287,3 +290,4 @@
     <a class="chat-btn" href="#" title="Start Live Chat" data-toggle="tooltip"><i class="icofont-facebook-messenger"></i></a>
     <span>07</span>
 </div><!-- chat button -->
+@endif

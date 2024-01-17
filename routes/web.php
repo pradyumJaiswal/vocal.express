@@ -11,66 +11,19 @@ use App\http\Controllers\AuthController;
 
 
 
-
-// Route::get('/', function () {
-//     return view('User.index');
-// });
-
-// Route::get('/userindex', function () {
-//     return view('index');
-// })->name('Userindexs');
+Route::get('/', function () {
+    return view('index');
+});
 
 
 Route::get('/admin_login', function () {
     return view('admin.login');
 });
-// ........404 route..................
-
-
-
-// // ........404 route end..................
-
-// Route::get('/', function () {
-//     return view('User.home');
-// })->name('Userindexs');
-
-// // .................User Routes..........................//
-
-
-
-
-// Route::get('/Userlogin', function () {
-//     return view('User.signin');
-// })->name('Userlogin');;
-
-// Route::get('/', function () {
-//     return view('User.index');
-// });
-
-// Route::get('/', function () {
-//     return view('User.index');
-// });
-
-
-// Route::get('/userlogin', function () {
-//     return view('User.register');
-// });
-
-// Route::get('/login', function () {
-//     return view('Admin.index');
-// });
-
-
-//-------------------------Admin Controller--------------------------------------//
-// Route::get('/vocal.express', [ManagerController::class, 'index']);
-// Route::POST('/login', [ManagerController::class, 'login'])->name('admin_login');
-// Route::get('/logout', [ManagerController::class, 'logout'])->name('logout');
-
 
 //-------------------------Main Routes--------------------------------------//
 Route::get('/register',[AuthController::class,'loadRegister'])->name('Usersignup');
 Route::post('/register',[AuthController::class,'register'])->name('register');
-Route::get('/',[AuthController::class,'loadLogin'])->name('Userlogin');
+Route::get('/Userlogin',[AuthController::class,'loadLogin'])->name('Userlogin');
 Route::post('/login',[AuthController::class,'login'])->name('login');
 Route::get('/Userlogout',[AuthController::class,'logout']);
 Route::get('/vocal.express',[AuthController::class,'AdminloadLogin']);
@@ -96,25 +49,23 @@ Route::group(['prefix' => 'Admin', 'middleware' => ['web','isAdmin']],function()
 
 //-------------------------User Route--------------------------------------//
 Route::group(['prefix' => 'User', 'middleware' => ['web','isUser']],function(){
-
+    Route::get('/404', [UserController::class,'page404'])->name('404');
     Route::get('/vocal.express', [UserController::class,'dashboard']);
-    Route::get('/Course', [UserController::class,'Course']);
-    Route::get('/Teacher', [UserController::class,'Teacher']);
-    Route::get('/Moment', [UserController::class,'Moments']);
-    Route::get('/Connect', [UserController::class,'Connect']);
-    Route::get('/Library', [UserController::class,'Library']);
-    Route::get('/Profile', [UserController::class,'Profile']);
+    // Route::get('/Course', [UserController::class,'Course']);
+    // Route::get('/Teacher', [UserController::class,'Teacher']);
+    // Route::get('/Moment', [UserController::class,'Moments']);
+    // Route::get('/Connect', [UserController::class,'Connect']);
+    // Route::get('/Library', [UserController::class,'Library']);
+    // Route::get('/Profile', [UserController::class,'Profile']);
    
 //-------------------------new tamplate Route--------------------------------------//
 
-Route::get('/404', [UserController::class,'page404'])->name('404');
-Route::get('/Userhome', [UserController::class,'userindex'])->name('Userhome');
+
+Route::get('/index', [UserController::class,'userindex'])->name('Userhome');
 Route::get('/search-result', [UserController::class,'searchresult'])->name('searchresult');
 Route::get('/notifications', [UserController::class,'notifications'])->name('notifications');
 Route::get('/help', [UserController::class,'help'])->name('help');
 Route::get('/add-new-course', [UserController::class,'addnewcourse'])->name('addnewcourse');
-// Route::get('/Userlogin', [UserController::class,'userlogin'])->name('Userlogin');
-// Route::get('/Usersignup', [UserController::class,'usersignup'])->name('Usersignup');
 Route::get('/livestream', [UserController::class,'livestream'])->name('livestream');
 Route::get('/videos', [UserController::class,'uservideo'])->name('videos');
 Route::get('/cources', [UserController::class,'Usercources'])->name('cources');

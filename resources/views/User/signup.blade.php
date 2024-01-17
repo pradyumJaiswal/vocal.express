@@ -31,31 +31,39 @@
 			<div class="bg-image"></div>
 		</div>
 	</div>
+	@if (Session::has('success'))
+					<div class="alert alert-success">{{ session::get('success') }}</div>
+				@endif
 	<div class="auth-login">
 		<div class="verticle-center">
 			<div class="signup-form">
 				<h4><i class="icofont-lock"></i> Singup</h4>
-				<form method="post" class="c-form">
+				<form method="post" action="{{ route('register') }}" class="c-form">
+				@csrf
 					<div class="row merged-10">
 						<div class="col-lg-12"><h4>We Provide You Awer Best Social Media Community.</h4></div>
 						<div class="col-lg-6 col-sm-6 col-md-6">
-							<input type="text" placeholder="Full Name">
+						<!-- <input id="role" class="form-control" type="text" name="role" value="3" hidden> -->
+							<input type="text" placeholder="Full Name" name="name">
 						</div>
 						<div class="col-lg-6 col-sm-6 col-md-6">
-							<input type="text" placeholder="Email@">
+							<input type="text" placeholder="Email@" name="email">
 						</div>
 						<div class="col-lg-6 col-sm-6 col-md-6">
-							<input type="password" placeholder="Password">
+							<input type="text" placeholder="User Name" name="u_name">
 						</div>
 						<div class="col-lg-6 col-sm-6 col-md-6">
+							<input type="password" placeholder="Password" name="password">
+						</div>
+						<!-- <div class="col-lg-6 col-sm-6 col-md-6">
 							<input type="password" placeholder="Confirm Password">
-						</div>
+						</div> -->
 						<div class="col-lg-12">
 							<div class="gender">
-							  <input type="radio" id="male" name="gender" value="male">
-							  <label for="male">Male</label>
-							  <input type="radio" id="female" name="gender" value="female">
-							  <label for="female">Female</label>
+							  <input type="radio" id="Learner" name="role" value="3">
+							  <label for="Learner">Learner</label>
+							  <input type="radio" id="Teacher" name="role" value="2">
+							  <label for="Teacher">Teacher</label>
 							</div>	
 						</div>
 						

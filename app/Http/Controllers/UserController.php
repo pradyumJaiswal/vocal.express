@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    // public function dashboard()
-    // {
-    //     return view('User.Welcome');
-    // }
+    public function dashboard()
+    {
+        return view('index');
+    }
     // public function Course()
     // {
     //     return view('User.UserPages.Course');
@@ -43,10 +43,10 @@ class UserController extends Controller
         return view('errors.404');
     }
 
-    public function dashboard()
-    {
-        return view('index');
-    }
+    // public function dashboard()
+    // {
+    //     return view('index');
+    // }
 
     public function searchresult()
     {
