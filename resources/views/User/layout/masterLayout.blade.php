@@ -2,7 +2,11 @@
 @include('user.layout.css')
 
 @yield('section')
+<div class="page-loader" id="page-loader">
 
+	<div class="loader"><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span></div>
+  
+  </div><!-- page loader -->
 <div class="theme-layout">
 	
 	@include('user.layout.header')
