@@ -13,14 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('momentImages', function (Blueprint $table) {
+        Schema::create('post_reactions', function (Blueprint $table) {
             $table->id();
-            $table->string('image');
-            $table->string('title');
-            $table->unsignedBigInteger('Moment');
-            $table->foreign('Moment')->references('id')->on('moments');
-            $table->rememberToken();
-            $table->timestamps();
+            $table->string('type');
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('post_id')->constrained('posts');
+            $table->timestamp('created_at')->nullable();
         });
     }
 
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('post_reactions');
     }
 };

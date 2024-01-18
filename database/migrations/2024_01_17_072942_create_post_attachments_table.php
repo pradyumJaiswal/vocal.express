@@ -13,15 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('moments', function (Blueprint $table) {
+        Schema::create('post_attachments', function (Blueprint $table) {
             $table->id();
-            $table->string('place');
-            $table->string('moment_description');
-            $table->string('voice');
-            $table->unsignedBigInteger('User');
-            $table->foreign('User')->references('id')->on('users');
-            $table->rememberToken();
-            $table->timestamps();
+            $table->string('mine',255);
+            $table->string('name',255);
+            $table->string('path',255);
+            $table->foreignId('post_id')->constrained('posts');
+            $table->foreignId('created_by')->constrained('users');   
         });
     }
 
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('post_attachments');
     }
 };
