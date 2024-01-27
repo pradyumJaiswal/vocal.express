@@ -16,7 +16,7 @@ class TeacherAuth
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->user() && auth()->user()->role==2){
+        if(auth()->user() && auth()->user()->role=='Teacher'){
             return $next($request);
         }
         return redirect('/')->withSuccess('login to access');

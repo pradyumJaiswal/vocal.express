@@ -17,7 +17,7 @@ class UserAuth
     public function handle(Request $request, Closure $next)
     {
         
-        if(auth()->user() && auth()->user()->role==3){
+        if(auth()->user() && auth()->user()->role=='User'){
             return $next($request);
         }
         return redirect('/')->withSuccess('login to access');

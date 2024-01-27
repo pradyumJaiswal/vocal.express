@@ -79,7 +79,7 @@
         <ul class="web-elements">
        
             
-  @if(!empty(auth()->user()) && auth()->user()->role==2)
+  @if(!empty(auth()->user()) && auth()->user()->role=='Teacher')
             <li>
                 <div class="user-dp">
                     <a href="profile-page2.html" title="">
@@ -122,7 +122,7 @@
                 <svg xmlns="http:/www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></i>
                 </a>
             </li>
-  @elseif(!empty(auth()->user()) && auth()->user()->role==3)
+  @elseif(!empty(auth()->user()) && auth()->user()->role=='User')
             <li>
                 <div class="user-dp">
                     <a href="profile-page2.html" title="">
@@ -200,7 +200,7 @@
                 </a>
                 <ul class="dropdown">
                     
-                    @if(!empty(auth()->user()) && auth()->user()->role==2)
+                    @if(!empty(auth()->user()) && auth()->user()->role=='Teacher')
                             <li><a href="profile.html" title=""><i class="icofont-user-alt-3"></i> Your Profile</a></li>
                             <li><a href="{{ route('addnewcourse') }}" title=""><i class="icofont-plus"></i> New Course</a></li>
                             <li><a class="invite-new" href="#" title=""><i class="icofont-brand-slideshare"></i> Invite Collegue</a></li>
@@ -211,7 +211,7 @@
                             <li><a href="{{ route('privacy-n-policy') }}" title=""><i class="icofont-notepad"></i> Privacy</a></li>
                             <li><a class="dark-mod" href="#" title=""><i class="icofont-moon"></i> Dark Mode</a></li>
                             <li class="logout"><a href="/Userlogout" title=""><i class="icofont-power"></i> Logout</a></li>
-                    @elseif(!empty(auth()->user()) && auth()->user()->role==3)
+                    @elseif(!empty(auth()->user()) && auth()->user()->role=='User')
                             <li><a href="profile.html" title=""><i class="icofont-user-alt-3"></i> Your Profile</a></li>
                             <li><a href="{{ route('addnewcourse') }}" title=""><i class="icofont-plus"></i> New Course</a></li>
                             <li><a class="invite-new" href="#" title=""><i class="icofont-brand-slideshare"></i> Invite Collegue</a></li>

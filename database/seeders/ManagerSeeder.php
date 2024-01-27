@@ -20,7 +20,7 @@ class ManagerSeeder extends Seeder
         'user_name' => '@12Manger',
         'email' => 'vocal_manager@gmail.com',
         'password' => bcrypt('password'),
-        'role' => '1',
+        'role' => 'CEO',
 
        ]
     

@@ -66,8 +66,8 @@ class AuthController extends Controller
 
         $userCredential = $request->only('email','password');
         if(Auth::attempt($userCredential)){
-$data = $request->input('email');
-$luckybhai = $request->session()->put("$data");
+            $data = $request->input('email');
+            $luckybhai = $request->session()->put($data);
             $route = $this->redirect();
             return redirect($route)->with('Sethai',$luckybhai);
         }
@@ -80,10 +80,10 @@ $luckybhai = $request->session()->put("$data");
     {
         $redirect = '';
 
-        if(Auth::user() && Auth::user()->role == 1){
+        if(Auth::user() && Auth::user()->role == 'CEO'){
             $redirect = '/Admin/dashboard';
         }
-        else if(Auth::user() && Auth::user()->role == 2){
+        else if(Auth::user() && Auth::user()->role == 'Teacher'){
             $redirect = 'User/vocal.express';
         }
         else{

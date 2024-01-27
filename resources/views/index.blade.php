@@ -5,11 +5,11 @@
 
 
 	
-@if(!empty(auth()->user()) && auth()->user()->role==2)
+@if(!empty(auth()->user()) && auth()->user()->role=='Teacher')
 	@section('Content')
 		@include('User.welcome')
 	@endsection
-@elseif(!empty(auth()->user()) && auth()->user()->role==3)
+@elseif(!empty(auth()->user()) && auth()->user()->role=='User')
 	@section('Content')
 		@include('User.welcome')
 	@endsection

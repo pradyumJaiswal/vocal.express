@@ -16,7 +16,7 @@ class AdminAuth
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->user() && auth()->user()->role==1){
+        if(auth()->user() && auth()->user()->role=='CEO'){
             return $next($request);
         }
         return redirect('/vocal.express')->withSuccess('login as Admin to access');

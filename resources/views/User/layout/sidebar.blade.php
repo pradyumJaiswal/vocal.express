@@ -1,4 +1,4 @@
-@if(!empty(auth()->user()) && auth()->user()->role==2)
+@if(!empty(auth()->user()) && auth()->user()->role=='Teacher')
 <nav class="sidebar">
     <ul class="menu-slide">
         <li class="active menu-item-has-children">
@@ -196,7 +196,7 @@
         </div>	
 	</div>
 </section>
-@elseif(!empty(auth()->user()) && auth()->user()->role==3)
+@elseif(!empty(auth()->user()) && auth()->user()->role=='User')
 <nav class="sidebar">
     <ul class="menu-slide">
         <li class="active menu-item-has-children">

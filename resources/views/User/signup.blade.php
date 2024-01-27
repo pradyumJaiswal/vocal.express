@@ -60,9 +60,9 @@
 						</div> -->
 						<div class="col-lg-12">
 							<div class="gender">
-							  <input type="radio" id="Learner" name="role" value="3">
+							  <input type="radio" id="Learner" name="role" value="User">
 							  <label for="Learner">Learner</label>
-							  <input type="radio" id="Teacher" name="role" value="2">
+							  <input type="radio" id="Teacher" name="role" value="Teacher">
 							  <label for="Teacher">Teacher</label>
 							</div>	
 						</div>

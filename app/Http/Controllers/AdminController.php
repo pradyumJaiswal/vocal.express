@@ -3,9 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Repos\AdminRepo;
 class AdminController extends Controller
 {
+    private $repo;
+
+    public function __construct(AdminRepo $repo){
+
+        $this->repo = $repo;
+    }
     public function dashboard()
     {
         return view('Admin.dashboard');
@@ -18,13 +24,18 @@ class AdminController extends Controller
     {
         return view('Admin.AdminPages.profile');
     }
+    
     public function ManageUser()
     {
-        return view('Admin.AdminPages.userManage');
+        $UserDetails = $this->repo->getAllUser('User');
+        return view('Admin.AdminPages.userManage')->with('UserDetails',$UserDetails);
+        // return view('Admin.AdminPages.userManage');
     }
     public function ManageTeachers()
     {
-        return view('Admin.AdminPages.teacherManage');
+        
+        $UserDetails = $this->repo->getAllTeacher();
+        return view('Admin.AdminPages.teacherManage')->with('UserDetails',$UserDetails);
     }
     public function ManageCourses()
     {
