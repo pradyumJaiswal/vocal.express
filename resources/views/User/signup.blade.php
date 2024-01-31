@@ -45,15 +45,27 @@
 						<div class="col-lg-6 col-sm-6 col-md-6">
 						<!-- <input id="role" class="form-control" type="text" name="role" value="3" hidden> -->
 							<input type="text" placeholder="Full Name" name="name">
+							@if($errors->has('name'))
+							<small class = "text-danger fs-6 fw-bold">{{ $errors->first('name') }}</small>
+							@endif
 						</div>
 						<div class="col-lg-6 col-sm-6 col-md-6">
 							<input type="text" placeholder="Email@" name="email">
+							@if($errors->has('email'))
+							<small class = "text-danger fs-6 fw-bold">{{ $errors->first('email') }}</small>
+							@endif
 						</div>
 						<div class="col-lg-6 col-sm-6 col-md-6">
 							<input type="text" placeholder="User Name" name="u_name">
+							@if($errors->has('u_name'))
+							<small class = "text-danger fs-6 fw-bold">{{ $errors->first('u_name') }}</small>
+							@endif
 						</div>
 						<div class="col-lg-6 col-sm-6 col-md-6">
 							<input type="password" placeholder="Password" name="password">
+							@if($errors->has('password'))
+							<small class = "text-danger fs-6 fw-bold">{{ $errors->first('password') }}</small>
+							@endif
 						</div>
 						<!-- <div class="col-lg-6 col-sm-6 col-md-6">
 							<input type="password" placeholder="Confirm Password">

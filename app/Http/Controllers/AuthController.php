@@ -7,7 +7,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
-
+use App\Http\Requests\RegValidation;
+use App\Http\Requests\logValidation;
 class AuthController extends Controller
 {
     public function loadRegister()
@@ -19,24 +20,26 @@ class AuthController extends Controller
         return view('User.signup');
     }
 
-    public function register(Request $request)
+    public function register(RegValidation $request)
     {
-        $request->validate([
-            'name' => 'string|required|min:2',
-            'email' => 'string|email|required|unique:users',
-            'password' =>'string|required|min:6'
-        ]);
+        if($request){
+            $request->validated();
 
-        $user = new User;
-        $user->name = $request->name;
-        $user->user_name = $request->u_name;
-        $user->email = $request->email;
-        $user->password = $request->password;
-        $user->role = $request->role;
-        $user->password = Hash::make($request->password);
-        $user->save();
-
-        return back()->with('success','Your Registration has been successfull.');
+            $user = new User;
+            $user->name = $request->name;
+            $user->user_name = $request->u_name;
+            $user->email = $request->email;
+            $user->password = $request->password;
+            $user->role = $request->role;
+            $user->password = Hash::make($request->password);
+            $user->save();
+    
+            return back()->with('success','Your Registration has been successfull.');
+        }
+        else{
+            return redirect()->back()->withInput();
+        }
+        
     }
 
     public function loadLogin()
@@ -57,23 +60,26 @@ class AuthController extends Controller
         return view('Admin.index');
     }
 
-    public function login(Request $request)
+    public function login(logValidation $request)
     {
-        $request->validate([
-            'email' => 'string|required|email',
-            'password' => 'string|required'
-        ]);
+        if($request){
+            $request->validated();
 
-        $userCredential = $request->only('email','password');
-        if(Auth::attempt($userCredential)){
-            $data = $request->input('email');
-            $luckybhai = $request->session()->put($data);
-            $route = $this->redirect();
-            return redirect($route)->with('Sethai',$luckybhai);
+            $userCredential = $request->only('email','password');
+            if(Auth::attempt($userCredential)){
+                $data = $request->input('email');
+                $luckybhai = $request->session()->put($data);
+                $route = $this->redirect();
+                return redirect($route)->with('Sethai',$luckybhai);
+            }
+            else{
+                return back()->with('error','Username & Password is incorrect');
+            }
         }
         else{
-            return back()->with('error','Username & Password is incorrect');
+            return redirect()->back()->withInput();
         }
+
     }
 
     public function redirect()

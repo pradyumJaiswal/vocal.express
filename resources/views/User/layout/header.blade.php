@@ -82,7 +82,7 @@
   @if(!empty(auth()->user()) && auth()->user()->role=='Teacher')
             <li>
                 <div class="user-dp">
-                    <a href="profile-page2.html" title="">
+                    <a href="{{ route('profile') }}" title="">
                         <img alt="" src="{{asset('user/images/resources/user.jpg')}}">
                         <div class="name">
                             <h4>{{ ucfirst(Auth()->user()->name) }}</h4>
@@ -125,7 +125,7 @@
   @elseif(!empty(auth()->user()) && auth()->user()->role=='User')
             <li>
                 <div class="user-dp">
-                    <a href="profile-page2.html" title="">
+                    <a href="{{ route('profile') }}" title="">
                         <img alt="" src="{{asset('user/images/resources/user.jpg')}}">
                         <div class="name">
                             <h4>{{ ucfirst(Auth()->user()->name) }}</h4>
@@ -201,7 +201,7 @@
                 <ul class="dropdown">
                     
                     @if(!empty(auth()->user()) && auth()->user()->role=='Teacher')
-                            <li><a href="profile.html" title=""><i class="icofont-user-alt-3"></i> Your Profile</a></li>
+                            <li><a href="{{ route('profile') }}" title=""><i class="icofont-user-alt-3"></i> Your Profile</a></li>
                             <li><a href="{{ route('addnewcourse') }}" title=""><i class="icofont-plus"></i> New Course</a></li>
                             <li><a class="invite-new" href="#" title=""><i class="icofont-brand-slideshare"></i> Invite Collegue</a></li>
                             <li><a href="{{ route('pay-out') }}" title=""><i class="icofont-price"></i> Payout</a></li>
@@ -212,7 +212,7 @@
                             <li><a class="dark-mod" href="#" title=""><i class="icofont-moon"></i> Dark Mode</a></li>
                             <li class="logout"><a href="/Userlogout" title=""><i class="icofont-power"></i> Logout</a></li>
                     @elseif(!empty(auth()->user()) && auth()->user()->role=='User')
-                            <li><a href="profile.html" title=""><i class="icofont-user-alt-3"></i> Your Profile</a></li>
+                            <li><a href="{{ route('profile') }}" title=""><i class="icofont-user-alt-3"></i> Your Profile</a></li>
                             <li><a href="{{ route('addnewcourse') }}" title=""><i class="icofont-plus"></i> New Course</a></li>
                             <li><a class="invite-new" href="#" title=""><i class="icofont-brand-slideshare"></i> Invite Collegue</a></li>
                             <li><a href="{{ route('pay-out') }}" title=""><i class="icofont-price"></i> Payout</a></li>
@@ -223,15 +223,6 @@
                             <li><a class="dark-mod" href="#" title=""><i class="icofont-moon"></i> Dark Mode</a></li>
                             <li class="logout"><a href="/Userlogout" title=""><i class="icofont-power"></i> Logout</a></li>
                     @else 
-                            <li><a href="/User/livestream" title=""><i class="icofont-user-alt-3"></i> Your Profile</a></li>
-                            <li><a href="/User/livestream" title=""><i class="icofont-plus"></i> New Course</a></li>
-                            <li><a class="invite-new" href="/User/livestream" title=""><i class="icofont-brand-slideshare"></i> Invite Collegue</a></li>
-                            <li><a href="/User/livestream" title=""><i class="icofont-price"></i> Payout</a></li>
-                            <li><a href="/User/livestream" title=""><i class="icofont-flash"></i> Upgrade</a></li>
-                            <li><a href="/User/livestream" title=""><i class="icofont-question-circle"></i> Help</a></li>
-                            <li><a href="/User/livestream" title=""><i class="icofont-gear"></i> Setting</a></li>
-                            <li><a href="/User/livestream" title=""><i class="icofont-notepad"></i> Privacy</a></li>
-                            <li><a class="dark-mod" href="/User/livestream" title=""><i class="icofont-moon"></i> Dark Mode</a></li>
                             <li class="logout"><a href="/Userlogin" title=""><i class="icofont-power"></i> Login</a></li>
                     @endif
                     

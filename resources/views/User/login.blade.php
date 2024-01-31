@@ -49,7 +49,13 @@
 				<form method="post" action="{{ route('login') }}" class="c-form">
 				@csrf
 					<input type="email" name="email" placeholder="User Name / Email">
+					@if($errors->has('email'))
+							<small class = "text-danger fs-6 fw-bold">{{ $errors->first('email') }}</small>
+							@endif
 					<input type="password" placeholder="xxxxxxxxxx" name="password">
+					@if($errors->has('password'))
+							<small class = "text-danger fs-6 fw-bold">{{ $errors->first('password') }}</small>
+							@endif
 					<div class="checkbox">
 						<input type="checkbox" id="checkbox" checked>
 						<label for="checkbox"><span>Remember Me</span></label>
