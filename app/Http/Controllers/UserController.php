@@ -10,43 +10,11 @@ class UserController extends Controller
     {
         return view('index');
     }
-    // public function Course()
-    // {
-    //     return view('User.UserPages.Course');
-    // }
-    // public function Teacher()
-    // {
-    //     return view('User..UserPages.Teacher');
-    // }
-    // public function Moments()
-    // {
-    //     return view('User..UserPages.Moment');
-    // }
-    // public function Connect()
-    // {
-    //     return view('User..UserPages.Connect');
-    // }
-    // public function Library()
-    // {
-    //     return view('User..UserPages.Library');
-    // }
-    // public function Profile()
-    // {
-    //     return view('User..UserPages.Profile');
-    // }
-
-//..............................new tamplate route....................//
-
 
     public function page404()
     {
         return view('errors.404');
     }
-
-    // public function dashboard()
-    // {
-    //     return view('index');
-    // }
 
     public function searchresult()
     {

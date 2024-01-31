@@ -7,9 +7,8 @@ interface AdminRepoInterface
 
  {
 
-    public function getAllUser();
-    public function getAllTeacher();
-  
+    public function getAllUser($type);
+    
 
  }
 ?>

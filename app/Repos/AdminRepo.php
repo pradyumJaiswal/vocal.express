@@ -16,11 +16,6 @@ class AdminRepo implements AdminRepoInterface {
 
 
 
-// ----------------------------------------   Teacher Function  ----------------------------------//
-    // public function getAllTeacher()
-    // {
-    //   return User::where('role','Teacher')->get();
-    // }
 
 }
 ?>

@@ -6,6 +6,9 @@ use App\http\Controllers\AdminController;
 use App\http\Controllers\TeacherController;
 use App\http\Controllers\UserController;
 use App\http\Controllers\AuthController;
+use App\http\Controllers\ProfileController;
+use App\http\Controllers\PostController;
+
 
 
 
@@ -47,39 +50,49 @@ Route::group(['prefix' => 'Admin', 'middleware' => ['web','isAdmin']],function()
 
 
 //-------------------------User Route--------------------------------------//
-Route::group(['prefix' => 'User', 'middleware' => ['web','isUser']],function(){
-          
-        Route::get('/404', [UserController::class,'page404'])->name('404');
-        Route::get('/vocal.express', [UserController::class,'dashboard']);
-    //  Route::get('/Course', [UserController::class,'Course']);
-    //  Route::get('/Teacher', [UserController::class,'Teacher']);
-    //  Route::get('/Moment', [UserController::class,'Moments']);
-    //  Route::get('/Connect', [UserController::class,'Connect']);
-    //  Route::get('/Library', [UserController::class,'Library']);
-    //  Route::get('/Profile', [UserController::class,'Profile']);
-        Route::get('/index', [UserController::class,'userindex'])->name('Userhome');
-        Route::get('/search-result', [UserController::class,'searchresult'])->name('searchresult');
-        Route::get('/notifications', [UserController::class,'notifications'])->name('notifications');
-        Route::get('/help', [UserController::class,'help'])->name('help');
-        Route::get('/add-new-course', [UserController::class,'addnewcourse'])->name('addnewcourse');
-        Route::get('/livestream', [UserController::class,'livestream'])->name('livestream');
-        Route::get('/videos', [UserController::class,'uservideo'])->name('videos');
-        Route::get('/cources', [UserController::class,'Usercources'])->name('cources');
-        Route::get('/books', [UserController::class,'books'])->name('books');
-        Route::get('/groups', [UserController::class,'groups'])->name('groups');
-        Route::get('/settings', [UserController::class,'settings'])->name('settings');
-        Route::get('/product-cart', [UserController::class,'productcart'])->name('product-cart');
-        Route::get('/profile', [UserController::class,'userProfile'])->name('profile');
-        Route::get('/pay-out', [UserController::class,'payout'])->name('pay-out');
-        Route::get('/price-plan', [UserController::class,'priceplan'])->name('price-plan');
-        Route::get('/privacy-n-policy', [UserController::class,'privacypolicy'])->name('privacy-n-policy');
-        Route::get('/blog', [UserController::class,'blog'])->name('blog');
-        Route::get('/message', [UserController::class,'message'])->name('message');
 
+Route::group(['prefix' => 'User', 'middleware' => ['web','isUser']],function(){
+        
+    Route::get('/404', [UserController::class,'page404'])->name('404');
+    Route::get('/vocal.express', [UserController::class,'dashboard']);
+    Route::get('/index', [UserController::class,'userindex'])->name('Userhome');
+    Route::get('/search-result', [UserController::class,'searchresult'])->name('searchresult');
+    Route::get('/notifications', [UserController::class,'notifications'])->name('notifications');
+    Route::get('/help', [UserController::class,'help'])->name('help');
+    Route::get('/add-new-course', [UserController::class,'addnewcourse'])->name('addnewcourse');
+    Route::get('/livestream', [UserController::class,'livestream'])->name('livestream');
+    Route::get('/videos', [UserController::class,'uservideo'])->name('videos');
+    Route::get('/cources', [UserController::class,'Usercources'])->name('cources');
+    Route::get('/books', [UserController::class,'books'])->name('books');
+    Route::get('/groups', [UserController::class,'groups'])->name('groups');
+    Route::get('/settings', [UserController::class,'settings'])->name('settings');
+    Route::get('/product-cart', [UserController::class,'productcart'])->name('product-cart');
+    Route::get('/profile', [UserController::class,'userProfile'])->name('profile');
+    Route::get('/pay-out', [UserController::class,'payout'])->name('pay-out');
+    Route::get('/price-plan', [UserController::class,'priceplan'])->name('price-plan');
+    Route::get('/privacy-n-policy', [UserController::class,'privacypolicy'])->name('privacy-n-policy');
+    Route::get('/blog', [UserController::class,'blog'])->name('blog');
+    Route::get('/message', [UserController::class,'message'])->name('message');
+//  Route::get('/Course', [UserController::class,'Course']);
+//  Route::get('/Teacher', [UserController::class,'Teacher']);
+//  Route::get('/Moment', [UserController::class,'Moments']);
+//  Route::get('/Connect', [UserController::class,'Connect']);
+//  Route::get('/Library', [UserController::class,'Library']);
+//  Route::get('/Profile', [UserController::class,'Profile']);
 
 }); 
 
 //-------------------------Teacher Route--------------------------------------//
+
+Route::group(['prefix' => 'User', 'middleware' => ['web','isTeacher']],function(){
+          
+   
+
+}); 
+
+
+
+
 
 
 

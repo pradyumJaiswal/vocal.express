@@ -24,17 +24,14 @@ class AdminController extends Controller
     {
         return view('Admin.AdminPages.profile');
     }
-    
     public function ManageUser()
     {
         $UserDetails = $this->repo->getAllUser('User');
         return view('Admin.AdminPages.userManage')->with('UserDetails',$UserDetails);
-        // return view('Admin.AdminPages.userManage');
     }
     public function ManageTeachers()
     {
-        
-        $UserDetails = $this->repo->getAllTeacher();
+        $UserDetails = $this->repo->getAllUser('Teacher');
         return view('Admin.AdminPages.teacherManage')->with('UserDetails',$UserDetails);
     }
     public function ManageCourses()
