@@ -56,9 +56,9 @@
 							@endif
 						</div>
 						<div class="col-lg-6 col-sm-6 col-md-6">
-							<input type="text" placeholder="User Name" name="u_name">
+							<input type="text" placeholder="User Name" name="user_name">
 							@if($errors->has('u_name'))
-							<small class = "text-danger fs-6 fw-bold">{{ $errors->first('u_name') }}</small>
+							<small class = "text-danger fs-6 fw-bold">{{ $errors->first('user_name') }}</small>
 							@endif
 						</div>
 						<div class="col-lg-6 col-sm-6 col-md-6">

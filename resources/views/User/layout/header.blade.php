@@ -97,7 +97,7 @@
                 </a>
             </li>
             <li>
-                <a href="/" title="Home" data-toggle="tooltip">
+                <a href="/User/vocal.express" title="Home" data-toggle="tooltip">
                     <i>
                 <svg xmlns="http:/www.w3.org/2000/svg" style="color: #581845;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></i>
                 </a>
@@ -126,7 +126,7 @@
             <li>
                 <div class="user-dp">
                     <a href="{{ route('profile') }}" title="">
-                        <img alt="" src="{{asset('user/images/resources/user.jpg')}}">
+                        <img alt="" src="{{ asset('storage/'.ucfirst(Auth()->user()->avatar_path)) }}">
                         <div class="name">
                             <h4>{{ ucfirst(Auth()->user()->name) }}</h4>
                         </div>
@@ -140,7 +140,7 @@
                 </a>
             </li>
             <li>
-                <a href="/" title="Home" data-toggle="tooltip">
+                <a href="/vocal.express" title="Home" data-toggle="tooltip">
                     <i>
                  <svg xmlns="http:/www.w3.org/2000/svg" style="color: #581845;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></i>
                 </a>

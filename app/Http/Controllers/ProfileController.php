@@ -3,69 +3,58 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Profile;
+use App\Models\User;
 
 use App\Repos\Interfaces\ProfileInterface;
 
 class ProfileController extends Controller
 {
-    private $ProfileRepository;
+    public function updateCover(Request $request){
+        // $data = $request->cover_path;
+        // $data = $request->validate([
+        //       'cover_path' => ['nullable','image'],
+        //       'avatar_path' => ['nullable','image']
+        // ]);
 
-    public function __construct(ProfileInterface $ProfileRepository)
-    {
-        $this->$ProfileRepository = $ProfileRepository;
+       $user = $request->user();
+
+       
+        // $avatar = $data['avatar_path'] ?? null;
+        $cover = $request->cover_path; 
+        
+
+        // dd($cover);
+        
+        if($cover){
+            // $foldername = 'user-'.auth()->user()->id;
+            // $path = $cover->store($foldername,null,'public');
+            $path = $cover->store('covers/'.$user->id,'public');
+            $user->update(['cover_path' => $path]);
+            // dd($path);
+            return back()->with('message','Updated Successfully');
+        }
+
+        
     }
-
-    // public function index()
-    // {
-    //     $Profile =  $this->$ProfileRepository->allCategories();
-
-    //     return view('', compact('profile'));
-    // }
-
-    public function create()
-    {
-        return view('categories.create');
-    }
-
-    public function store(Request $request)
-    {
-        $data = $request->validate([
-            'name' => 'required|string|max:255',
-            'slug' => 'required|string|max:255',
-        ]);
-
-        $this->ProfileClass->storeCategory($data);
-
-        return redirect()->route('categories.index')->with('message', 'Category Created Successfully');
-    }
-
     
+    public function updateAvatar(Request $request){
+        
 
-    public function edit($id)
-    {
-        $category = $this->ProfileClass->findCategory($id);
+       $user = $request->user();
+       
+        $avatar = $request->avatar_path; 
 
-        return view('categories.edit', compact('category'));
-    }
+        // dd($avatar);
+        
+        if($avatar){
+            $condition = true;
+            $path = $avatar->store('avatars/'.$user->id,'public');
+            $user->update(['avatar_path' => $path]);
+            // dd($path);
+            return back()->with('condition',$condition);
+        }
 
-    public function update(Request $request, $id)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'slug' => 'required|string|max:255',
-        ]);
-
-        $this->ProfileClass->updateProfile($request->all(), $id);
-
-        return redirect()->route('categories.index')->with('message', 'Category Updated Successfully');
-    }
-
-    public function destroy($id)
-    {
-        $this->ProfileClass->destroyProfile($id);
-
-        return redirect()->route('categories.index')->with('status', 'Category Delete Successfully');
+        
     }
 
 

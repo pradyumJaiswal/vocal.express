@@ -27,13 +27,12 @@ class AuthController extends Controller
 
             $user = new User;
             $user->name = $request->name;
-            $user->user_name = $request->u_name;
+            $user->user_name = $request->user_name;
             $user->email = $request->email;
             $user->password = $request->password;
             $user->role = $request->role;
             $user->password = Hash::make($request->password);
             $user->save();
-    
             return back()->with('success','Your Registration has been successfull.');
         }
         else{

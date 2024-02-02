@@ -3,26 +3,50 @@
 @section('title', 'User Profile')
 
 @section('Content')
-	
-	<div class="gap no-gap">
+
+    <div class="gap no-gap">
 		<div class="top-area mate-black low-opacity">
-			<div class="bg-image" style="background-image: url(images/resources/top-bg.jpg)"></div>
+
+		@if(empty(ucfirst(Auth()->user()->cover_path)))
+		<!-- <img src="{{asset('storage/covers/cover.jpeg')}}" alt="User Image" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"> -->
+		
+		<div class="bg-image" style="background-image: url(http://127.0.0.1:8000/storage/covers/cover.jpeg)"></div>
+		@else
+		<div class="bg-image" style="background-image: url(http://127.0.0.1:8000/storage/{{ ucfirst(Auth()->user()->cover_path) }})"></div>
+		@endif
+
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="post-subject">
 							<div class="university-tag">
-								<figure><img src="{{asset('user/images/resources/user.jpg')}}" alt=""></figure>
+								<figure>
+								@if(empty(ucfirst(Auth()->user()->avatar_path)))
+								<img src="{{asset('storage/avatars/defaultAvatar.jpg')}}" alt="User Image" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+								@else
+								<img src="{{ asset('storage/'.ucfirst(Auth()->user()->avatar_path))}}" alt="">
+								@endif
+								</figure>
 								<div class="uni-name">
-									<h4>Georg Peeter </h4>
-									<span>@Georgofficial</span>
+									<h4>{{ ucfirst(Auth()->user()->name) }}</h4>
+									<span>{{ ucfirst(Auth()->user()->user_name) }}</span>
 								</div>
+								<form action="{{route('profile.updateAvatar')}}" method="post" enctype="multipart/form-data">
+									@csrf
+									<input type="file" name="avatar_path">
+									<button type="submit" class="main-btn">Update</button>
+                                </form>
 								<ul class="sharing-options">
 									<li><a title="Invite Colleagues" href="#" data-toggle="tooltip"><i class="icofont-id-card"></i></a> </li>
 									<li><a title="Follow" href="#" data-toggle="tooltip"><i class="icofont-star"></i></a> </li>
 									<li><a title="Share" href="#" data-toggle="tooltip"><i class="icofont-share-alt"></i></a> </li>
+									<form action="{{route('profile.updatecover')}}" method="post" enctype="multipart/form-data">
+									@csrf
+									<input type="file" name="cover_path">
+									<button type="submit" class="main-btn">Update</button>
+                                </form>
 								</ul>
-								<a data-ripple="" title="" href="#" class="invite">Invite Colleagues</a>
+								<!-- <a data-ripple="" title="" href="#" class="invite">Invite Colleagues</a> -->
 							</div>
 
 							<ul class="nav nav-tabs post-detail-btn">
@@ -37,8 +61,6 @@
 			</div>
 		</div>
 	</div><!-- top Head -->
-	
-		
 	
 	<section>
 		<div class="gap">
@@ -58,15 +80,15 @@
 												</form>
 												<ul class="upload-media">
 													<li>
-														<i><img src="{{asset('user/images/image.png')}}" alt=""></i>
+														<i><img src="images/image.png" alt=""></i>
 														<span>Photo/Video</span>
 													</li>
 													<li>
-														<i><img src="{{asset('user/images/activity.png')}}" alt=""></i>
+														<i><img src="images/activity.png" alt=""></i>
 														<span>Feeling/Activity</span>
 													</li>
 													<li>
-														<i><img src="{{asset('user/images/live-stream.png')}}" alt=""></i>
+														<i><img src="images/live-stream.png" alt=""></i>
 														<span>Live Stream</span>
 													</li>
 												</ul>
@@ -76,7 +98,7 @@
 											<div class="user-post">
 												<div class="friend-info">
 													<figure>
-														<img alt="" src="{{asset('user/images/resources/user1.jpg')}}">
+														<img alt="" src="images/resources/user1.jpg">
 													</figure>
 													<div class="friend-name">
 														<div class="more">
@@ -196,9 +218,9 @@
 															<a title="" href="#" class="share-to"><i class="icofont-share-alt"></i> Share</a>
 															<div class="emoji-state">
 																<div class="popover_wrapper">
-																	<a class="popover_title" href="#" title=""><img alt="" src="{{asset('user/images/smiles/thumb.png')}}"></a>
+																	<a class="popover_title" href="#" title=""><img alt="" src="images/smiles/thumb.png"></a>
 																	<div class="popover_content">
-																		<span><img alt="" src="{{asset('user/images/smiles/thumb.png')}}"> Likes</span>
+																		<span><img alt="" src="images/smiles/thumb.png"> Likes</span>
 																		<ul class="namelist">
 																			<li>Jhon Doe</li>
 																			<li>Amara Sin</li>
@@ -208,9 +230,9 @@
 																	</div>
 																</div>
 																<div class="popover_wrapper">
-																	<a class="popover_title" href="#" title=""><img alt="" src="{{asset('user/images/smiles/heart.png')}}"></a>
+																	<a class="popover_title" href="#" title=""><img alt="" src="images/smiles/heart.png"></a>
 																	<div class="popover_content">
-																		<span><img alt="" src="{{asset('user/images/smiles/heart.png')}}"> Love</span>
+																		<span><img alt="" src="images/smiles/heart.png"> Love</span>
 																		<ul class="namelist">
 																			<li>Amara Sin</li>
 																			<li>Jhon Doe</li>
@@ -219,9 +241,9 @@
 																	</div>
 																</div>
 																<div class="popover_wrapper">
-																	<a class="popover_title" href="#" title=""><img alt="" src="{{asset('user/images/smiles/smile.png')}}"></a>
+																	<a class="popover_title" href="#" title=""><img alt="" src="images/smiles/smile.png"></a>
 																	<div class="popover_content">
-																		<span><img alt="" src="{{asset('user/images/smiles/smile.png')}}"> Happy</span>
+																		<span><img alt="" src="images/smiles/smile.png"> Happy</span>
 																		<ul class="namelist">
 																			<li>Sarah K.</li>
 																			<li>Jhon Doe</li>
@@ -231,9 +253,9 @@
 																	</div>
 																</div>
 																<div class="popover_wrapper">
-																	<a class="popover_title" href="#" title=""><img alt="" src="{{asset('user/images/smiles/weep.png')}}"></a>
+																	<a class="popover_title" href="#" title=""><img alt="" src="images/smiles/weep.png"></a>
 																	<div class="popover_content">
-																		<span><img alt="" src="{{asset('user/images/smiles/weep.png')}}"> Dislike</span>
+																		<span><img alt="" src="images/smiles/weep.png"> Dislike</span>
 																		<ul class="namelist">
 																			<li>Danial Carbal</li>
 																			<li>Amara Sin</li>
@@ -252,7 +274,7 @@
 																<div class="comments-area">
 																	<ul>
 																		<li>
-																			<figure><img alt="" src="{{asset('user/images/resources/user1.jpg')}}"></figure>
+																			<figure><img alt="" src="images/resources/user1.jpg"></figure>
 																			<div class="commenter">
 																				<h5><a title="" href="#">Jack Carter</a></h5>
 																				<span>2 hours ago</span>
@@ -266,7 +288,7 @@
 																			<a title="Reply" href="#" class="reply-coment"><i class="icofont-reply"></i></a>
 																		</li>
 																		<li>
-																			<figure><img alt="" src="{{asset('user/images/resources/user2.jpg')}}"></figure>
+																			<figure><img alt="" src="images/resources/user2.jpg"></figure>
 																			<div class="commenter">
 																				<h5><a title="" href="#">Ching xang</a></h5>
 																				<span>2 hours ago</span>
@@ -289,7 +311,7 @@
 											<div class="user-post">
 												<div class="friend-info">
 													<figure>
-														<img alt="" src="{{asset('user/images/resources/user2.jpg')}}">
+														<img alt="" src="images/resources/user2.jpg">
 													</figure>
 													<div class="friend-name">
 														<div class="more">
@@ -320,7 +342,7 @@
 														<span><i class="icofont-globe"></i> published: Sep,15 2020</span>
 													</div>
 													<div class="post-meta">
-														<figure class="premium-post"><img src="{{asset('user/images/resources/book5.jpg')}}" alt=""></figure>
+														<figure class="premium-post"><img src="images/resources/book5.jpg" alt=""></figure>
 														<div class="premium">
 															<a href="book-detail.html" class="post-title">Technicial words 2020 Book world</a>
 															<p>
@@ -413,9 +435,9 @@
 															<a title="" href="#" class="share-to"><i class="icofont-share-alt"></i> Share</a>
 															<div class="emoji-state">
 																<div class="popover_wrapper">
-																	<a class="popover_title" href="#" title=""><img alt="" src="{{asset('user/images/smiles/thumb.png')}}"></a>
+																	<a class="popover_title" href="#" title=""><img alt="" src="images/smiles/thumb.png"></a>
 																	<div class="popover_content">
-																		<span><img alt="" src="{{asset('user/images/smiles/thumb.png')}}"> Likes</span>
+																		<span><img alt="" src="images/smiles/thumb.png"> Likes</span>
 																		<ul class="namelist">
 																			<li>Jhon Doe</li>
 																			<li>Amara Sin</li>
@@ -425,9 +447,9 @@
 																	</div>
 																</div>
 																<div class="popover_wrapper">
-																	<a class="popover_title" href="#" title=""><img alt="" src="{{asset('user/images/smiles/heart.png')}}"></a>
+																	<a class="popover_title" href="#" title=""><img alt="" src="images/smiles/heart.png"></a>
 																	<div class="popover_content">
-																		<span><img alt="" src="{{asset('user/images/smiles/heart.png')}}"> Love</span>
+																		<span><img alt="" src="images/smiles/heart.png"> Love</span>
 																		<ul class="namelist">
 																			<li>Amara Sin</li>
 																			<li>Jhon Doe</li>
@@ -436,9 +458,9 @@
 																	</div>
 																</div>
 																<div class="popover_wrapper">
-																	<a class="popover_title" href="#" title=""><img alt="" src="{{asset('user/images/smiles/smile.png')}}"></a>
+																	<a class="popover_title" href="#" title=""><img alt="" src="images/smiles/smile.png"></a>
 																	<div class="popover_content">
-																		<span><img alt="" src="{{asset('user/images/smiles/smile.png')}}"> Happy</span>
+																		<span><img alt="" src="images/smiles/smile.png"> Happy</span>
 																		<ul class="namelist">
 																			<li>Sarah K.</li>
 																			<li>Jhon Doe</li>
@@ -448,9 +470,9 @@
 																	</div>
 																</div>
 																<div class="popover_wrapper">
-																	<a class="popover_title" href="#" title=""><img alt="" src="{{asset('user/images/smiles/weep.png')}}"></a>
+																	<a class="popover_title" href="#" title=""><img alt="" src="images/smiles/weep.png"></a>
 																	<div class="popover_content">
-																		<span><img alt="" src="{{asset('user/images/smiles/weep.png')}}"> Dislike</span>
+																		<span><img alt="" src="images/smiles/weep.png"> Dislike</span>
 																		<ul class="namelist">
 																			<li>Danial Carbal</li>
 																			<li>Amara Sin</li>
@@ -469,7 +491,7 @@
 																<div class="comments-area">
 																	<ul>
 																		<li>
-																			<figure><img alt="" src="{{asset('user/images/resources/user1.jpg')}}"></figure>
+																			<figure><img alt="" src="images/resources/user1.jpg"></figure>
 																			<div class="commenter">
 																				<h5><a title="" href="#">Jack Carter</a></h5>
 																				<span>2 hours ago</span>
@@ -483,7 +505,7 @@
 																			<a title="Reply" href="#" class="reply-coment"><i class="icofont-reply"></i></a>
 																		</li>
 																		<li>
-																			<figure><img alt="" src="{{asset('user/images/resources/user2.jpg')}}"></figure>
+																			<figure><img alt="" src="images/resources/user2.jpg"></figure>
 																			<div class="commenter">
 																				<h5><a title="" href="#">Ching xang</a></h5>
 																				<span>2 hours ago</span>
@@ -511,7 +533,7 @@
 												<div class="item-video" data-merge="2">
 													<a class="owl-video" href="https://www.youtube.com/watch?v=8iZTb9NWbz8"></a>
 													<div class="posted-user">
-														<img src="{{asset('user/images/resources/user4.jpg')}}" alt="">
+														<img src="images/resources/user4.jpg" alt="">
 														<span>Frank J.</span>
 													</div>
 													<div class="vid-info">
@@ -522,7 +544,7 @@
 												<div class="item-video" data-merge="2">
 													<a class="owl-video" href="https://www.youtube.com/watch?v=8itUNRIWVIs"></a>
 													<div class="posted-user">
-														<img src="{{asset('user/images/resources/user2.jpg')}}" alt="">
+														<img src="images/resources/user2.jpg" alt="">
 														<span>Maria K.</span>
 													</div>
 													<div class="vid-info">
@@ -533,7 +555,7 @@
 												<div class="item-video" data-merge="2">
 													<a class="owl-video" href="https://www.youtube.com/watch?v=JpxsRwnRwCQ"></a> 
 													<div class="posted-user">
-														<img src="{{asset('user/images/resources/user1.jpg')}}" alt="">
+														<img src="images/resources/user1.jpg" alt="">
 														<span>Jack Carter</span>
 													</div>
 													<div class="vid-info">
@@ -544,7 +566,7 @@
 												<div class="item-video" data-merge="2">
 													<a class="owl-video" href="https://www.youtube.com/watch?v=WNeLUngb-Xg"></a>
 													<div class="posted-user">
-														<img src="{{asset('user/images/resources/user3.jpg')}}" alt="">
+														<img src="images/resources/user3.jpg" alt="">
 														<span>Fawad Jan</span>
 													</div>
 													<div class="vid-info">
@@ -559,7 +581,7 @@
 											<div class="user-post">
 												<div class="friend-info">
 													<figure>
-														<img alt="" src="{{asset('user/images/resources/user3.jpg')}}">
+														<img alt="" src="images/resources/user3.jpg">
 													</figure>
 													<div class="friend-name">
 														<div class="more">
@@ -591,8 +613,8 @@
 													</div>
 													<div class="post-meta">
 														<figure>
-															<a data-toggle="modal" data-target="#img-comt" href="{{asset('user/images/resources/album1.jpg')}}">
-																<img src="{{asset('user/images/resources/study.jpg')}}" alt="">
+															<a data-toggle="modal" data-target="#img-comt" href="images/resources/album1.jpg">
+																<img src="images/resources/study.jpg" alt="">
 															</a>	
 														</figure>
 														<a href="post-detail.html" class="post-title">Supervision as a Personnel Development Device</a>
@@ -684,9 +706,9 @@
 															<a title="" href="#" class="share-to"><i class="icofont-share-alt"></i> Share</a>
 															<div class="emoji-state">
 																<div class="popover_wrapper">
-																	<a class="popover_title" href="#" title=""><img alt="" src="{{asset('user/images/smiles/thumb.png')}}"></a>
+																	<a class="popover_title" href="#" title=""><img alt="" src="images/smiles/thumb.png"></a>
 																	<div class="popover_content">
-																		<span><img alt="" src="{{asset('user/images/smiles/thumb.png')}}"> Likes</span>
+																		<span><img alt="" src="images/smiles/thumb.png"> Likes</span>
 																		<ul class="namelist">
 																			<li>Jhon Doe</li>
 																			<li>Amara Sin</li>
@@ -696,9 +718,9 @@
 																	</div>
 																</div>
 																<div class="popover_wrapper">
-																	<a class="popover_title" href="#" title=""><img alt="" src="{{asset('user/images/smiles/heart.png')}}"></a>
+																	<a class="popover_title" href="#" title=""><img alt="" src="images/smiles/heart.png"></a>
 																	<div class="popover_content">
-																		<span><img alt="" src="{{asset('user/images/smiles/heart.png')}}"> Love</span>
+																		<span><img alt="" src="images/smiles/heart.png"> Love</span>
 																		<ul class="namelist">
 																			<li>Amara Sin</li>
 																			<li>Jhon Doe</li>
@@ -707,9 +729,9 @@
 																	</div>
 																</div>
 																<div class="popover_wrapper">
-																	<a class="popover_title" href="#" title=""><img alt="" src="{{asset('user/images/smiles/smile.png')}}"></a>
+																	<a class="popover_title" href="#" title=""><img alt="" src="images/smiles/smile.png"></a>
 																	<div class="popover_content">
-																		<span><img alt="" src="{{asset('user/images/smiles/smile.png')}}"> Happy</span>
+																		<span><img alt="" src="images/smiles/smile.png"> Happy</span>
 																		<ul class="namelist">
 																			<li>Sarah K.</li>
 																			<li>Jhon Doe</li>
@@ -719,9 +741,9 @@
 																	</div>
 																</div>
 																<div class="popover_wrapper">
-																	<a class="popover_title" href="#" title=""><img alt="" src="{{asset('user/images/smiles/weep.png')}}"></a>
+																	<a class="popover_title" href="#" title=""><img alt="" src="images/smiles/weep.png"></a>
 																	<div class="popover_content">
-																		<span><img alt="" src="{{asset('user/images/smiles/weep.png')}}"> Dislike</span>
+																		<span><img alt="" src="images/smiles/weep.png"> Dislike</span>
 																		<ul class="namelist">
 																			<li>Danial Carbal</li>
 																			<li>Amara Sin</li>
@@ -740,7 +762,7 @@
 																<div class="comments-area">
 																	<ul>
 																		<li>
-																			<figure><img alt="" src="{{asset('user/images/resources/user1.jpg')}}"></figure>
+																			<figure><img alt="" src="images/resources/user1.jpg"></figure>
 																			<div class="commenter">
 																				<h5><a title="" href="#">Jack Carter</a></h5>
 																				<span>2 hours ago</span>
@@ -754,7 +776,7 @@
 																			<a title="Reply" href="#" class="reply-coment"><i class="icofont-reply"></i></a>
 																		</li>
 																		<li>
-																			<figure><img alt="" src="{{asset('user/images/resources/user2.jpg')}}"></figure>
+																			<figure><img alt="" src="images/resources/user2.jpg"></figure>
 																			<div class="commenter">
 																				<h5><a title="" href="#">Ching xang</a></h5>
 																				<span>2 hours ago</span>
@@ -777,7 +799,7 @@
 											<div class="user-post">
 												<div class="friend-info">
 													<figure>
-														<img alt="" src="{{asset('user/images/resources/user4.jpg')}}">
+														<img alt="" src="images/resources/user4.jpg">
 													</figure>
 													<div class="friend-name">
 														<div class="more">
@@ -813,26 +835,26 @@
 																<div class="row">
 																	<div class="col-lg-6 col-md-6 col-sm-6">
 																		<figure>
-																			<a data-toggle="modal" data-target="#img-comt" href="{{asset('user/images/resources/album1.jpg')}}">
-																				<img src="{{asset('user/images/resources/album1.jpg')}}" alt="">
+																			<a data-toggle="modal" data-target="#img-comt" href="images/resources/album1.jpg">
+																				<img src="images/resources/album1.jpg" alt="">
 																			</a>
 																		</figure>
 																		<figure>
-																			<a data-toggle="modal" data-target="#img-comt" href="{{asset('user/images/resources/album2.jpg')}}"><img src="{{asset('user/images/resources/album2.jpg')}}" alt="">
+																			<a data-toggle="modal" data-target="#img-comt" href="images/resources/album2.jpg"><img src="images/resources/album2.jpg" alt="">
 																			</a>
 																		</figure>
 																	</div>
 																	<div class="col-lg-6 col-md-6 col-sm-6">
 																		<figure>
-																			<a data-toggle="modal" data-target="#img-comt" href="{{asset('user/images/resources/album6.jpg')}}"><img src="{{asset('user/images/resources/album6.jpg')}}" alt="">
+																			<a data-toggle="modal" data-target="#img-comt" href="images/resources/album6.jpg"><img src="images/resources/album6.jpg" alt="">
 																			</a>
 																		</figure>
 																		<figure>
-																			<a data-toggle="modal" data-target="#img-comt" href="{{asset('user/images/resources/album5.jpg')}}"><img src="{{asset('user/images/resources/album5.jpg')}}" alt="">
+																			<a data-toggle="modal" data-target="#img-comt" href="images/resources/album5.jpg"><img src="images/resources/album5.jpg" alt="">
 																			</a>
 																		</figure>
 																		<figure>
-																			<a data-toggle="modal" data-target="#img-comt" href="{{asset('user/images/resources/album4.jpg')}}"><img src="{{asset('user/images/resources/album4.jpg')}}" alt="">
+																			<a data-toggle="modal" data-target="#img-comt" href="images/resources/album4.jpg"><img src="images/resources/album4.jpg" alt="">
 																			</a>
 																			<div class="more-photos">
 																				<span>+15</span>
@@ -931,9 +953,9 @@
 															<a title="" href="#" class="share-to"><i class="icofont-share-alt"></i> Share</a>
 															<div class="emoji-state">
 																<div class="popover_wrapper">
-																	<a class="popover_title" href="#" title=""><img alt="" src="{{asset('user/images/smiles/thumb.png')}}"></a>
+																	<a class="popover_title" href="#" title=""><img alt="" src="images/smiles/thumb.png"></a>
 																	<div class="popover_content">
-																		<span><img alt="" src="{{asset('user/images/smiles/thumb.png')}}"> Likes</span>
+																		<span><img alt="" src="images/smiles/thumb.png"> Likes</span>
 																		<ul class="namelist">
 																			<li>Jhon Doe</li>
 																			<li>Amara Sin</li>
@@ -943,9 +965,9 @@
 																	</div>
 																</div>
 																<div class="popover_wrapper">
-																	<a class="popover_title" href="#" title=""><img alt="" src="{{asset('user/images/smiles/heart.png')}}"></a>
+																	<a class="popover_title" href="#" title=""><img alt="" src="images/smiles/heart.png"></a>
 																	<div class="popover_content">
-																		<span><img alt="" src="{{asset('user/images/smiles/heart.png')}}"> Love</span>
+																		<span><img alt="" src="images/smiles/heart.png"> Love</span>
 																		<ul class="namelist">
 																			<li>Amara Sin</li>
 																			<li>Jhon Doe</li>
@@ -954,9 +976,9 @@
 																	</div>
 																</div>
 																<div class="popover_wrapper">
-																	<a class="popover_title" href="#" title=""><img alt="" src="{{asset('user/images/smiles/smile.png')}}"></a>
+																	<a class="popover_title" href="#" title=""><img alt="" src="images/smiles/smile.png"></a>
 																	<div class="popover_content">
-																		<span><img alt="" src="{{asset('user/images/smiles/smile.png')}}"> Happy</span>
+																		<span><img alt="" src="images/smiles/smile.png"> Happy</span>
 																		<ul class="namelist">
 																			<li>Sarah K.</li>
 																			<li>Jhon Doe</li>
@@ -966,9 +988,9 @@
 																	</div>
 																</div>
 																<div class="popover_wrapper">
-																	<a class="popover_title" href="#" title=""><img alt="" src="{{asset('user/images/smiles/weep.png')}}"></a>
+																	<a class="popover_title" href="#" title=""><img alt="" src="images/smiles/weep.png"></a>
 																	<div class="popover_content">
-																		<span><img alt="" src="{{asset('user/images/smiles/weep.png')}}"> Dislike</span>
+																		<span><img alt="" src="images/smiles/weep.png"> Dislike</span>
 																		<ul class="namelist">
 																			<li>Danial Carbal</li>
 																			<li>Amara Sin</li>
@@ -987,7 +1009,7 @@
 																<div class="comments-area">
 																	<ul>
 																		<li>
-																			<figure><img alt="" src="{{asset('user/images/resources/user1.jpg')}}"></figure>
+																			<figure><img alt="" src="images/resources/user1.jpg"></figure>
 																			<div class="commenter">
 																				<h5><a title="" href="#">Jack Carter</a></h5>
 																				<span>2 hours ago</span>
@@ -1001,7 +1023,7 @@
 																			<a title="Reply" href="#" class="reply-coment"><i class="icofont-reply"></i></a>
 																		</li>
 																		<li>
-																			<figure><img alt="" src="{{asset('user/images/resources/user2.jpg')}}"></figure>
+																			<figure><img alt="" src="images/resources/user2.jpg"></figure>
 																			<div class="commenter">
 																				<h5><a title="" href="#">Ching xang</a></h5>
 																				<span>2 hours ago</span>
@@ -1024,7 +1046,7 @@
 											<div class="user-post">
 												<div class="friend-info">
 													<figure>
-														<img alt="" src="{{asset('user/images/resources/user5.jpg')}}">
+														<img alt="" src="images/resources/user5.jpg">
 													</figure>
 													<div class="friend-name">
 														<div class="more">
@@ -1058,7 +1080,7 @@
 															<em><a href="https://themeforest.net/item/winku-social-network-toolkit-responsive-template/22363538" title="" target="_blank">https://themeforest.net/item/winku-social-network-toolkit-responsive-template/22363538</a></em>
 														<figure>
 															<span>fetched-image</span>
-															<img src="{{asset('user/images/resources/laptop.png')}}" alt="">
+															<img src="images/resources/laptop.png" alt="">
 														</figure>
 														<a href="https://themeforest.net/item/winku-social-network-toolkit-responsive-template/22363538" class="post-title" target="_blank">Winku Social Network with Company Pages Theme</a>
 														<p>
@@ -1149,9 +1171,9 @@
 															<a title="" href="#" class="share-to"><i class="icofont-share-alt"></i> Share</a>
 															<div class="emoji-state">
 																<div class="popover_wrapper">
-																	<a class="popover_title" href="#" title=""><img alt="" src="{{asset('user/images/smiles/thumb.png')}}"></a>
+																	<a class="popover_title" href="#" title=""><img alt="" src="images/smiles/thumb.png"></a>
 																	<div class="popover_content">
-																		<span><img alt="" src="{{asset('user/images/smiles/thumb.png')}}"> Likes</span>
+																		<span><img alt="" src="images/smiles/thumb.png"> Likes</span>
 																		<ul class="namelist">
 																			<li>Jhon Doe</li>
 																			<li>Amara Sin</li>
@@ -1161,9 +1183,9 @@
 																	</div>
 																</div>
 																<div class="popover_wrapper">
-																	<a class="popover_title" href="#" title=""><img alt="" src="{{asset('user/images/smiles/heart.png')}}"></a>
+																	<a class="popover_title" href="#" title=""><img alt="" src="images/smiles/heart.png"></a>
 																	<div class="popover_content">
-																		<span><img alt="" src="{{asset('user/images/smiles/heart.png')}}"> Love</span>
+																		<span><img alt="" src="images/smiles/heart.png"> Love</span>
 																		<ul class="namelist">
 																			<li>Amara Sin</li>
 																			<li>Jhon Doe</li>
@@ -1172,9 +1194,9 @@
 																	</div>
 																</div>
 																<div class="popover_wrapper">
-																	<a class="popover_title" href="#" title=""><img alt="" src="{{asset('user/images/smiles/smile.png')}}"></a>
+																	<a class="popover_title" href="#" title=""><img alt="" src="images/smiles/smile.png"></a>
 																	<div class="popover_content">
-																		<span><img alt="" src="{{asset('user/images/smiles/smile.png')}}"> Happy</span>
+																		<span><img alt="" src="images/smiles/smile.png"> Happy</span>
 																		<ul class="namelist">
 																			<li>Sarah K.</li>
 																			<li>Jhon Doe</li>
@@ -1184,9 +1206,9 @@
 																	</div>
 																</div>
 																<div class="popover_wrapper">
-																	<a class="popover_title" href="#" title=""><img alt="" src="{{asset('user/images/smiles/weep.png')}}"></a>
+																	<a class="popover_title" href="#" title=""><img alt="" src="images/smiles/weep.png"></a>
 																	<div class="popover_content">
-																		<span><img alt="" src="{{asset('user/images/smiles/weep.png')}}"> Dislike</span>
+																		<span><img alt="" src="images/smiles/weep.png"> Dislike</span>
 																		<ul class="namelist">
 																			<li>Danial Carbal</li>
 																			<li>Amara Sin</li>
@@ -1205,7 +1227,7 @@
 																<div class="comments-area">
 																	<ul>
 																		<li>
-																			<figure><img alt="" src="{{asset('user/images/resources/user1.jpg')}}"></figure>
+																			<figure><img alt="" src="images/resources/user1.jpg"></figure>
 																			<div class="commenter">
 																				<h5><a title="" href="#">Jack Carter</a></h5>
 																				<span>2 hours ago</span>
@@ -1219,7 +1241,7 @@
 																			<a title="Reply" href="#" class="reply-coment"><i class="icofont-reply"></i></a>
 																		</li>
 																		<li>
-																			<figure><img alt="" src="{{asset('user/images/resources/user2.jpg')}}"></figure>
+																			<figure><img alt="" src="images/resources/user2.jpg"></figure>
 																			<div class="commenter">
 																				<h5><a title="" href="#">Ching xang</a></h5>
 																				<span>2 hours ago</span>
@@ -1242,7 +1264,7 @@
 											<div class="user-post">
 												<div class="friend-info">
 													<figure>
-														<img alt="" src="{{asset('user/images/resources/user2.jpg')}}">
+														<img alt="" src="images/resources/user2.jpg">
 													</figure>
 													<div class="friend-name">
 														<div class="more">
@@ -1365,9 +1387,9 @@
 															<a title="" href="#" class="share-to"><i class="icofont-share-alt"></i> Share</a>
 															<div class="emoji-state">
 																<div class="popover_wrapper">
-																	<a class="popover_title" href="#" title=""><img alt="" src="{{asset('user/images/smiles/thumb.png')}}"></a>
+																	<a class="popover_title" href="#" title=""><img alt="" src="images/smiles/thumb.png"></a>
 																	<div class="popover_content">
-																		<span><img alt="" src="{{asset('user/images/smiles/thumb.png')}}"> Likes</span>
+																		<span><img alt="" src="images/smiles/thumb.png"> Likes</span>
 																		<ul class="namelist">
 																			<li>Jhon Doe</li>
 																			<li>Amara Sin</li>
@@ -1377,9 +1399,9 @@
 																	</div>
 																</div>
 																<div class="popover_wrapper">
-																	<a class="popover_title" href="#" title=""><img alt="" src="{{asset('user/images/smiles/heart.png')}}"></a>
+																	<a class="popover_title" href="#" title=""><img alt="" src="images/smiles/heart.png"></a>
 																	<div class="popover_content">
-																		<span><img alt="" src="{{asset('user/images/smiles/heart.png')}}"> Love</span>
+																		<span><img alt="" src="images/smiles/heart.png"> Love</span>
 																		<ul class="namelist">
 																			<li>Amara Sin</li>
 																			<li>Jhon Doe</li>
@@ -1388,9 +1410,9 @@
 																	</div>
 																</div>
 																<div class="popover_wrapper">
-																	<a class="popover_title" href="#" title=""><img alt="" src="{{asset('user/images/smiles/smile.png')}}"></a>
+																	<a class="popover_title" href="#" title=""><img alt="" src="images/smiles/smile.png"></a>
 																	<div class="popover_content">
-																		<span><img alt="" src="{{asset('user/images/smiles/smile.png')}}"> Happy</span>
+																		<span><img alt="" src="images/smiles/smile.png"> Happy</span>
 																		<ul class="namelist">
 																			<li>Sarah K.</li>
 																			<li>Jhon Doe</li>
@@ -1400,9 +1422,9 @@
 																	</div>
 																</div>
 																<div class="popover_wrapper">
-																	<a class="popover_title" href="#" title=""><img alt="" src="{{asset('user/images/smiles/weep.png')}}"></a>
+																	<a class="popover_title" href="#" title=""><img alt="" src="images/smiles/weep.png"></a>
 																	<div class="popover_content">
-																		<span><img alt="" src="{{asset('user/images/smiles/weep.png')}}"> Dislike</span>
+																		<span><img alt="" src="images/smiles/weep.png"> Dislike</span>
 																		<ul class="namelist">
 																			<li>Danial Carbal</li>
 																			<li>Amara Sin</li>
@@ -1421,7 +1443,7 @@
 																<div class="comments-area">
 																	<ul>
 																		<li>
-																			<figure><img alt="" src="{{asset('user/images/resources/user1.jpg')}}"></figure>
+																			<figure><img alt="" src="images/resources/user1.jpg"></figure>
 																			<div class="commenter">
 																				<h5><a title="" href="#">Jack Carter</a></h5>
 																				<span>2 hours ago</span>
@@ -1435,7 +1457,7 @@
 																			<a title="Reply" href="#" class="reply-coment"><i class="icofont-reply"></i></a>
 																		</li>
 																		<li>
-																			<figure><img alt="" src="{{asset('user/images/resources/user2.jpg')}}"></figure>
+																			<figure><img alt="" src="images/resources/user2.jpg"></figure>
 																			<div class="commenter">
 																				<h5><a title="" href="#">Ching xang</a></h5>
 																				<span>2 hours ago</span>
@@ -1458,7 +1480,7 @@
 											<div class="user-post">
 												<div class="friend-info">
 													<figure>
-														<img alt="" src="{{asset('user/images/resources/user2.jpg')}}">
+														<img alt="" src="images/resources/user2.jpg">
 													</figure>
 													<div class="friend-name">
 														<div class="more">
@@ -1489,7 +1511,7 @@
 														<span><i class="icofont-globe"></i> published: Sep,15 2020</span>
 													</div>
 													<div class="post-meta">
-														<img class="gif" src="{{asset('user/images/giphy.png')}}" data-gif="{{asset('user/images//giphy-sample.gif')}}" alt="">
+														<img class="gif" src="images/giphy.png" data-gif="images/giphy-sample.gif" alt="">
 														<div class="we-video-info">
 															<ul>
 																<li>
@@ -1575,9 +1597,9 @@
 															<a title="" href="#" class="share-to"><i class="icofont-share-alt"></i> Share</a>
 															<div class="emoji-state">
 																<div class="popover_wrapper">
-																	<a class="popover_title" href="#" title=""><img alt="" src="{{asset('user/images/smiles/thumb.png')}}"></a>
+																	<a class="popover_title" href="#" title=""><img alt="" src="images/smiles/thumb.png"></a>
 																	<div class="popover_content">
-																		<span><img alt="" src="{{asset('user/images/smiles/thumb.png')}}"> Likes</span>
+																		<span><img alt="" src="images/smiles/thumb.png"> Likes</span>
 																		<ul class="namelist">
 																			<li>Jhon Doe</li>
 																			<li>Amara Sin</li>
@@ -1587,9 +1609,9 @@
 																	</div>
 																</div>
 																<div class="popover_wrapper">
-																	<a class="popover_title" href="#" title=""><img alt="" src="{{asset('user/images/smiles/heart.png')}}"></a>
+																	<a class="popover_title" href="#" title=""><img alt="" src="images/smiles/heart.png"></a>
 																	<div class="popover_content">
-																		<span><img alt="" src="{{asset('user/images/smiles/heart.png')}}"> Love</span>
+																		<span><img alt="" src="images/smiles/heart.png"> Love</span>
 																		<ul class="namelist">
 																			<li>Amara Sin</li>
 																			<li>Jhon Doe</li>
@@ -1598,9 +1620,9 @@
 																	</div>
 																</div>
 																<div class="popover_wrapper">
-																	<a class="popover_title" href="#" title=""><img alt="" src="{{asset('user/images/smiles/smile.png')}}"></a>
+																	<a class="popover_title" href="#" title=""><img alt="" src="images/smiles/smile.png"></a>
 																	<div class="popover_content">
-																		<span><img alt="" src="{{asset('user/images/smiles/smile.png')}}"> Happy</span>
+																		<span><img alt="" src="images/smiles/smile.png"> Happy</span>
 																		<ul class="namelist">
 																			<li>Sarah K.</li>
 																			<li>Jhon Doe</li>
@@ -1610,9 +1632,9 @@
 																	</div>
 																</div>
 																<div class="popover_wrapper">
-																	<a class="popover_title" href="#" title=""><img alt="" src="{{asset('user/images/smiles/weep.png')}}"></a>
+																	<a class="popover_title" href="#" title=""><img alt="" src="images/smiles/weep.png"></a>
 																	<div class="popover_content">
-																		<span><img alt="" src="{{asset('user/images/smiles/weep.png')}}"> Dislike</span>
+																		<span><img alt="" src="images/smiles/weep.png"> Dislike</span>
 																		<ul class="namelist">
 																			<li>Danial Carbal</li>
 																			<li>Amara Sin</li>
@@ -1631,7 +1653,7 @@
 																<div class="comments-area">
 																	<ul>
 																		<li>
-																			<figure><img alt="" src="{{asset('user/images/resources/user1.jpg')}}"></figure>
+																			<figure><img alt="" src="images/resources/user1.jpg"></figure>
 																			<div class="commenter">
 																				<h5><a title="" href="#">Jack Carter</a></h5>
 																				<span>2 hours ago</span>
@@ -1645,7 +1667,7 @@
 																			<a title="Reply" href="#" class="reply-coment"><i class="icofont-reply"></i></a>
 																		</li>
 																		<li>
-																			<figure><img alt="" src="{{asset('user/images/resources/user2.jpg')}}"></figure>
+																			<figure><img alt="" src="images/resources/user2.jpg"></figure>
 																			<div class="commenter">
 																				<h5><a title="" href="#">Ching xang</a></h5>
 																				<span>2 hours ago</span>
@@ -1670,7 +1692,7 @@
 										<div class="row col-xs-6 merged-10">
 											<div class="col-lg-4 col-md-4 col-sm-6">
 												<div class="friendz">
-													<figure><img src="{{asset('user/images/resources/speak-1.jpg')}}" alt=""></figure>
+													<figure><img src="images/resources/speak-1.jpg" alt=""></figure>
 													<span><a href="#" title="">Amy Watson</a></span>
 													<ins>Bz University, Pakistan</ins>
 													<a href="#" title="" data-ripple=""><i class="icofont-star"></i> Follow</a>
@@ -1678,7 +1700,7 @@
 											</div>
 											<div class="col-lg-4 col-md-4 col-sm-6">
 												<div class="friendz">
-													<figure><img src="{{asset('user/images/resources/speak-2.jpg')}}" alt=""></figure>
+													<figure><img src="images/resources/speak-2.jpg" alt=""></figure>
 													<span><a href="#" title="">Muhammad Khan</a></span>
 													<ins>Oxford University, UK</ins>
 													<a href="#" title="" data-ripple=""><i class="icofont-star"></i> Follow</a>
@@ -1686,7 +1708,7 @@
 											</div>
 											<div class="col-lg-4 col-md-4 col-sm-6">
 												<div class="friendz">
-													<figure><img src="{{asset('user/images/resources/speak-3.jpg')}}" alt=""></figure>
+													<figure><img src="images/resources/speak-3.jpg" alt=""></figure>
 													<span><a href="#" title="">Sadia Gill</a></span>
 													<ins>Wb University, USA</ins>
 													<a href="#" title="" data-ripple=""><i class="icofont-star"></i> Follow</a>
@@ -1694,7 +1716,7 @@
 											</div>
 											<div class="col-lg-4 col-md-4 col-sm-6">
 												<div class="friendz">
-													<figure><img src="{{asset('user/images/resources/speak-4.jpg')}}" alt=""></figure>
+													<figure><img src="images/resources/speak-4.jpg" alt=""></figure>
 													<span><a href="#" title="">Rjapal</a></span>
 													<ins>Km University, India</ins>
 													<a href="#" title="" data-ripple=""><i class="icofont-star"></i> Follow</a>
@@ -1702,7 +1724,7 @@
 											</div>
 											<div class="col-lg-4 col-md-4 col-sm-6">
 												<div class="friendz">
-													<figure><img src="{{asset('user/images/resources/speak-5.jpg')}}" alt=""></figure>
+													<figure><img src="images/resources/speak-5.jpg" alt=""></figure>
 													<span><a href="#" title="">Amy watson</a></span>
 													<ins>Oxford University, UK</ins>
 													<a href="#" title="" data-ripple=""><i class="icofont-star"></i> Follow</a>
@@ -1710,7 +1732,7 @@
 											</div>
 											<div class="col-lg-4 col-md-4 col-sm-6">
 												<div class="friendz">
-													<figure><img src="{{asset('user/images/resources/speak-6.jpg')}}" alt=""></figure>
+													<figure><img src="images/resources/speak-6.jpg" alt=""></figure>
 													<span><a href="#" title="">Bob Frank</a></span>
 													<ins>WB University, Canada</ins>
 													<a href="#" title="" data-ripple=""><i class="icofont-star"></i> Follow</a>
@@ -1718,7 +1740,7 @@
 											</div>
 											<div class="col-lg-4 col-md-4 col-sm-6">
 												<div class="friendz">
-													<figure><img src="{{asset('user/images/resources/speak-7.jpg')}}" alt=""></figure>
+													<figure><img src="images/resources/speak-7.jpg" alt=""></figure>
 													<span><a href="#" title="">Amy Watson</a></span>
 													<ins>Bz University, Pakistan</ins>
 													<a href="#" title="" data-ripple=""><i class="icofont-star"></i> Follow</a>
@@ -1726,7 +1748,7 @@
 											</div>
 											<div class="col-lg-4 col-md-4 col-sm-6">
 												<div class="friendz">
-													<figure><img src="{{asset('user/images/resources/speak-8.jpg')}}" alt=""></figure>
+													<figure><img src="images/resources/speak-8.jpg" alt=""></figure>
 													<span><a href="#" title="">Muhammad Khan</a></span>
 													<ins>Oxford University, UK</ins>
 													<a href="#" title="" data-ripple=""><i class="icofont-star"></i> Follow</a>
@@ -1734,7 +1756,7 @@
 											</div>
 											<div class="col-lg-4 col-md-4 col-sm-6">
 												<div class="friendz">
-													<figure><img src="{{asset('user/images/resources/speak-9.jpg')}}" alt=""></figure>
+													<figure><img src="images/resources/speak-9.jpg" alt=""></figure>
 													<span><a href="#" title="">Sadia Gill</a></span>
 													<ins>WB University, USA</ins>
 													<a href="#" title="" data-ripple=""><i class="icofont-star"></i> Follow</a>
@@ -1749,7 +1771,7 @@
 										<div class="row merged-10 col-xs-6">
 											<div class="col-lg-4 col-md-4 col-sm-6">
 												<div class="friendz">
-													<figure><img src="{{asset('user/images/resources/speak-10.jpg')}}" alt=""></figure>
+													<figure><img src="images/resources/speak-10.jpg" alt=""></figure>
 													<span><a href="#" title="">Amy Watson</a></span>
 													<ins>Bz University, Pakistan</ins>
 													<a href="#" title="" data-ripple=""><i class="icofont-star"></i>Unfollow</a>
@@ -1757,7 +1779,7 @@
 											</div>
 											<div class="col-lg-4 col-md-4 col-sm-6">
 												<div class="friendz">
-													<figure><img src="{{asset('user/images/resources/speak-11.jpg')}}" alt=""></figure>
+													<figure><img src="images/resources/speak-11.jpg" alt=""></figure>
 													<span><a href="#" title="">Muhammad Khan</a></span>
 													<ins>Oxford University, UK</ins>
 													<a href="#" title="" data-ripple=""><i class="icofont-star"></i> Unfollow</a>
@@ -1765,7 +1787,7 @@
 											</div>
 											<div class="col-lg-4 col-md-4 col-sm-6">
 												<div class="friendz">
-													<figure><img src="{{asset('user/images/resources/speak-12.jpg')}}" alt=""></figure>
+													<figure><img src="images/resources/speak-12.jpg" alt=""></figure>
 													<span><a href="#" title="">Sadia Gill</a></span>
 													<ins>WB University, USA</ins>
 													<a href="#" title="" data-ripple=""><i class="icofont-star"></i> Unfollow</a>
@@ -1773,7 +1795,7 @@
 											</div>
 											<div class="col-lg-4 col-md-4 col-sm-6">
 												<div class="friendz">
-													<figure><img src="{{asset('user/images/resources/speak-4.jpg')}}" alt=""></figure>
+													<figure><img src="images/resources/speak-4.jpg" alt=""></figure>
 													<span><a href="#" title="">Rjapal</a></span>
 													<ins>Km University, India</ins>
 													<a href="#" title="" data-ripple=""><i class="icofont-star"></i> Unfollow</a>
@@ -1781,7 +1803,7 @@
 											</div>
 											<div class="col-lg-4 col-md-4 col-sm-6">
 												<div class="friendz">
-													<figure><img src="{{asset('user/images/resources/speak-1.jpg')}}" alt=""></figure>
+													<figure><img src="images/resources/speak-1.jpg" alt=""></figure>
 													<span><a href="#" title="">Amy watson</a></span>
 													<ins>Oxford University, UK</ins>
 													<a href="#" title="" data-ripple=""><i class="icofont-star"></i> Unfollow</a>
@@ -1789,7 +1811,7 @@
 											</div>
 											<div class="col-lg-4 col-md-4 col-sm-6">
 												<div class="friendz">
-													<figure><img src="{{asset('user/images/resources/speak-2.jpg')}}" alt=""></figure>
+													<figure><img src="images/resources/speak-2.jpg" alt=""></figure>
 													<span><a href="#" title="">Bob Frank</a></span>
 													<ins>WB University, Canada</ins>
 													<a href="#" title="" data-ripple=""><i class="icofont-star"></i> Unfollow</a>
@@ -1797,7 +1819,7 @@
 											</div>
 											<div class="col-lg-4 col-md-4 col-sm-6">
 												<div class="friendz">
-													<figure><img src="{{asset('user/images/resources/speak-5.jpg')}}" alt=""></figure>
+													<figure><img src="images/resources/speak-5.jpg" alt=""></figure>
 													<span><a href="#" title="">Amy Watson</a></span>
 													<ins>Bz University, Pakistan</ins>
 													<a href="#" title="" data-ripple=""><i class="icofont-star"></i> Unfollow</a>
@@ -1805,7 +1827,7 @@
 											</div>
 											<div class="col-lg-4 col-md-4 col-sm-6">
 												<div class="friendz">
-													<figure><img src="{{asset('user/images/resources/speak-7.jpg')}}" alt=""></figure>
+													<figure><img src="images/resources/speak-7.jpg" alt=""></figure>
 													<span><a href="#" title="">Muhammad Khan</a></span>
 													<ins>Oxford University, UK</ins>
 													<a href="#" title="" data-ripple=""><i class="icofont-star"></i> Unfollow</a>
@@ -1813,7 +1835,7 @@
 											</div>
 											<div class="col-lg-4 col-md-4 col-sm-6">
 												<div class="friendz">
-													<figure><img src="{{asset('user/images/resources/speak-10.jpg')}}" alt=""></figure>
+													<figure><img src="images/resources/speak-10.jpg" alt=""></figure>
 													<span><a href="#" title="">Sadia Gill</a></span>
 													<ins>WB University, USA</ins>
 													<a href="#" title="" data-ripple=""><i class="icofont-star"></i> Unfollow</a>
@@ -1862,7 +1884,7 @@
 													<span>Position</span>
 													<ins>Professor Associate</ins>
 												</div>
-												<img src="{{asset('user/images/resources/uni1.jpg')}}" alt="">
+												<img src="images/resources/uni1.jpg" alt="">
 											</div>
 											<div class="exp-col">
 												<div class="exp-meta">
@@ -1871,7 +1893,7 @@
 													<span>Position</span>
 													<ins>Professor Associate</ins>
 												</div>
-												<img src="{{asset('user/images/resources/uni3.jpg')}}" alt="">
+												<img src="images/resources/uni3.jpg" alt="">
 											</div>
 											<div class="exp-col">
 												<div class="exp-meta">
@@ -1880,7 +1902,7 @@
 													<span>Position</span>
 													<ins>Professor Associate</ins>
 												</div>
-												<img src="{{asset('user/images/resources/uni4.jpg')}}" alt="">
+												<img src="images/resources/uni4.jpg" alt="">
 											</div>
 										</div>
 										<div class="main-wraper">
@@ -1888,43 +1910,43 @@
 											<div class="row merged-10">
 												<div class="col-lg-4">
 													<figure class="research-avatar">
-														<a class="uk-inline" href="{{asset('user/images/resources/image1.jpg')}}" data-fancybox="">
-															<img src="{{asset('user/images/resources/image1.jpg')}}" alt="">
+														<a class="uk-inline" href="images/resources/image1.jpg" data-fancybox="">
+															<img src="images/resources/image1.jpg" alt="">
 														</a>
 													</figure>
 												</div>
 												<div class="col-lg-4">
 													<figure class="research-avatar">
-														<a class="uk-inline" href="{{asset('user/images/resources/image1.jpg')}}" data-fancybox="">
-															<img src="{{asset('user/images/resources/image2.jpg')}}" alt="">
+														<a class="uk-inline" href="images/resources/image1.jpg" data-fancybox="">
+															<img src="images/resources/image2.jpg" alt="">
 														</a>
 													</figure>
 												</div>
 												<div class="col-lg-4">
 													<figure class="research-avatar">
-														<a class="uk-inline" href="{{asset('user/images/resources/image1.jpg')}}" data-fancybox="">
-															<img src="{{asset('user/images/resources/image3.jpg')}}" alt="">
+														<a class="uk-inline" href="images/resources/image1.jpg" data-fancybox="">
+															<img src="images/resources/image3.jpg" alt="">
 														</a>
 													</figure>
 												</div>
 												<div class="col-lg-4">
 													<figure class="research-avatar">
-														<a class="uk-inline" href="{{asset('user/images/resources/image1.jpg')}}" data-fancybox="">
-															<img src="{{asset('user/images/resources/image4.jpg')}}" alt="">
+														<a class="uk-inline" href="images/resources/image1.jpg" data-fancybox="">
+															<img src="images/resources/image4.jpg" alt="">
 														</a>
 													</figure>
 												</div>
 												<div class="col-lg-4">
 													<figure class="research-avatar">
-														<a class="uk-inline" href="{{asset('user/images/resources/image1.jpg')}}" data-fancybox="">
-															<img src="{{asset('user/images/resources/image5.jpg')}}" alt="">
+														<a class="uk-inline" href="images/resources/image1.jpg" data-fancybox="">
+															<img src="images/resources/image5.jpg" alt="">
 														</a>
 													</figure>
 												</div>
 												<div class="col-lg-4">
 													<figure class="research-avatar">
-														<a class="uk-inline" href="{{asset('user/images/resources/image1.jpg')}}" data-fancybox="">
-															<img src="{{asset('user/images/resources/image6.jpg')}}" alt="">
+														<a class="uk-inline" href="images/resources/image1.jpg" data-fancybox="">
+															<img src="images/resources/image6.jpg" alt="">
 														</a>
 													</figure>
 												</div>
@@ -1945,25 +1967,25 @@
 											</div>
 											<ul class="suggested-caro">
 												<li>
-													<figure><img src="{{asset('user/images/resources/speak-1.jpg')}}" alt=""></figure>
+													<figure><img src="images/resources/speak-1.jpg" alt=""></figure>
 													<span>Amy Watson</span>
 													<ins>Department of Socilolgy</ins>
 													<a href="#" title="" data-ripple=""><i class="icofont-star"></i> Follow</a>
 												</li>
 												<li>
-													<figure><img src="{{asset('user/images/resources/speak-2.jpg')}}" alt=""></figure>
+													<figure><img src="images/resources/speak-2.jpg" alt=""></figure>
 													<span>Muhammad Khan</span>
 													<ins>Department of Socilolgy</ins>
 													<a href="#" title="" data-ripple=""><i class="icofont-star"></i> Follow</a>
 												</li>
 												<li>
-													<figure><img src="{{asset('user/images/resources/speak-3.jpg')}}" alt=""></figure>
+													<figure><img src="images/resources/speak-3.jpg" alt=""></figure>
 													<span>Sadia Gill</span>
 													<ins>Department of Socilolgy</ins>
 													<a href="#" title="" data-ripple=""><i class="icofont-star"></i> Follow</a>
 												</li>
 												<li>
-													<figure><img src="{{asset('user/images/resources/speak-4.jpg')}}" alt=""></figure>
+													<figure><img src="images/resources/speak-4.jpg" alt=""></figure>
 													<span>Aykash verma</span>
 													<ins>Department of Socilolgy</ins>
 													<a href="#" title="" data-ripple=""><i class="icofont-star"></i> Follow</a>
@@ -1973,7 +1995,95 @@
 									</div>
 								</div><!-- suggested friends -->
 							</div>
-							@include('user.layout.rightbar')
+							<div class="col-lg-4">
+								<aside class="sidebar static right">
+									<div class="widget">
+										<h4 class="widget-title">Post Analytics</h4>
+										<ul class="widget-analytics">
+											<li>Reads <span>56</span></li>
+											<li>Recommendations <span>3</span></li>
+											<li>Shares <span>22</span></li>
+											<li>References <span>17</span></li>
+										</ul>
+									</div>
+									<div class="widget">
+										<h4 class="widget-title">Ask Research Question?</h4>
+										<div class="ask-question">
+											<i class="icofont-question-circle"></i>
+											<h6>Ask questions in Q&A to get help from experts in your field.</h6>
+											<a class="ask-qst" href="#" title="">Ask a question</a>
+										</div>
+									</div>
+									<div class="widget">
+										<h4 class="widget-title">Explor Events <a class="see-all" href="#" title="">See All</a></h4>
+										<div class="rec-events bg-purple">
+											<i class="icofont-gift"></i>
+											<h6><a title="" href="#">BZ University good night event in columbia</a></h6>
+											<img alt="" src="images/clock.png">
+										</div>
+										<div class="rec-events bg-blue">
+											<i class="icofont-microphone"></i>
+											<h6><a title="" href="#">The 3rd International Conference 2020</a></h6>
+											<img alt="" src="images/clock.png">
+										</div>
+									</div>
+									<div class="widget stick-widget">
+										<h4 class="widget-title">Who's follownig</h4>
+										<ul class="followers" >
+											<li>
+												<figure><img alt="" src="images/resources/friend-avatar.jpg"></figure>
+												<div class="friend-meta">
+													<h4>
+														<a title="" href="time-line.html">Kelly Bill</a>
+														<span>Dept colleague</span>
+													</h4>
+													<a class="underline" title="" href="#">Follow</a>
+												</div>
+											</li>
+											<li>
+												<figure><img alt="" src="images/resources/friend-avatar2.jpg"></figure>
+												<div class="friend-meta">
+													<h4>
+														<a title="" href="time-line.html">Issabel</a>
+														<span>Dept colleague</span>
+													</h4>
+													<a class="underline" title="" href="#">Follow</a>
+												</div>
+											</li>
+											<li>
+												<figure><img alt="" src="images/resources/friend-avatar3.jpg"></figure>
+												<div class="friend-meta">
+													<h4>
+														<a title="" href="time-line.html">Andrew</a>
+														<span>Dept colleague</span>
+													</h4>
+													<a class="underline" title="" href="#">Follow</a>
+												</div>
+											</li>
+											<li>
+												<figure><img alt="" src="images/resources/friend-avatar4.jpg"></figure>
+												<div class="friend-meta">
+													<h4>
+														<a title="" href="time-line.html">Sophia</a>
+														<span>Dept colleague</span>
+													</h4>
+													<a class="underline" title="" href="#">Follow</a>
+												</div>
+											</li>
+											<li>
+												<figure><img alt="" src="images/resources/friend-avatar5.jpg"></figure>
+												<div class="friend-meta">
+													<h4>
+														<a title="" href="time-line.html">Allen</a>
+														<span>Dept colleague</span>
+													</h4>
+													<a class="underline" title="" href="#">Follow</a>
+												</div>
+											</li>
+										</ul>	
+									</div>
+								</aside>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -1983,374 +2093,14 @@
 @endsection
 	
 	
-	<div class="share-wraper">
-		<div class="share-options">
-			<span class="close-btn"><i class="icofont-close-circled"></i></span>
-			<h5><i>
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" y1="2" x2="12" y2="15"></line></svg></i>Share To!</h5>
-			<form method="post">
-				<textarea placeholder="Write Something"></textarea>
-			</form>
-			<ul>
-				<li><a title="" href="#">Your Timeline</a></li>
-				<li class="friends"><a title="" href="#">To Friends</a></li>
-				<li class="socialz"><a class="active" title="" href="#">Social Media</a></li>
-			</ul>
-			<div style="display: block;" class="social-media">
-				<ul>
-					<li><a title="" href="#" class="facebook"><i class="icofont-facebook"></i></a></li>
-					<li><a title="" href="#" class="twitter"><i class="icofont-twitter"></i></a></li>
-					<li><a title="" href="#" class="instagram"><i class="icofont-instagram"></i></a></li>
-					<li><a title="" href="#" class="pinterest"><i class="icofont-pinterest"></i></a></li>
-					<li><a title="" href="#" class="youtube"><i class="icofont-youtube"></i></a></li>
-					<li><a title="" href="#" class="dribble"><i class="icofont-dribbble"></i></a></li>
-					<li><a title="" href="#" class="behance"><i class="icofont-behance-original"></i></a></li>
-				</ul>
-			</div>
-			<div style="display: none;" class="friends-to">
-				<div class="follow-men">
-					<figure><img class="mCS_img_loaded" src="{{asset('user/images/resources/user1.jpg')}}" alt=""></figure>
-					<div class="follow-meta">
-						<h5><a href="#" title="">Jack Carter</a></h5>
-						<span>family member</span>
-					</div>
-					<a href="#" title="">Share</a>
-				</div>
-				<div class="follow-men">
-					<figure><img class="mCS_img_loaded" src="{{asset('user/images/resources/user2.jpg')}}" alt=""></figure>
-					<div class="follow-meta">
-						<h5><a href="#" title="">Xang Ching</a></h5>
-						<span>Close Friend</span>
-					</div>
-					<a href="#" title="">Share</a>
-				</div>
-				<div class="follow-men">
-					<figure><img class="mCS_img_loaded" src="{{asset('user/images/resources/user3.jpg')}}" alt=""></figure>
-					<div class="follow-meta">
-						<h5><a href="#" title="">Emma Watson</a></h5>
-						<span>Matul Friend</span>
-					</div>
-					<a href="#" title="">Share</a>
-				</div>
-			</div>
-			<button type="submit" class="main-btn">Publish</button>
-		</div>
-	</div><!-- share post -->
-	
-	<div class="cart-product">
-		<a href="product-cart.html" title="View Cart" data-toggle="tooltip"><i class="icofont-cart-alt"></i></a>
-		<span>03</span>
-	</div><!-- view cart button -->
-	
-	<div class="chat-live">
-		<a class="chat-btn" href="#" title="Start Live Chat" data-toggle="tooltip"><i class="icofont-facebook-messenger"></i></a>
-		<span>07</span>
-	</div><!-- chat button -->
-	
-	@include('user.layout.sidemessage')
-	
-	<div class="createroom-popup">
-		<div class="popup">
-			<span class="popup-closed"><i class="icofont-close"></i></span>
-			<div class="popup-meta">
-				<div class="popup-head text-center">
-					<h5 class="only-icon"><i class="icofont-video-cam"></i></h5>
-				</div>
-				<div class="room-meta">
-					<h4>Create Your Room</h4>
-					<ul>
-						<li>
-							<i class="icofont-hand"></i>
-							<div>
-								<h6>Room Activity</h6>
-								<span>Jack's Room</span>
-							</div>
-							<div class="checkbox">
-								<input type="checkbox" id="checkbox3">
-								<label for="checkbox3"></label>
-							</div>
-						</li>
-						<li>
-							<i class="icofont-clock-time"></i>
-							<div>
-								<h6>Start Time</h6>
-								<span>Now</span>
-							</div>
-							<div class="checkbox">
-								<input type="checkbox" id="checkbox4">
-								<label for="checkbox4"></label>
-							</div>
-						</li>
-						<li>
-							<i class="icofont-users-alt-4"></i>
-							<div>
-								<h6>Invite to All Friends</h6>
-								<span>Allow All friends to see this room</span>
-							</div>
-							<div class="checkbox">
-								<input type="checkbox" id="checkbox5">
-								<label for="checkbox5"></label>
-							</div>
-						</li>
-					</ul>
-					<span>Your room isn't visible until you invite people after you've created it.</span>
-					<a href="#" title="" class="main-btn full-width">Create Room</a>
-				</div>
-			</div>
-		</div>
-	</div><!-- create new room -->
-	
-	<div class="modal fade" id="img-comt">
-		<div class="modal-dialog">
-		  <div class="modal-content">
-
-			<!-- Modal Header -->
-			<div class="modal-header">
-			  <button type="button" class="close" data-dismiss="modal">×</button>
-			</div>
-
-			<!-- Modal body -->
-			<div class="modal-body">
-				<div class="row merged">
-					<div class="col-lg-9">
-						<div class="pop-image">
-							<div class="pop-item">
-								<div class="action-block">
-                                    <a class="action-button">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
-                                    </a>
-                                    <a class="action-button">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                                    </a>
-                                    <a class="action-button">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
-                                    </a>
-                                    <a class="action-button">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg>
-                                    </a>
-                                </div>
-								<figure><img src="{{asset('user/images/resources/blog-detail.jpg')}}" alt=""></figure>
-								<div class="stat-tools">
-									<div class="box">
-									  <div class="Like"><a class="Like__link"><i class="icofont-like"></i> Like</a>
-										<div class="Emojis">
-										  <div class="Emoji Emoji--like">
-											<div class="icon icon--like"></div>
-										  </div>
-										  <div class="Emoji Emoji--love">
-											<div class="icon icon--heart"></div>
-										  </div>
-										  <div class="Emoji Emoji--haha">
-											<div class="icon icon--haha"></div>
-										  </div>
-										  <div class="Emoji Emoji--wow">
-											<div class="icon icon--wow"></div>
-										  </div>
-										  <div class="Emoji Emoji--sad">
-											<div class="icon icon--sad"></div>
-										  </div>
-										  <div class="Emoji Emoji--angry">
-											<div class="icon icon--angry"></div>
-										  </div>
-										</div>
-									  </div>
-									</div>
-									<div class="box">
-										<div class="Emojis">
-										  <div class="Emoji Emoji--like">
-											<div class="icon icon--like"></div>
-										  </div>
-										  <div class="Emoji Emoji--love">
-											<div class="icon icon--heart"></div>
-										  </div>
-										  <div class="Emoji Emoji--haha">
-											<div class="icon icon--haha"></div>
-										  </div>
-										  <div class="Emoji Emoji--wow">
-											<div class="icon icon--wow"></div>
-										  </div>
-										  <div class="Emoji Emoji--sad">
-											<div class="icon icon--sad"></div>
-										  </div>
-										  <div class="Emoji Emoji--angry">
-											<div class="icon icon--angry"></div>
-										  </div>
-										</div>
-									  </div>
-									<a title="" href="#" class="share-to"><i class="icofont-share-alt"></i> Share</a>
-									<div class="emoji-state">
-										<div class="popover_wrapper">
-											<a class="popover_title" href="#" title=""><img alt="" src="{{asset('user/images/smiles/thumb.png')}}"></a>
-											<div class="popover_content">
-												<span><img alt="" src="{{asset('user/images/smiles/thumb.png')}}"> Likes</span>
-												<ul class="namelist">
-													<li>Jhon Doe</li>
-													<li>Amara Sin</li>
-													<li>Sarah K.</li>
-													<li><span>20+ more</span></li>
-												</ul>
-											</div>
-										</div>
-										<div class="popover_wrapper">
-											<a class="popover_title" href="#" title=""><img alt="" src="{{asset('user/images/smiles/heart.png')}}"></a>
-											<div class="popover_content">
-												<span><img alt="" src="{{asset('user/images/smiles/heart.png')}}"> Love</span>
-												<ul class="namelist">
-													<li>Amara Sin</li>
-													<li>Jhon Doe</li>
-													<li><span>10+ more</span></li>
-												</ul>
-											</div>
-										</div>
-										<div class="popover_wrapper">
-											<a class="popover_title" href="#" title=""><img alt="" src="{{asset('user/images/smiles/smile.png')}}"></a>
-											<div class="popover_content">
-												<span><img alt="" src="{{asset('user/images/smiles/smile.png')}}"> Happy</span>
-												<ul class="namelist">
-													<li>Sarah K.</li>
-													<li>Jhon Doe</li>
-													<li>Amara Sin</li>
-													<li><span>100+ more</span></li>
-												</ul>
-											</div>
-										</div>
-										<div class="popover_wrapper">
-											<a class="popover_title" href="#" title=""><img alt="" src="{{asset('user/images/smiles/weep.png')}}"></a>
-											<div class="popover_content">
-												<span><img alt="" src="{{asset('user/images/smiles/weep.png')}}"> Dislike</span>
-												<ul class="namelist">
-													<li>Danial Carbal</li>
-													<li>Amara Sin</li>
-													<li>Sarah K.</li>
-													<li><span>15+ more</span></li>
-												</ul>
-											</div>
-										</div>
-										<p>10+</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3">
-						<div class="commentbar">
-							<div class="user">
-								<figure><img src="{{asset('user/images/resources/user1.jpg')}}" alt=""></figure>
-								<div class="user-information">
-									<h4><a href="#" title="">Danile Walker</a></h4>
-									<span>2 hours ago</span>
-								</div>
-								<a href="#" title="Follow" data-ripple="">Follow</a>
-							</div>
-							<div class="we-video-info">
-								<ul>
-									<li>
-										<span title="Comments" class="liked">
-											<i>
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-thumbs-up"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg></i>
-											<ins>52</ins>
-										</span>
-									</li>
-									<li>
-										<span title="Comments" class="comment">
-											<i>
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-square"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></i>
-											<ins>52</ins>
-										</span>
-									</li>
-
-									<li>
-										<span>
-											<a title="Share" href="#" class="">
-												<i>
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg></i>
-											</a>
-											<ins>20</ins>
-										</span>	
-									</li>
-								</ul>
-								<div class="users-thumb-list">
-									<a href="#" title="" data-toggle="tooltip" data-original-title="Anderw">
-										<img src="{{asset('user/images/resources/userlist-1.jpg')}}" alt="">  
-									</a>
-									<a href="#" title="" data-toggle="tooltip" data-original-title="frank">
-										<img src="{{asset('user/images/resources/userlist-2.jpg')}}" alt="">  
-									</a>
-									<a href="#" title="" data-toggle="tooltip" data-original-title="Sara">
-										<img src="{{asset('user/images/resources/userlist-1.jpg')}}" alt="">  
-									</a>
-									<a href="#" title="" data-toggle="tooltip" data-original-title="Amy">
-										<img src="{{asset('user/images/resources/userlist-2.jpg')}}" alt="">  
-									</a>
-									<span><strong>You</strong>, <b>Sarah</b> and <a title="" href="#">24+ more</a> liked</span>
-								</div>
-							</div>
-							<div class="new-comment" style="display: block;">
-								<form method="post">
-									<input type="text" placeholder="write comment">
-									<button type="submit"><i class="icofont-paper-plane"></i></button>
-								</form>
-								<div class="comments-area">
-									<ul>
-										<li>
-											<figure><img alt="" src="{{asset('user/images/resources/user1.jpg')}}"></figure>
-											<div class="commenter">
-												<h5><a title="" href="#">Jack Carter</a></h5>
-												<span>2 hours ago</span>
-												<p>
-													i think that some how, we learn who we really are and then live with that decision, great post!
-												</p>
-												<span>you can view the more detail via link</span>
-												<a title="" href="#">https://www.youtube.com/watch?v=HpZgwHU1GcI</a>
-											</div>
-											<a title="Like" href="#"><i class="icofont-heart"></i></a>
-											<a title="Reply" href="#" class="reply-coment"><i class="icofont-reply"></i></a>
-										</li>
-										<li>
-											<figure><img alt="" src="{{asset('user/images/resources/user2.jpg')}}"></figure>
-											<div class="commenter">
-												<h5><a title="" href="#">Ching xang</a></h5>
-												<span>2 hours ago</span>
-												<p>
-													i think that some how, we learn who we really are and then live with that decision, great post!
-												</p>
-											</div>
-											<a title="Like" href="#"><i class="icofont-heart"></i></a>
-											<a title="Reply" href="#" class="reply-coment"><i class="icofont-reply"></i></a>
-										</li>
-										<li>
-											<figure><img alt="" src="{{asset('user/images/resources/user3.jpg')}}"></figure>
-											<div class="commenter">
-												<h5><a title="" href="#">Danial Comb</a></h5>
-												<span>2 hours ago</span>
-												<p>
-													i think that some how, we learn who we really are and then live with that decision, great post!
-												</p>
-											</div>
-											<a title="Like" href="#"><i class="icofont-heart"></i></a>
-											<a title="Reply" href="#" class="reply-coment"><i class="icofont-reply"></i></a>
-										</li>
-										<li>
-											<figure><img alt="" src="{{asset('user/images/resources/user4.jpg')}}"></figure>
-											<div class="commenter">
-												<h5><a title="" href="#">Jack Carter</a></h5>
-												<span>2 hours ago</span>
-												<p>
-													i think that some how, we learn who we really are and then live with that decision, great post!
-												</p>
-											</div>
-											<a title="Like" href="#"><i class="icofont-heart"></i></a>
-											<a title="Reply" href="#" class="reply-coment"><i class="icofont-reply"></i></a>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>	
-				</div>
-			</div>
-		  </div>
-		</div>
-    </div><!-- The Scrolling Modal image with comment -->
+			
+			
 		
-</div>
+			
+		
+	
+	
+	
+	
+	
+

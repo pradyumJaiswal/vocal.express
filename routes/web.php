@@ -73,12 +73,13 @@ Route::group(['prefix' => 'User', 'middleware' => ['web','isUser']],function(){
     Route::get('/privacy-n-policy', [UserController::class,'privacypolicy'])->name('privacy-n-policy');
     Route::get('/blog', [UserController::class,'blog'])->name('blog');
     Route::get('/message', [UserController::class,'message'])->name('message');
-//  Route::get('/Course', [UserController::class,'Course']);
-//  Route::get('/Teacher', [UserController::class,'Teacher']);
-//  Route::get('/Moment', [UserController::class,'Moments']);
-//  Route::get('/Connect', [UserController::class,'Connect']);
-//  Route::get('/Library', [UserController::class,'Library']);
-//  Route::get('/Profile', [UserController::class,'Profile']);
+
+//--------------------------------**** Action Routes****--------------------------------------//
+
+    Route::post('/post',[PostController::class,'store'])->name('post.create');
+    Route::post('/profile', [ProfileController::class,'updateCover'])->name('profile.updatecover');
+    Route::post('/profile/avatar', [ProfileController::class,'updateAvatar'])->name('profile.updateAvatar');
+    
 
 }); 
 

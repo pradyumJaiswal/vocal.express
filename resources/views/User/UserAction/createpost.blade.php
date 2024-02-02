@@ -26,8 +26,9 @@
                         </div>
                     </form>
                 </div>	
-                <form method="post" class="c-form">
-                    <textarea id="emojionearea1" placeholder="What's On Your Mind?"></textarea>
+                <form action="{{route('post.create')}}" method="post" class="c-form">
+                    @csrf
+                    <input type="text" id="emojionearea1" placeholder="What's On Your Mind?" name="body" >
                     <div class="activity-post">
                         <div class="checkbox">
                             <input type="checkbox" id="checkbox" checked>

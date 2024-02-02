@@ -15,19 +15,19 @@ return new class extends Migration
     {
        Schema::create('profiles', function (Blueprint $table) {
             $table->id();
-            $table->string('Profile_Image');
-            $table->date('dob');
-            $table->string('gender');
-            $table->string('self_introduction');
-            $table->string('Hobbies');
-            $table->string('dream_place');
-            $table->string('book');
-            $table->string('occupation');
-            $table->string('home_town');
-            $table->string('school');
-            $table->unsignedBigInteger('Profile');
-            $table->foreign('Profile')->references('id')->on('users');
-            $table->rememberToken();
+            $table->string('Profile_Image')->nullable();
+            $table->date('dob')->nullable();
+            $table->string('gender')->nullable();
+            $table->string('self_introduction')->nullable();
+            $table->string('Hobbies')->nullable();
+            $table->string('dream_place')->nullable();
+            $table->string('book')->nullable();
+            $table->string('occupation')->nullable();
+            $table->string('home_town')->nullable();
+            $table->string('school')->nullable();
+            $table->unsignedBigInteger('Profile')->nullable();
+            $table->foreign('Profile')->references('id')->on('users')->nullable();
+            $table->rememberToken()->nullable();
             $table->timestamps();
         });
     }
