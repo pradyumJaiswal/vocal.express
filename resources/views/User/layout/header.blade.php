@@ -83,7 +83,11 @@
             <li>
                 <div class="user-dp">
                     <a href="{{ route('profile') }}" title="">
-                        <img alt="" src="{{asset('user/images/resources/user.jpg')}}">
+                    @if(empty(ucfirst(Auth()->user()->avatar_path)))
+								<img src="{{asset('storage/avatars/defaultAvatar.jpg')}}" alt="User Image" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+								@else
+								<img src="{{ asset('storage/'.ucfirst(Auth()->user()->avatar_path))}}" alt="">
+								@endif
                         <div class="name">
                             <h4>{{ ucfirst(Auth()->user()->name) }}</h4>
                         </div>
@@ -126,7 +130,11 @@
             <li>
                 <div class="user-dp">
                     <a href="{{ route('profile') }}" title="">
-                        <img alt="" src="{{ asset('storage/'.ucfirst(Auth()->user()->avatar_path)) }}">
+                                @if(empty(ucfirst(Auth()->user()->avatar_path)))
+								<img src="{{asset('storage/avatars/defaultAvatar.jpg')}}" alt="User Image" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+								@else
+								<img src="{{ asset('storage/'.ucfirst(Auth()->user()->avatar_path))}}" alt="">
+								@endif
                         <div class="name">
                             <h4>{{ ucfirst(Auth()->user()->name) }}</h4>
                         </div>

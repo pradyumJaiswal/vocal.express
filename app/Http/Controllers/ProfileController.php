@@ -33,25 +33,18 @@ class ProfileController extends Controller
             // dd($path);
             return back()->with('message','Updated Successfully');
         }
-
-        
     }
     
     public function updateAvatar(Request $request){
-        
-
        $user = $request->user();
-       
         $avatar = $request->avatar_path; 
-
         // dd($avatar);
-        
         if($avatar){
-            $condition = true;
+            // $condition = true;
             $path = $avatar->store('avatars/'.$user->id,'public');
             $user->update(['avatar_path' => $path]);
             // dd($path);
-            return back()->with('condition',$condition);
+            // return back()->with('condition',$condition);
         }
 
         
