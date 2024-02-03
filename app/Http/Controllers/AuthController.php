@@ -61,24 +61,28 @@ class AuthController extends Controller
 
     public function login(logValidation $request)
     {
-        if($request){
-            $request->validated();
 
-            $userCredential = $request->only('email','password');
-            if(Auth::attempt($userCredential)){
-                $data = $request->input('email');
-                $luckybhai = $request->session()->put($data);
-                $route = $this->redirect();
-                return redirect($route)->with('Sethai',$luckybhai);
+        try{
+            if($request){
+                $request->validated();
+                $userCredential = $request->only('email','password');
+                if(Auth::attempt($userCredential)){
+                    $data = $request->input('email');
+                    $luckybhai = $request->session()->put($data);
+                    $route = $this->redirect();
+                    return redirect($route)->with('Sethai',$luckybhai);
+                }
+                else{
+                    return back()->with('error','Username & Password is incorrect');
+                }
             }
             else{
-                return back()->with('error','Username & Password is incorrect');
+                return redirect()->back()->withInput();
             }
         }
-        else{
-            return redirect()->back()->withInput();
+        catch(\Exception $e){
+            return back()->with('errors','Something Went wrong, Try again later',$e->getMessage());
         }
-
     }
 
     public function redirect()

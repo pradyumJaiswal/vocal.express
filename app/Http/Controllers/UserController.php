@@ -15,8 +15,6 @@ class UserController extends Controller
         return view('index',[
             'UserDetails' => PostResource::collection($UserDetails),
         ]);
-
-
     }
 
     public function page404()

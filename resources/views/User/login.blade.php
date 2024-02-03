@@ -45,7 +45,14 @@
 		<div class="mockup left-bottom"><img src="{{asset('user/images/mockup.png')}}" alt=""></div>
 		<div class="verticle-center">
 			<div class="login-form">
-				<h4><i class="icofont-key-hole"></i> Login</h4>
+				<h4><i class="icofont-key-hole"></i> Login
+					@if($errors->has('errors'))
+					<small class = "text-danger fs-6 fw-bold">{{ $errors->first('errors') }}</small>
+				@endif
+				</h4>
+							@if($errors->has('error'))
+								<small class = "text-danger fs-6 fw-bold">{{ $errors->first('error') }}</small>
+							@endif
 				<form method="post" action="{{ route('login') }}" class="c-form">
 				@csrf
 					<input type="email" name="email" placeholder="User Name / Email">

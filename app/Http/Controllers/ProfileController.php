@@ -15,16 +15,10 @@ class ProfileController extends Controller
         //       'cover_path' => ['nullable','image'],
         //       'avatar_path' => ['nullable','image']
         // ]);
-
        $user = $request->user();
-
-       
         // $avatar = $data['avatar_path'] ?? null;
         $cover = $request->cover_path; 
-        
-
         // dd($cover);
-        
         if($cover){
             // $foldername = 'user-'.auth()->user()->id;
             // $path = $cover->store($foldername,null,'public');
