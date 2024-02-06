@@ -1,0 +1,1 @@
+Public/index.php -> create object of kernal.php (kernal.php) -> kernal.php -> http(route) -> web.php -> middleware/auth -> 

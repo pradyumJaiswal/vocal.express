@@ -41,15 +41,38 @@
 														<span><i class="icofont-globe"></i>{{ $user->created_at }}</span>
 													</div>
 													<div class="post-meta">
+														<figure>
+															{{-- <a data-toggle="modal" data-target="#img-comt" href="{{asset('user/images/resources/album1.jpg')}}">	
+                                                        @foreach ($user->attachments as $postAttachment)
+																<img src="{{asset('storage/'.$postAttachment->path)}}" alt="">
+													    @endforeach
+															</a>	 --}}
+															<ul class="chat-rooms">
+																
+																@foreach ($user->attachments as $postAttachment)
+																<a data-toggle="modal" data-target="#img-comt" href="{{asset('storage/'.$postAttachment->path)}}">
+																	
+																		<img class="premium-post" src="{{asset('storage/'.$postAttachment->path)}}" alt="">
+																	
+																
+																</a>
+																
+																@endforeach
+																
+																
+															</ul>
+														</figure>
 														<a href="post-detail.html" class="post-title">Supervision as a Personnel Development Device</a>
 														<p> 
 														{{ $user->body }}
+														{{ $user->user->name }}
+														
 													    </p>
 														<div class="aud-vid">
-															<audio id="plyr-audio-player" class="audio-player" controls>
+															{{-- <audio id="plyr-audio-player" class="audio-player" controls>
 																<source src="https://cdn.plyr.io/static/demo/Kishi_Bashi_-_It_All_Began_With_a_Burst.mp3" type="audio/mp3" />
 																<source src="https://cdn.plyr.io/static/demo/Kishi_Bashi_-_It_All_Began_With_a_Burst.ogg" type="audio/ogg" />
-															</audio>
+															</audio> --}}
 														</div>
 														<div class="we-video-info">
 															<ul>

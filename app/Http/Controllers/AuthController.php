@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -80,7 +79,8 @@ class AuthController extends Controller
                 return redirect()->back()->withInput();
             }
         }
-        catch(\Exception $e){
+        catch(\Exception $e)
+        {
             return back()->with('errors','Something Went wrong, Try again later',$e->getMessage());
         }
     }

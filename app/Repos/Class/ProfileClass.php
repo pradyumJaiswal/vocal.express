@@ -9,8 +9,7 @@ class AdminRepo implements AdminRepoInterface {
 
 // ----------------------------------------   Profile Function   ----------------------------------//
     
-v
-    
+
 
     public function storeProfile($data)
     {

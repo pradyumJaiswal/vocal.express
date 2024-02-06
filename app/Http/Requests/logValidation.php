@@ -11,10 +11,7 @@ class logValidation extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
-    {
-        return True;
-    }
+    
 
     /**
      * Get the validation rules that apply to the request.

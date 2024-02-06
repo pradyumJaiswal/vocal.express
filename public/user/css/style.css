@@ -114,6 +114,13 @@ img {
     height: auto;
     max-width: 100%;
 }
+.profileImg {
+    /* height: auto;
+    max-width: 100%; */
+        /* width: 100%;
+            height: 100%;
+            object-fit: contain; */
+}
 ins{background: transparent;}
 .overlap {
     position: relative;

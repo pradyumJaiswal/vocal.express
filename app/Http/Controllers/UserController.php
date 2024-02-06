@@ -10,7 +10,7 @@ class UserController extends Controller
 {
     public function dashboard()
     {
-        $UserDetails = post::query()->latest()->paginate(10);
+        $UserDetails = post::latest()->paginate(10);
         // return view('index')->with('UserDetails',$UserDetails);
         return view('index',[
             'UserDetails' => PostResource::collection($UserDetails),

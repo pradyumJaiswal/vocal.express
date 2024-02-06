@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{asset('user/css/color.css')}}">
     <link rel="stylesheet" href="{{asset('user/css/responsive.css')}}">
     <link rel="stylesheet" href="{{asset('user/css/jquery-wizard.css')}}">
+    @stack("customCss")
 
 </head>
 <body>

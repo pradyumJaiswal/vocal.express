@@ -20,14 +20,17 @@
                         <li><i class="icofont-read-book"></i> Post A Book</li>
                         <li><i class="icofont-globe"></i> Post an Ad</li>
                     </ul>
-                    <form method="post" class="dropzone" action="https:/wpkixx.com/upload-target">
+                    <form method="post" class="dropzone" action="{{route('post.create')}}" enctype="multipart/form-data">
                         <div class="fallback">
                             <input name="file" type="file" multiple />
                         </div>
-                    </form>
+                    </form> 
                 </div>	
-                <form action="{{route('post.create')}}" method="post" class="c-form">
+                <form action="{{route('post.create')}}" method="post" class="c-form" enctype="multipart/form-data">
                     @csrf
+                    
+                            <input  type="file" name="attachments[]" multiple />
+                        
                     <input type="text" id="emojionearea1" placeholder="What's On Your Mind?" name="body" >
                     <div class="activity-post">
                         <div class="checkbox">

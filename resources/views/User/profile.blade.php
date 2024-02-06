@@ -21,11 +21,11 @@
 						<div class="post-subject">
 							<div class="university-tag">
 								<figure>
-								@if(empty(ucfirst(Auth()->user()->avatar_path)))
-								<img src="{{asset('storage/avatars/defaultAvatar.jpg')}}" alt="User Image" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
-								@else
-								<img src="{{ asset('storage/'.ucfirst(Auth()->user()->avatar_path))}}" alt="">
-								@endif
+									@if(empty(ucfirst(Auth()->user()->avatar_path)))
+										<img src="{{asset('storage/avatars/defaultAvatar.jpg')}}" alt="User Image" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+									@else
+										<img class="profileImg" src="{{ asset('storage/'.ucfirst(Auth()->user()->avatar_path))}}" alt="">
+									@endif
 								</figure>
 								<div class="uni-name">
 									<h4>{{ ucfirst(Auth()->user()->name) }}</h4>
@@ -41,9 +41,9 @@
 									<li><a title="Follow" href="#" data-toggle="tooltip"><i class="icofont-star"></i></a> </li>
 									<li><a title="Share" href="#" data-toggle="tooltip"><i class="icofont-share-alt"></i></a> </li>
 									<form action="{{route('profile.updatecover')}}" method="post" enctype="multipart/form-data">
-									@csrf
-									<input type="file" name="cover_path">
-									<button type="submit" class="main-btn">Update</button>
+										@csrf
+											<input type="file" name="cover_path">
+											<button type="submit" class="main-btn">Update</button>
                                 </form>
 								</ul>
 								<!-- <a data-ripple="" title="" href="#" class="invite">Invite Colleagues</a> -->
