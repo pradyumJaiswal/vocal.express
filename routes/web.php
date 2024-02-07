@@ -79,6 +79,7 @@ Route::group(['prefix' => 'User', 'middleware' => ['web','isUser']],function(){
     Route::post('/post',[PostController::class,'store'])->name('post.create');
     Route::post('/profile', [ProfileController::class,'updateCover'])->name('profile.updatecover');
     Route::post('/profile/avatar', [ProfileController::class,'updateAvatar'])->name('profile.updateAvatar');
+    Route::post('/post/{post}/reaction', [PostController::class,'postReaction'])->name('post.reaction');
     
 
 }); 

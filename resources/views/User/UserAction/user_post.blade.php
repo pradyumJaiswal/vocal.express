@@ -42,31 +42,32 @@
 													</div>
 													<div class="post-meta">
 														<figure>
-															{{-- <a data-toggle="modal" data-target="#img-comt" href="{{asset('user/images/resources/album1.jpg')}}">	
+															{{-- <a data-toggle="modal" data-target="#img-comt" href="{{asset('user/images/resources/album1.jpg')}}">
                                                         @foreach ($user->attachments as $postAttachment)
 																<img src="{{asset('storage/'.$postAttachment->path)}}" alt="">
 													    @endforeach
 															</a>	 --}}
-															<ul class="chat-rooms">
-																
+
+															<div class="videos-caro">
+																@foreach ($user->attachments as $postAttachment)
+																<div class="" >
+																	<img src="{{asset('storage/'.$postAttachment->path)}}" alt="">
+																</div>
+																@endforeach
+															</div>
+															{{-- <ul class="chat-rooms">
 																@foreach ($user->attachments as $postAttachment)
 																<a data-toggle="modal" data-target="#img-comt" href="{{asset('storage/'.$postAttachment->path)}}">
-																	
-																		<img class="premium-post" src="{{asset('storage/'.$postAttachment->path)}}" alt="">
-																	
-																
+																		<img src="{{asset('storage/'.$postAttachment->path)}}" alt="">
 																</a>
-																
 																@endforeach
-																
-																
-															</ul>
+															</ul> --}}
 														</figure>
 														<a href="post-detail.html" class="post-title">Supervision as a Personnel Development Device</a>
-														<p> 
+														<p>
 														{{ $user->body }}
 														{{ $user->user->name }}
-														
+
 													    </p>
 														<div class="aud-vid">
 															{{-- <audio id="plyr-audio-player" class="audio-player" controls>
@@ -89,13 +90,13 @@
 																		<svg class="feather feather-message-square" stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="currentColor" fill="none" viewBox="0 0 24 24" height="16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></i>
 																		<ins>54</ins>
 																	</span>
-																	
+
 																</li>
 																<li>
 																	<span title="follow" class="Follow">
 																		<i>
 																		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></i>
-																	<ins>5k</ins>	
+																	<ins>5k</ins>
 																	</span>
 																</li>
 																<li>
@@ -103,17 +104,31 @@
 																		<i>
 																			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg></i>
 																	<ins>205</ins>
-																	</span>	
+																	</span>
 																</li>
 															</ul>
 															<a href="post-detail.html" title="" class="reply">Reply <i class="icofont-reply"></i></a>
 														</div>
 														<div class="stat-tools">
 															<div class="box">
-															<div class="Like"><a class="Like__link"><i class="icofont-like"></i> Like</a>
+															<div class="Like">
+<form method="post" action="/User/post/{{ $user->id }}/reaction">
+                        @csrf
+						 <input name="reaction" value ="like" type="text" hidden/>
+						 <a class="Like__link">
+                            <button>
+                                <i class="icofont-like"></i> Like
+                            </button>
+                         </a>
+</form>
+
+
+															{{-- <a class="Like__link">
+															  <i class="icofont-like"></i> Like
+															</a> --}}
 																<div class="Emojis">
 																<div class="Emoji Emoji--like">
-																	<div class="icon icon--like"></div>
+																	<div class="icon icon--like"><i class="icofont-reply"></i></div>
 																</div>
 																<div class="Emoji Emoji--love">
 																	<div class="icon icon--heart"></div>
@@ -248,7 +263,7 @@
 										</div>
 									</div>
 								</div><!-- share video post -->
-								@endforeach  
+								@endforeach
 								<div class="main-wraper">
 									<div class="user-post">
 										<div class="friend-info">
@@ -306,13 +321,13 @@
                                                                    <svg class="feather feather-message-square" stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="currentColor" fill="none" viewBox="0 0 24 24" height="16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></i>
 																<ins>54</ins>
 															</span>
-															
+
 														</li>
 														<li>
 															<span title="follow" class="Follow">
 																<i>
                                                               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></i>
-															<ins>5k</ins>	
+															<ins>5k</ins>
 															</span>
 														</li>
 														<li>
@@ -320,7 +335,7 @@
 																<i>
                                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg></i>
 															<ins>205</ins>
-															</span>	
+															</span>
 														</li>
 													</ul>
 													<a href="post-detail.html" title="" class="reply">Reply <i class="icofont-reply"></i></a>
@@ -525,13 +540,13 @@
                                                                 <svg class="feather feather-message-square" stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="currentColor" fill="none" viewBox="0 0 24 24" height="16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></i>
 																<ins>54</ins>
 															</span>
-															
+
 														</li>
 														<li>
 															<span title="follow" class="Follow">
 																<i>
                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></i>
-															<ins>5k</ins>	
+															<ins>5k</ins>
 															</span>
 														</li>
 														<li>
@@ -539,7 +554,7 @@
 																<i>
                                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg></i>
 															<ins>205</ins>
-															</span>	
+															</span>
 														</li>
 													</ul>
 													<a href="post-detail.html" title="" class="reply">Reply <i class="icofont-reply"></i></a>
@@ -713,7 +728,7 @@
 											</div>
 										</div>
 										<div class="item-video" data-merge="2">
-											<a class="owl-video" href="https://www.youtube.com/watch?v=JpxsRwnRwCQ"></a> 
+											<a class="owl-video" href="https://www.youtube.com/watch?v=JpxsRwnRwCQ"></a>
 											<div class="posted-user">
 												<img src="{{asset('user/images/resources/user1.jpg')}}" alt="">
 												<span>Jack Carter</span>
@@ -734,7 +749,7 @@
 												<span><i class="icofont-eye-open"></i> 8k</span>
 											</div>
 										</div>
-										
+
 									</div>
 								</div><!-- video playlist carousel -->
 								<div class="main-wraper">
@@ -777,7 +792,7 @@
 												<figure>
 													<a data-toggle="modal" data-target="#img-comt" href="{{asset('user/images/resources/album1.jpg')}}">
 														<img src="{{asset('user/images/resources/study.jpg')}}" alt="">
-													</a>	
+													</a>
 												</figure>
 												<a href="post-detail.html" class="post-title">Supervision as a Personnel Development Device</a>
 												<p>
@@ -798,13 +813,13 @@
                                                                      <svg class="feather feather-message-square" stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="currentColor" fill="none" viewBox="0 0 24 24" height="16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></i>
 																<ins>54</ins>
 															</span>
-															
+
 														</li>
 														<li>
 															<span title="follow" class="Follow">
 																<i>
                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></i>
-															<ins>5k</ins>	
+															<ins>5k</ins>
 															</span>
 														</li>
 														<li>
@@ -812,7 +827,7 @@
 																<i>
                                                                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg></i>
 															<ins>205</ins>
-															</span>	
+															</span>
 														</li>
 													</ul>
 													<a href="post-detail.html" title="" class="reply">Reply <i class="icofont-reply"></i></a>
@@ -1026,7 +1041,7 @@
 																</figure>
 															</div>
 														</div>
-													</div>	
+													</div>
 												</figure>
 												<a href="post-detail.html" class="post-title">Supervision as a Personnel Development Device</a>
 												<p>
@@ -1047,13 +1062,13 @@
                                                                     <svg class="feather feather-message-square" stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="currentColor" fill="none" viewBox="0 0 24 24" height="16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></i>
 																<ins>54</ins>
 															</span>
-															
+
 														</li>
 														<li>
 															<span title="follow" class="Follow">
 																<i>
                                                               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></i>
-															<ins>5k</ins>	
+															<ins>5k</ins>
 															</span>
 														</li>
 														<li>
@@ -1061,7 +1076,7 @@
 																<i>
                                                               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg></i>
 															<ins>205</ins>
-															</span>	
+															</span>
 														</li>
 													</ul>
 													<a href="post-detail.html" title="" class="reply">Reply <i class="icofont-reply"></i></a>
@@ -1267,13 +1282,13 @@
                                                                    <svg class="feather feather-message-square" stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="currentColor" fill="none" viewBox="0 0 24 24" height="16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></i>
 																<ins>54</ins>
 															</span>
-															
+
 														</li>
 														<li>
 															<span title="follow" class="Follow">
 																<i>
                                                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></i>
-															<ins>5k</ins>	
+															<ins>5k</ins>
 															</span>
 														</li>
 														<li>
@@ -1281,7 +1296,7 @@
 																<i>
                                                                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg></i>
 															<ins>205</ins>
-															</span>	
+															</span>
 														</li>
 													</ul>
 													<a href="post-detail.html" title="" class="reply">Reply <i class="icofont-reply"></i></a>
@@ -1466,7 +1481,7 @@
 												<em><a href="https://www.youtube.com/embed/zdow47FQRfQ" title="" target="_blank">https://www.youtube.com/embed/zdow47FQRfQ</a>
 												</em>
 												<iframe height="285" src="https://www.youtube.com/embed/zdow47FQRfQ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-												
+
 												<p>
 													Cookie? Biscuit? Bikkie? They all mean the same thing! Our lovely English teachers will quickly show you some pronunciation and vocabulary differences from Australia, America, and England!
 												</p>
@@ -1485,13 +1500,13 @@
                                                                   <svg class="feather feather-message-square" stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="currentColor" fill="none" viewBox="0 0 24 24" height="16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></i>
 																<ins>54</ins>
 															</span>
-															
+
 														</li>
 														<li>
 															<span title="follow" class="Follow">
 																<i>
                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></i>
-															<ins>5k</ins>	
+															<ins>5k</ins>
 															</span>
 														</li>
 														<li>
@@ -1499,7 +1514,7 @@
 																<i>
                                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg></i>
 															<ins>205</ins>
-															</span>	
+															</span>
 														</li>
 													</ul>
 													<a href="post-detail.html" title="" class="reply">Reply <i class="icofont-reply"></i></a>
@@ -1697,13 +1712,13 @@
                                                                         <svg class="feather feather-message-square" stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="currentColor" fill="none" viewBox="0 0 24 24" height="16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></i>
 																<ins>54</ins>
 															</span>
-															
+
 														</li>
 														<li>
 															<span title="follow" class="Follow">
 																<i>
                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></i>
-															<ins>5k</ins>	
+															<ins>5k</ins>
 															</span>
 														</li>
 														<li>
@@ -1711,7 +1726,7 @@
 																<i>
                                                                                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg></i>
 															<ins>205</ins>
-															</span>	
+															</span>
 														</li>
 													</ul>
 													<a href="post-detail.html" title="" class="reply">Reply <i class="icofont-reply"></i></a>
@@ -2120,8 +2135,7 @@
 									</div>
 								</div><!-- advertisment carousel -->
 
-								
 
-								
 
-								
+
+
