@@ -156,14 +156,28 @@
                         <div class="col-lg-9">
                             <div class="group-feed">
                                 <div class="group-avatar">
-                                    <img src="images/resources/profile-banner.jpg" alt="">
-                                    <a href="#" title=""><i class="icofont-check-circled"></i>Follow</a>
-                                    <figure class="group-dp"><img src="{{asset('storage/avatars/defaultAvatar.jpg')}}" alt=""></figure>
+                                    @if(empty($user->cover_path))
+                                    <img src="{{asset('storage/covers/cover.jpeg')}}" alt="">
+                                    @else
+		{{-- <div class="bg-image" style="background-image: url(http://127.0.0.1:8000/storage/{{ $user->cover_path }})"></div> --}}
+
+                                    <img src="{{ asset('storage/'.$user->cover_path)}}" alt="">
+                                    @endif
+
+
+                                    <a href="{{ route('user.follow', ['user' => $user->id]) }}" title=""><i class="icofont-check-circled"></i>Follow</a>
+                                    <figure class="group-dp">
+                                        @if(empty($user->avatar_path))
+                                        <img src="{{asset('storage/avatars/defaultAvatar.jpg')}}" alt="">
+                                        @else
+                                        <img src="{{ asset('storage/'.$user->avatar_path)}}" alt="">
+                                        @endif
+                                    </figure>
                                 </div>
                                 <div class="grp-info about">
-                                    <h4>Georg Peeter <span>@Georgofficial</span></h4>
+                                    <h4>{{ $user->name }}<span>{{ $user->user_name }}</span></h4>
                                     <ul class="joined-info">
-                                        <li><span>Joined:</span> April 2020</li>
+                                        <li><span>Joined:</span>{{ $user->created_at }}</li>
                                         <li><span>Follow:</span> 55K</li>
                                         <li><span>Followers:</span> 2.2K</li>
                                         <li><span>Posts:</span> 932</li>

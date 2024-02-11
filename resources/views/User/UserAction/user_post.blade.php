@@ -41,7 +41,7 @@
 															</div>
 														</div>
 														<ins>
-															<a title="verified" href="time-line.html">{{ $post->user->name }}</a> Podcast</ins>
+															<a title="verified" href="{{ url('User/Profile/'.$post->user->id.'/profile') }}">{{ $post->user->name }}</a> Podcast</ins>
 														<span><i class="icofont-globe"></i>{{ $post->created_at }}</span>
 													</div>
 													<div class="post-meta">
@@ -200,7 +200,7 @@
                                                                                 @endif
                                                                             </figure>
 																			<div class="commenter">
-																				<h5><a title="" href="#">{{ $commentedUser->user->name }}</a></h5>
+																				<h5><a title="" href="Profile/{{ $commentedUser->user->id }}/profile">{{ $commentedUser->user->name }}</a></h5>
 																				<span>{{ $commentedUser->created_at }}</span>
 																				<p>
 																					{{ $commentedUser->comment }}

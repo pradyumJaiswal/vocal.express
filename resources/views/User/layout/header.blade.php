@@ -129,7 +129,7 @@
   @elseif(!empty(auth()->user()) && auth()->user()->role == 'User')
             <li>
                 <div class="user-dp">
-                    <a href="{{ route('profile2') }}" title="">
+                    <a href="{{ url('User/Profile/'.Auth()->user()->id.'/profile') }}" title="">
                                 @if(empty(ucfirst(Auth()->user()->avatar_path)))
 								<img src="{{asset('storage/avatars/defaultAvatar.jpg')}}" alt="User Image" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
 								@else

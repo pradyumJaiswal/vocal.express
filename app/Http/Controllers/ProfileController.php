@@ -17,7 +17,7 @@ class ProfileController extends Controller
         // ]);
            $user = $request->user();
         // $avatar = $data['avatar_path'] ?? null;
-           $cover = $request->cover_path; 
+           $cover = $request->cover_path;
         // dd($cover);
            if($cover){
                 // $foldername = 'user-'.auth()->user()->id;
@@ -28,17 +28,25 @@ class ProfileController extends Controller
                 return back()->with('message','Updated Successfully');
             }
     }
-    
+
     public function updateAvatar(Request $request){
             $user = $request->user();
-            $avatar = $request->avatar_path; 
+            $avatar = $request->avatar_path;
             // dd($avatar);
             if($avatar){
-                // $condition = true;
                 $path = $avatar->store('avatars/'.$user->id,'public');
                 $user->update(['avatar_path' => $path]);
-                // dd($path);
                 return back()->with('message','Updated Successfully');
-            }  
+            }
     }
+
+
+    public function viewProfile(Request $request,User $user)
+    {
+
+        $user = User::find($user)->first();
+        return view('User.profile2', compact('user'));
+
+    }
+
 }

@@ -8,7 +8,7 @@ use App\http\Controllers\UserController;
 use App\http\Controllers\AuthController;
 use App\http\Controllers\ProfileController;
 use App\http\Controllers\PostController;
-
+use App\http\Controllers\UserFollowingController;
 
 
 
@@ -76,12 +76,20 @@ Route::group(['prefix' => 'User', 'middleware' => ['web','isUser']],function(){
     Route::get('/message', [UserController::class,'message'])->name('message');
 
 //--------------------------------**** Action Routes****--------------------------------------//
+    //profile
 
+    Route::get('/Profile/{user}/profile', [ProfileController::class,'viewProfile'])->name('view.profile');
+
+    //post
     Route::post('/post',[PostController::class,'store'])->name('post.create');
     Route::post('/profile', [ProfileController::class,'updateCover'])->name('profile.updatecover');
     Route::post('/profile/avatar', [ProfileController::class,'updateAvatar'])->name('profile.updateAvatar');
     Route::post('/post/{post}/reaction', [PostController::class,'postReaction'])->name('post.reaction');
     Route::post('/post/{post}/comment', [PostController::class,'createComment'])->name('post.comment.create');
+
+    //follower and following
+
+    Route::get('/follow/{user}',[UserFollowingController::class,'follow'])->name('user.follow');
 
 
 
