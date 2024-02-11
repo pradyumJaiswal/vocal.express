@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\follower;
+use Illuminate\Support\Facades\Auth;
 
 use App\Repos\Interfaces\ProfileInterface;
 
@@ -43,9 +45,12 @@ class ProfileController extends Controller
 
     public function viewProfile(Request $request,User $user)
     {
-
+        $isCurrentUserFollower = false;
+        if(!Auth::guest()){
+            $isCurrentUserFollower = follower::where('user_id',$user->id)->where('follower_id',Auth::id())->exists();
+        }
         $user = User::find($user)->first();
-        return view('User.profile2', compact('user'));
+        return view('User.profile2', compact('user','isCurrentUserFollower'));
 
     }
 

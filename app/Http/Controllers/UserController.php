@@ -16,7 +16,6 @@ class UserController extends Controller
         //     'latest5Comments' => function($query){
         //         $query->latest()->take(5);
         //     }
-
         //     ])
         ->latest()->paginate(10);
         // return view('index')->with('UserDetails',$UserDetails);

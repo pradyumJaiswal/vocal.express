@@ -160,12 +160,19 @@
                                     <img src="{{asset('storage/covers/cover.jpeg')}}" alt="">
                                     @else
 		{{-- <div class="bg-image" style="background-image: url(http://127.0.0.1:8000/storage/{{ $user->cover_path }})"></div> --}}
-
                                     <img src="{{ asset('storage/'.$user->cover_path)}}" alt="">
                                     @endif
 
+                                    {{-- @if ($post->reactions->contains('user_id', auth()->id())) --}}
+                                    @if($isCurrentUserFollower)
+                                    <a href="{{ route('user.follow', ['user' => $user->id]) }}" title=""><i class="icofont-check-circled"></i>UnFollow</a>
 
+                                    @else
                                     <a href="{{ route('user.follow', ['user' => $user->id]) }}" title=""><i class="icofont-check-circled"></i>Follow</a>
+
+
+                                    @endif
+
                                     <figure class="group-dp">
                                         @if(empty($user->avatar_path))
                                         <img src="{{asset('storage/avatars/defaultAvatar.jpg')}}" alt="">
