@@ -1,14 +1,18 @@
-			                 @foreach ($UserDetails as $user)
+			         @push('customCss')
+    <link rel="stylesheet" href="{{asset('user/customCss/carasolePost.css')}}">
+
+                     @endpush
+                     @foreach ($postDetails as $post)
 							    <div class="main-wraper">
 									<div class="user-post">
 										<div class="friend-info">
 											<figure>
 												<em>
                                                  <svg style="vertical-align: middle;"  xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><path fill="#7fba00" stroke="#7fba00" d="M23,12L20.56,9.22L20.9,5.54L17.29,4.72L15.4,1.54L12,3L8.6,1.54L6.71,4.72L3.1,5.53L3.44,9.21L1,12L3.44,14.78L3.1,18.47L6.71,19.29L8.6,22.47L12,21L15.4,22.46L17.29,19.28L20.9,18.46L20.56,14.78L23,12M10,17L6,13L7.41,11.59L10,14.17L16.59,7.58L18,9L10,17Z"></path></svg></em>
-												@if(empty($user->user->avatar_path))
+												@if(empty($post->user->avatar_path))
 												<img src="{{asset('storage/avatars/defaultAvatar.jpg')}}" alt="User Image" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
 												@else
-												<img alt="" src="{{ asset('storage/'.$user->user->avatar_path) }}" >
+												<img alt="" src="{{ asset('storage/'.$post->user->avatar_path) }}" >
 												@endif
 											</figure>
 													<div class="friend-name">
@@ -37,36 +41,37 @@
 															</div>
 														</div>
 														<ins>
-															<a title="verified" href="time-line.html">{{ $user->user->name }}</a> Podcast</ins>
-														<span><i class="icofont-globe"></i>{{ $user->created_at }}</span>
+															<a title="verified" href="time-line.html">{{ $post->user->name }}</a> Podcast</ins>
+														<span><i class="icofont-globe"></i>{{ $post->created_at }}</span>
 													</div>
 													<div class="post-meta">
 														<figure>
 															{{-- <a data-toggle="modal" data-target="#img-comt" href="{{asset('user/images/resources/album1.jpg')}}">
-                                                        @foreach ($user->attachments as $postAttachment)
+                                                        @foreach ($post->attachments as $postAttachment)
 																<img src="{{asset('storage/'.$postAttachment->path)}}" alt="">
 													    @endforeach
 															</a>	 --}}
 
 															<div class="videos-caro">
-																@foreach ($user->attachments as $postAttachment)
+																@foreach ($post->attachments as $postAttachment)
 																<div class="" >
 																	<img src="{{asset('storage/'.$postAttachment->path)}}" alt="">
 																</div>
 																@endforeach
 															</div>
 															{{-- <ul class="chat-rooms">
-																@foreach ($user->attachments as $postAttachment)
+																@foreach ($post->attachments as $postAttachment)
 																<a data-toggle="modal" data-target="#img-comt" href="{{asset('storage/'.$postAttachment->path)}}">
 																		<img src="{{asset('storage/'.$postAttachment->path)}}" alt="">
 																</a>
 																@endforeach
 															</ul> --}}
 														</figure>
-														<a href="post-detail.html" class="post-title">Supervision as a Personnel Development Device</a>
+														<a href="post-detail.html" class="post-title"> {{ $post->body }}</a>
 														<p>
-														{{ $user->body }}
-														{{ $user->user->name }}
+                                                            {{-- {{ $post->body }}
+                                                            {{ $post->user->name }} --}}
+
 
 													    </p>
 														<div class="aud-vid">
@@ -96,7 +101,7 @@
 																	<span title="follow" class="Follow">
 																		<i>
 																		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></i>
-																	<ins>5k</ins>
+																	<ins>{{$post->reactions_count}}</ins>
 																	</span>
 																</li>
 																<li>
@@ -112,14 +117,24 @@
 														<div class="stat-tools">
 															<div class="box">
 															<div class="Like">
-<form method="post" action="/User/post/{{ $user->id }}/reaction">
+<form method="post" action="/User/post/{{ $post->id }}/reaction">
                         @csrf
 						 <input name="reaction" value ="like" type="text" hidden/>
-						 <a class="Like__link">
-                            <button>
-                                <i class="icofont-like"></i> Like
-                            </button>
+						 {{-- <button> --}}
+                            <a class="Like__link">
+
+@if ($post->reactions->contains('user_id', auth()->id()))
+<i class="icofont-dislike"></i><input type="submit" value="Unlike" class="Like__link customeLikeinput">
+@else
+<i class="icofont-like"></i><input type="submit" value="Like" class="Like__link customeinput">
+@endif
+
+
+
+
+
                          </a>
+                        {{-- </button> --}}
 </form>
 
 
@@ -127,123 +142,78 @@
 															  <i class="icofont-like"></i> Like
 															</a> --}}
 																<div class="Emojis">
-																<div class="Emoji Emoji--like">
-																	<div class="icon icon--like"><i class="icofont-reply"></i></div>
-																</div>
+
 																<div class="Emoji Emoji--love">
 																	<div class="icon icon--heart"></div>
-																</div>
-																<div class="Emoji Emoji--haha">
-																	<div class="icon icon--haha"></div>
-																</div>
-																<div class="Emoji Emoji--wow">
-																	<div class="icon icon--wow"></div>
-																</div>
-																<div class="Emoji Emoji--sad">
-																	<div class="icon icon--sad"></div>
-																</div>
-																<div class="Emoji Emoji--angry">
-																	<div class="icon icon--angry"></div>
 																</div>
 																</div>
 															</div>
 															</div>
 															<div class="box">
 																<div class="Emojis">
-																<div class="Emoji Emoji--like">
-																	<div class="icon icon--like"></div>
-																</div>
+
 																<div class="Emoji Emoji--love">
 																	<div class="icon icon--heart"></div>
 																</div>
-																<div class="Emoji Emoji--haha">
-																	<div class="icon icon--haha"></div>
-																</div>
-																<div class="Emoji Emoji--wow">
-																	<div class="icon icon--wow"></div>
-																</div>
-																<div class="Emoji Emoji--sad">
-																	<div class="icon icon--sad"></div>
-																</div>
-																<div class="Emoji Emoji--angry">
-																	<div class="icon icon--angry"></div>
-																</div>
-																</div>
+
 															</div>
-															<a title="" href="#" class="comment-to"><i class="icofont-comment"></i> Comment</a>
+															</div>
+															<a title="" href="#" class="comment-to"><i class="icofont-comment"></i> {{$post->comments_count}} Comment</a>
 															<a title="" href="#" class="share-to"><i class="icofont-share-alt"></i> Share</a>
 															<div class="emoji-state">
-																<div class="popover_wrapper">
-																	<a class="popover_title" href="#" title=""><img alt="" src="{{asset('user/images/smiles/thumb.png')}}"></a>
-																	<div class="popover_content">
-																		<span><img alt="" src="{{asset('user/images/smiles/thumb.png')}}"> Likes</span>
-																		<ul class="namelist">
-																			<li>Jhon Doe</li>
-																			<li>Amara Sin</li>
-																			<li>Sarah K.</li>
-																			<li><span>20+ more</span></li>
-																		</ul>
-																	</div>
-																</div>
+
 																<div class="popover_wrapper">
 																	<a class="popover_title" href="#" title=""><img alt="" src="{{asset('user/images/smiles/heart.png')}}"></a>
 																	<div class="popover_content">
-																		<span><img alt="" src="{{asset('user/images/smiles/heart.png')}}"> Love</span>
-																		<ul class="namelist">
-																			<li>Amara Sin</li>
-																			<li>Jhon Doe</li>
-																			<li><span>10+ more</span></li>
-																		</ul>
+																		<span><img alt="" src="{{asset('user/images/smiles/heart.png')}} "> {{$post->reactions_count}} Likes</span>
+																		 <ul class="namelist">
+                                                                            @foreach ($post->reactions as $reactedUser)
+                                                                            {{-- <img alt="" src="{{ asset('storage/'.$reactedUser->user->avatar_path) }}"> --}}
+                                                                            <li>{{ $reactedUser->user->name }}</li>
+                                                                            @endforeach
+																			{{-- <li>{{$post->reactions_count}}</li> --}}
+																			{{-- <li>Jhon Doe</li>
+																			<li><span>10+ more</span></li> --}}
+																		 </ul>
 																	</div>
 																</div>
-																<div class="popover_wrapper">
-																	<a class="popover_title" href="#" title=""><img alt="" src="{{asset('user/images/smiles/smile.png')}}"></a>
-																	<div class="popover_content">
-																		<span><img alt="" src="{{asset('user/images/smiles/smile.png')}}"> Happy</span>
-																		<ul class="namelist">
-																			<li>Sarah K.</li>
-																			<li>Jhon Doe</li>
-																			<li>Amara Sin</li>
-																			<li><span>100+ more</span></li>
-																		</ul>
-																	</div>
-																</div>
-																<div class="popover_wrapper">
-																	<a class="popover_title" href="#" title=""><img alt="" src="{{asset('user/images/smiles/weep.png')}}"></a>
-																	<div class="popover_content">
-																		<span><img alt="" src="{{asset('user/images/smiles/weep.png')}}"> Dislike</span>
-																		<ul class="namelist">
-																			<li>Danial Carbal</li>
-																			<li>Amara Sin</li>
-																			<li>Sarah K.</li>
-																			<li><span>15+ more</span></li>
-																		</ul>
-																	</div>
-																</div>
-																<p>10+</p>
+
+																<p>{{$post->reactions_count}}</p>
 															</div>
+
 															<div class="new-comment" style="display: none;">
-																<form method="post">
-																	<input type="text" placeholder="write comment">
+																<form method="post" action="/User/post/{{ $post->id }}/comment">
+                                                                    @csrf
+																	<input type="text" name="comment" placeholder="write comment">
 																	<button type="submit"><i class="icofont-paper-plane"></i></button>
 																</form>
+
 																<div class="comments-area">
 																	<ul>
+                                                                        @foreach ($post->comments as $commentedUser)
 																		<li>
-																			<figure><img alt="" src="{{asset('user/images/resources/user1.jpg')}}"></figure>
+																			<figure>
+                                                                                @if(empty($commentedUser->user->avatar_path))
+                                                                                <img src="{{asset('storage/avatars/defaultAvatar.jpg')}}" alt="">
+                                                                                @else
+                                                                                <img alt="" src="{{ asset('storage/'.$commentedUser->user->avatar_path) }}">
+                                                                                @endif
+                                                                            </figure>
 																			<div class="commenter">
-																				<h5><a title="" href="#">Jack Carter</a></h5>
-																				<span>2 hours ago</span>
+																				<h5><a title="" href="#">{{ $commentedUser->user->name }}</a></h5>
+																				<span>{{ $commentedUser->created_at }}</span>
 																				<p>
-																					i think that some how, we learn who we really are and then live with that decision, great post!
+																					{{ $commentedUser->comment }}
 																				</p>
-																				<span>you can view the more detail via link</span>
-																				<a title="" href="https://www.youtube.com/watch?v=HpZgwHU1GcI" target="_blank">https://www.youtube.com/watch?v=HpZgwHU1GcI</a>
+																				{{-- <span>you can view the more detail via link</span> --}}
+																				{{-- <a title="" href="https://www.youtube.com/watch?v=HpZgwHU1GcI" target="_blank">https://www.youtube.com/watch?v=HpZgwHU1GcI</a> --}}
 																			</div>
 																			<a title="Like" href="#"><i class="icofont-heart"></i></a>
 																			<a title="Reply" href="#" class="reply-coment"><i class="icofont-reply"></i></a>
 																		</li>
-																		<li>
+                                                                        @endforeach
+
+																		{{-- <li>
 																			<figure><img alt="" src="{{asset('user/images/resources/user2.jpg')}}"></figure>
 																			<div class="commenter">
 																				<h5><a title="" href="#">Ching xang</a></h5>
@@ -254,7 +224,7 @@
 																			</div>
 																			<a title="Like" href="#"><i class="icofont-heart"></i></a>
 																			<a title="Reply" href="#" class="reply-coment"><i class="icofont-reply"></i></a>
-																		</li>
+																		</li> --}}
 																	</ul>
 																</div>
 															</div>

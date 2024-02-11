@@ -9,7 +9,7 @@
 
 		@if(empty(ucfirst(Auth()->user()->cover_path)))
 		<!-- <img src="{{asset('storage/covers/cover.jpeg')}}" alt="User Image" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"> -->
-		
+
 		<div class="bg-image" style="background-image: url(http://127.0.0.1:8000/storage/covers/cover.jpeg)"></div>
 		@else
 		<div class="bg-image" style="background-image: url(http://127.0.0.1:8000/storage/{{ ucfirst(Auth()->user()->cover_path) }})"></div>
@@ -61,7 +61,7 @@
 			</div>
 		</div>
 	</div><!-- top Head -->
-	
+
 	<section>
 		<div class="gap">
 			<div class="container">
@@ -154,7 +154,7 @@
 																	<span title="follow" class="Follow">
 																		<i>
 		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></i>
-																	<ins>5k</ins>	
+																	<ins>5k</ins>
 																	</span>
 																</li>
 																<li>
@@ -162,7 +162,7 @@
 																		<i>
 		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg></i>
 																	<ins>205</ins>
-																	</span>	
+																	</span>
 																</li>
 															</ul>
 															<a href="post-detail.html" title="" class="reply">Reply <i class="icofont-reply"></i></a>
@@ -371,7 +371,7 @@
 																	<span title="follow" class="Follow">
 																		<i>
 		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></i>
-																	<ins>5k</ins>	
+																	<ins>5k</ins>
 																	</span>
 																</li>
 																<li>
@@ -379,7 +379,7 @@
 																		<i>
 		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg></i>
 																	<ins>205</ins>
-																	</span>	
+																	</span>
 																</li>
 															</ul>
 															<a href="post-detail.html" title="" class="reply">Reply <i class="icofont-reply"></i></a>
@@ -553,7 +553,7 @@
 													</div>
 												</div>
 												<div class="item-video" data-merge="2">
-													<a class="owl-video" href="https://www.youtube.com/watch?v=JpxsRwnRwCQ"></a> 
+													<a class="owl-video" href="https://www.youtube.com/watch?v=JpxsRwnRwCQ"></a>
 													<div class="posted-user">
 														<img src="images/resources/user1.jpg" alt="">
 														<span>Jack Carter</span>
@@ -615,7 +615,7 @@
 														<figure>
 															<a data-toggle="modal" data-target="#img-comt" href="images/resources/album1.jpg">
 																<img src="images/resources/study.jpg" alt="">
-															</a>	
+															</a>
 														</figure>
 														<a href="post-detail.html" class="post-title">Supervision as a Personnel Development Device</a>
 														<p>
@@ -642,7 +642,7 @@
 																	<span title="follow" class="Follow">
 																		<i>
 		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></i>
-																	<ins>5k</ins>	
+																	<ins>5k</ins>
 																	</span>
 																</li>
 																<li>
@@ -650,7 +650,7 @@
 																		<i>
 		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg></i>
 																	<ins>205</ins>
-																	</span>	
+																	</span>
 																</li>
 															</ul>
 															<a href="post-detail.html" title="" class="reply">Reply <i class="icofont-reply"></i></a>
@@ -862,7 +862,7 @@
 																		</figure>
 																	</div>
 																</div>
-															</div>	
+															</div>
 														</figure>
 														<a href="post-detail.html" class="post-title">Supervision as a Personnel Development Device</a>
 														<p>
@@ -889,7 +889,7 @@
 																	<span title="follow" class="Follow">
 																		<i>
 		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></i>
-																	<ins>5k</ins>	
+																	<ins>5k</ins>
 																	</span>
 																</li>
 																<li>
@@ -897,7 +897,7 @@
 																		<i>
 		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg></i>
 																	<ins>205</ins>
-																	</span>	
+																	</span>
 																</li>
 															</ul>
 															<a href="post-detail.html" title="" class="reply">Reply <i class="icofont-reply"></i></a>
@@ -1107,7 +1107,7 @@
 																	<span title="follow" class="Follow">
 																		<i>
 		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></i>
-																	<ins>5k</ins>	
+																	<ins>5k</ins>
 																	</span>
 																</li>
 																<li>
@@ -1115,7 +1115,7 @@
 																		<i>
 		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg></i>
 																	<ins>205</ins>
-																	</span>	
+																	</span>
 																</li>
 															</ul>
 															<a href="post-detail.html" title="" class="reply">Reply <i class="icofont-reply"></i></a>
@@ -1323,7 +1323,7 @@
 																	<span title="follow" class="Follow">
 																		<i>
 		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></i>
-																	<ins>5k</ins>	
+																	<ins>5k</ins>
 																	</span>
 																</li>
 																<li>
@@ -1331,7 +1331,7 @@
 																		<i>
 		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg></i>
 																	<ins>205</ins>
-																	</span>	
+																	</span>
 																</li>
 															</ul>
 															<a href="post-detail.html" title="" class="reply">Reply <i class="icofont-reply"></i></a>
@@ -1533,7 +1533,7 @@
 																	<span title="follow" class="Follow">
 																		<i>
 		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></i>
-																	<ins>5k</ins>	
+																	<ins>5k</ins>
 																	</span>
 																</li>
 																<li>
@@ -1541,7 +1541,7 @@
 																		<i>
 		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg></i>
 																	<ins>205</ins>
-																	</span>	
+																	</span>
 																</li>
 															</ul>
 															<a href="post-detail.html" title="" class="reply">Reply <i class="icofont-reply"></i></a>
@@ -1685,8 +1685,8 @@
 													</div>
 												</div>
 											</div>
-										</div><!-- gif image post -->	
-								  		<div class="sp sp-bars"></div>  
+										</div><!-- gif image post -->
+								  		<div class="sp sp-bars"></div>
 									</div>
 								  	<div class="tab-pane fade" id="followers">
 										<div class="row col-xs-6 merged-10">
@@ -1853,7 +1853,7 @@
 												<h6>Languages</h6>
 												<span>English, Turkish</span>
 											</div>
-											
+
 											<div class="dis-n-exp">
 												<h6>Discipliens</h6>
 												<span>educational leadership</span>
@@ -1952,7 +1952,7 @@
 												</div>
 											</div>
 										</div>
-										
+
 									</div>
 								</div>
 								<div class="main-wraper">
@@ -2080,7 +2080,7 @@
 													<a class="underline" title="" href="#">Follow</a>
 												</div>
 											</li>
-										</ul>	
+										</ul>
 									</div>
 								</aside>
 							</div>
@@ -2091,16 +2091,16 @@
 		</div>
 	</section>
 @endsection
-	
-	
-			
-			
-		
-			
-		
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
+
+
+
 

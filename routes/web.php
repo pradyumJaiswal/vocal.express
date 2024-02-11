@@ -44,15 +44,15 @@ Route::group(['prefix' => 'Admin', 'middleware' => ['web','isAdmin']],function()
     Route::get('/ManageCourses', [AdminController::class, 'ManageCourses']);
     Route::get('/ManageMoments', [AdminController::class, 'ManageMoments']);
     Route::get('/ManageGroups', [AdminController::class, 'ManageGroups']);
-    
-    
-}); 
+
+
+});
 
 
 //-------------------------User Route--------------------------------------//
 
 Route::group(['prefix' => 'User', 'middleware' => ['web','isUser']],function(){
-        
+
     Route::get('/404', [UserController::class,'page404'])->name('404');
     Route::get('/vocal.express', [UserController::class,'dashboard']);
     Route::get('/index', [UserController::class,'userindex'])->name('Userhome');
@@ -68,6 +68,7 @@ Route::group(['prefix' => 'User', 'middleware' => ['web','isUser']],function(){
     Route::get('/settings', [UserController::class,'settings'])->name('settings');
     Route::get('/product-cart', [UserController::class,'productcart'])->name('product-cart');
     Route::get('/profile', [UserController::class,'userProfile'])->name('profile');
+    Route::get('/Profile', [UserController::class,'userProfile2'])->name('profile2');
     Route::get('/pay-out', [UserController::class,'payout'])->name('pay-out');
     Route::get('/price-plan', [UserController::class,'priceplan'])->name('price-plan');
     Route::get('/privacy-n-policy', [UserController::class,'privacypolicy'])->name('privacy-n-policy');
@@ -80,17 +81,19 @@ Route::group(['prefix' => 'User', 'middleware' => ['web','isUser']],function(){
     Route::post('/profile', [ProfileController::class,'updateCover'])->name('profile.updatecover');
     Route::post('/profile/avatar', [ProfileController::class,'updateAvatar'])->name('profile.updateAvatar');
     Route::post('/post/{post}/reaction', [PostController::class,'postReaction'])->name('post.reaction');
-    
+    Route::post('/post/{post}/comment', [PostController::class,'createComment'])->name('post.comment.create');
 
-}); 
+
+
+});
 
 //-------------------------Teacher Route--------------------------------------//
 
 Route::group(['prefix' => 'User', 'middleware' => ['web','isTeacher']],function(){
-          
-   
 
-}); 
+
+
+});
 
 
 

@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Resources;
-use Illuminate\Http\Request;
-use Illuminate\Http\Resources\Json\JsonResource;
 
-class PostResource extends JsonResource
+use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Storage;
+
+
+class CommentResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,19 +17,18 @@ class PostResource extends JsonResource
     public function toArray($request)
     {
         return [
+
             'id' => $this->id,
-            'body' => $this->body,
+            'comment' => $this->comment,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-            'user' => $this->user,
-            'group' => $this->group,
-            'attachments' => PostAttachmentResource::collection($this->attachments),
-            'num_reactions_count'=>$this->reactions_count,
-            'num_reactions_count'=>$this->comments_count,
-
-            'has_reactions' => $this->reactions->count() > 0,
-            'comments' => $this->latest5Comments
-
+            // 'user' => new UserResource($this->user)
+            'user' => [
+                "id" => $this->user->id,
+                "name" => $this->user->name,
+                "user_name" => $this->user->user_name,
+                "avatar_path" => Storage::url($this->user->avatar_path),
+            ]
         ];
     }
 }

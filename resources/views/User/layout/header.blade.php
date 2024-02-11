@@ -1,5 +1,5 @@
 <div class="responsive-header">
-    <div class="logo res"><img src="{{asset('user/images/logo.png')}}" alt=""><span>Socimo</span></div>
+    <div class="logo res"><img src="{{asset('user/images/logo.png')}}" alt=""><span>Vocal Express</span></div>
     <div class="user-avatar mobile">
         <a href="profile.html" title="View Profile"><img alt="" src="{{asset('user/images/resources/user.jpg')}}"></a>
         <div class="name">
@@ -16,7 +16,7 @@
             <span>
            <svg xmlns="http:/www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></span>
         </div>
-        
+
     </div>
     <div class="restop-search">
         <span class="hide-search"><i class="icofont-close-circled"></i></span>
@@ -77,13 +77,13 @@
             </form>
         </div>
         <ul class="web-elements">
-       
-            
+
+
   @if(!empty(auth()->user()) && auth()->user()->role=='Teacher')
             <li>
                 <div class="user-dp">
                     <a href="{{ route('profile') }}" title="">
-                    @if(empty(ucfirst(Auth()->user()->avatar_path)))
+                                @if(empty(ucfirst(Auth()->user()->avatar_path)))
 								<img src="{{asset('storage/avatars/defaultAvatar.jpg')}}" alt="User Image" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
 								@else
 								<img src="{{ asset('storage/'.ucfirst(Auth()->user()->avatar_path))}}" alt="">
@@ -91,7 +91,7 @@
                         <div class="name">
                             <h4>{{ ucfirst(Auth()->user()->name) }}</h4>
                         </div>
-                    </a>	
+                    </a>
                 </div>
             </li>
             <li class="go-live">
@@ -126,10 +126,10 @@
                 <svg xmlns="http:/www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></i>
                 </a>
             </li>
-  @elseif(!empty(auth()->user()) && auth()->user()->role=='User')
+  @elseif(!empty(auth()->user()) && auth()->user()->role == 'User')
             <li>
                 <div class="user-dp">
-                    <a href="{{ route('profile') }}" title="">
+                    <a href="{{ route('profile2') }}" title="">
                                 @if(empty(ucfirst(Auth()->user()->avatar_path)))
 								<img src="{{asset('storage/avatars/defaultAvatar.jpg')}}" alt="User Image" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
 								@else
@@ -138,7 +138,7 @@
                         <div class="name">
                             <h4>{{ ucfirst(Auth()->user()->name) }}</h4>
                         </div>
-                    </a>	
+                    </a>
                 </div>
             </li>
             <li class="go-live">
@@ -173,7 +173,7 @@
                        <svg xmlns="http:/www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></i>
                 </a>
             </li>
-  @else 
+  @else
              <li>
                 <div class="user-dp">
                     <a href="/User/livestream" title="">
@@ -181,7 +181,7 @@
                         <div class="name">
                             <h4>Guest</h4>
                         </div>
-                    </a>	
+                    </a>
                 </div>
             </li>
             <li class="go-live">
@@ -196,10 +196,10 @@
                 <svg xmlns="http:/www.w3.org/2000/svg" style="color: #581845;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></i>
                 </a>
             </li>
-            
-           
+
+
   @endif
-            
+
             <li>
                 <a href="#" title="">
                     <i>
@@ -207,7 +207,7 @@
                     </i>
                 </a>
                 <ul class="dropdown">
-                    
+
                     @if(!empty(auth()->user()) && auth()->user()->role=='Teacher')
                             <li><a href="{{ route('profile') }}" title=""><i class="icofont-user-alt-3"></i> Your Profile</a></li>
                             <li><a href="{{ route('addnewcourse') }}" title=""><i class="icofont-plus"></i> New Course</a></li>
@@ -230,15 +230,15 @@
                             <li><a href="{{ route('privacy-n-policy') }}" title=""><i class="icofont-notepad"></i> Privacy</a></li>
                             <li><a class="dark-mod" href="#" title=""><i class="icofont-moon"></i> Dark Mode</a></li>
                             <li class="logout"><a href="/Userlogout" title=""><i class="icofont-power"></i> Logout</a></li>
-                    @else 
+                    @else
                             <li class="logout"><a href="/Userlogin" title=""><i class="icofont-power"></i> Login</a></li>
                     @endif
-                    
+
                 </ul>
             </li>
         </ul>
     </div>
-    
+
 </header><!-- header -->
 
 {{-- invite email section --}}
