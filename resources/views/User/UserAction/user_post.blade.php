@@ -1,8 +1,7 @@
-			         @push('customCss')
+ @push('customCss')
     <link rel="stylesheet" href="{{asset('user/customCss/carasolePost.css')}}">
-
-                     @endpush
-                     @foreach ($postDetails as $post)
+@endpush
+@foreach ($postDetails as $post)
 							    <div class="main-wraper">
 									<div class="user-post">
 										<div class="friend-info">
@@ -117,27 +116,19 @@
 														<div class="stat-tools">
 															<div class="box">
 															<div class="Like">
-<form method="post" action="/User/post/{{ $post->id }}/reaction">
-                        @csrf
-						 <input name="reaction" value ="like" type="text" hidden/>
-						 {{-- <button> --}}
-                            <a class="Like__link">
-
-@if ($post->reactions->contains('user_id', auth()->id()))
-<i class="icofont-dislike"></i><input type="submit" value="Unlike" class="Like__link customeLikeinput">
-@else
-<i class="icofont-like"></i><input type="submit" value="Like" class="Like__link customeinput">
-@endif
-
-
-
-
-
-                         </a>
-                        {{-- </button> --}}
-</form>
-
-
+                                                                <form method="post" action="/User/post/{{ $post->id }}/reaction">
+                                                                    @csrf
+                                                                        <input name="reaction" value ="like" type="text" hidden/>
+                                                                        {{-- <button> --}}
+                                                                        <a class="Like__link">
+                                                                            @if ($post->reactions->contains('user_id', auth()->id()))
+                                                                            <i class="icofont-dislike"></i><input type="submit" value="Unlike" class="Like__link customeLikeinput">
+                                                                            @else
+                                                                            <i class="icofont-like"></i><input type="submit" value="Like" class="Like__link customeinput">
+                                                                            @endif
+                                                                        </a>
+                                                                    {{-- </button> --}}
+                                                                </form>
 															{{-- <a class="Like__link">
 															  <i class="icofont-like"></i> Like
 															</a> --}}
@@ -233,7 +224,7 @@
 										</div>
 									</div>
 								</div><!-- share video post -->
-								@endforeach
+@endforeach
 								<div class="main-wraper">
 									<div class="user-post">
 										<div class="friend-info">
