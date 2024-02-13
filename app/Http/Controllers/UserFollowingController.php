@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\follower;
+// use App\Notifications\FollowUser;
 
 
 class UserFollowingController extends Controller
@@ -30,7 +31,7 @@ class UserFollowingController extends Controller
             $message = 'You Unfollowed user '.$user->name;
         }
 
-
+        // $user->notify(new FollowUser(Auth::getUser(),$isCurrentUserFollower));
 
         return back()->with('sucess',$message);
     }

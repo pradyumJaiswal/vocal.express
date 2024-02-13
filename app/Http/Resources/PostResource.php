@@ -24,7 +24,6 @@ class PostResource extends JsonResource
             'attachments' => PostAttachmentResource::collection($this->attachments),
             'num_reactions_count'=>$this->reactions_count,
             'num_reactions_count'=>$this->comments_count,
-
             'has_reactions' => $this->reactions->count() > 0,
             'comments' => $this->latest5Comments
 
