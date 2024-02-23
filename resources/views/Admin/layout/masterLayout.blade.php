@@ -23,9 +23,7 @@
 
     {{-- <link href="{{asset('user/css/bootstrap.css')}}" rel="stylesheet" /> --}}
 
-<link href="{{asset('user/css/login-register.css')}}" rel="stylesheet" /> 
-<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"> 
-
+<link href="{{asset('user/css/login-register.css')}}" rel="stylesheet" />
 
 </head>
 
@@ -37,7 +35,7 @@
         @yield('content')
         @include('Admin.layout.footer')
     </div>
-       
+
     </main>
     @include('Admin.layout.bottom_links')
     <!--   Core JS Files   -->
@@ -45,6 +43,9 @@
 </body>
 
 </html>
-<script src="{{asset('user/js/jquery-1.10.2.js')}}" type="text/javascript"></script>
-<script src="{{asset('user/js/bootstrap.js')}}" type="text/javascript"></script>
-<script src="{{asset('user/js/login-register.js')}}" type="text/javascript"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="{{asset('Admin/assets/js/addTest.js')}}" type="text/javascript"></script>
+
+

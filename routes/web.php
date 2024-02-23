@@ -44,7 +44,8 @@ Route::group(['prefix' => 'Admin', 'middleware' => ['web','isAdmin']],function()
     Route::get('/ManageCourses', [AdminController::class, 'ManageCourses']);
     Route::get('/ManageMoments', [AdminController::class, 'ManageMoments']);
     Route::get('/ManageGroups', [AdminController::class, 'ManageGroups']);
-
+    Route::get('/ManageTests', [AdminController::class, 'ManageTests']);
+    Route::get('/ManageTestQuestion', [AdminController::class, 'ManageTestQuestion']);
 
 });
 

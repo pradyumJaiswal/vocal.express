@@ -46,6 +46,13 @@ class AdminController extends Controller
     {
         return view('Admin.AdminPages.groupManage');
     }
-    
-   
+
+    public function ManageTests()
+    {
+        return view('Admin.AdminPages.proficiencyTest');
+    }
+    public function ManageTestQuestion()
+    {
+        return view('Admin.AdminPages.testQuestions');
+    }
 }
