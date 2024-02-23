@@ -11,4 +11,5 @@
 <script src="{{asset('user/js/date-time.js')}}"></script>
 {{-- <script src="{{asset('user/js/date-time.js')}}"></script> --}}
 @stack("customJs")
-
+@stack("linguaJs")
+<script src="{{asset('user/js/get-start-test.js')}}"></script>

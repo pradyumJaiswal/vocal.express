@@ -122,6 +122,10 @@ class UserController extends Controller
     {
         return view('User.message');
     }
+    public function proficiencyTest()
+    {
+        return view('User.proficiency');
+    }
 
 
 

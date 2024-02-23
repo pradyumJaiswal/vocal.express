@@ -74,6 +74,8 @@ Route::group(['prefix' => 'User', 'middleware' => ['web','isUser']],function(){
     Route::get('/privacy-n-policy', [UserController::class,'privacypolicy'])->name('privacy-n-policy');
     Route::get('/blog', [UserController::class,'blog'])->name('blog');
     Route::get('/message', [UserController::class,'message'])->name('message');
+    Route::get('/Evaluation', [UserController::class,'proficiencyTest'])->name('proficiency.test');
+
 
 //--------------------------------**** Action Routes****--------------------------------------//
     //profile
