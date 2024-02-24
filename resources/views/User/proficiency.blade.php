@@ -4,27 +4,26 @@
 
 @section('Content')
 
+<section>
+    <div class="gap overlap nogap mate-black low-opacity">
+        <div class="bg-image" style="background-image: url(http://127.0.0.1:8000/storage/covers/index_background.jpg)"></div>
+        <div class="feature-meta">
+            <h1>Hello <span>{{ ucfirst(Auth()->user()->name) }}</span> Complete Your Test</h1>
+            <h3>your Proficiency Level , And then improve your communication.<span></span></h3>
+        </div>
+    </div>
+</section>
 
 <section>
     <div class="gap">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="mainHeading1">Hello ,{{ ucfirst(Auth()->user()->name) }}, Complete Your Test</h1>
-                    <h4 class="mainHeading1"><small> your Proficiency Level , And then improve your communication.</small></h4>
-                    {{-- <h4>{{ $user->name }}<span>{{ $user->user_name }}</span></h4> --}}
                     <div id="page-contents" class="row merged20">
-
                         <div class="col-lg-12">
-                            {{-- <div class="search-question">
-                                 <form method="post">
-                                    <input type="text" placeholder="Search Questoin?">
-                                    <button type="submit"><i class="icofont-search-1"></i></button>
-                                </form>
-                            </div> --}}
-@php
-    $count =1;
-@endphp
+                        @php
+                            $count =1;
+                        @endphp
                             @foreach ($TestQuestions as $test)
                             <div class="main-wraper">
 
@@ -119,105 +118,7 @@
                             @endforeach
                             @endforeach
 
-
-
-                            <div class="main-wraper">
-                                <div class="friend-info">
-                                    <h2 class="question-title"><a href="#" title="">Is there a simple guide for Sass Mixins?</a></h2>
-                                    <div class="more">
-                                        <div class="more-post-optns">
-                                            <i class="">
-<svg class="feather feather-more-horizontal" stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="currentColor" fill="none" viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg"><circle r="1" cy="12" cx="12"/><circle r="1" cy="12" cx="19"/><circle r="1" cy="12" cx="5"/></svg></i>
-                                            <ul>
-                                                <li>
-                                                    <i class="icofont-pen-alt-1"></i>Edit Post
-                                                    <span>Edit This Post within a Hour</span>
-                                                </li>
-                                                <li>
-                                                    <i class="icofont-ban"></i>Hide Post
-                                                    <span>Hide This Post</span>
-                                                </li>
-                                                <li>
-                                                    <i class="icofont-ui-delete"></i>Delete Post
-                                                    <span>If inappropriate Post By Mistake</span>
-                                                </li>
-                                                <li>
-                                                    <i class="icofont-flag"></i>Report
-                                                    <span>Inappropriate content</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <figure>
-                                        <img src="images/resources/user3.jpg" alt="">
-                                    </figure>
-                                    <div class="friend-name">
-
-                                        <ins><a href="time-line.html" title="">Fawad Khan</a> added a chapter</ins>
-                                        <span><i class="icofont-globe"></i> published: Sep,15 2020</span>
-                                    </div>
-                                    <div class="question-meta">
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eum nihili facit; Quacumque enim ingredimur, in aliqua historia vestigium ponimus.
-                                        </p>
-                                        <ul class="tags">
-                                            <li><a data-ripple="" title="" href="#">Thesis</a></li>
-                                            <li><a data-ripple="" title="" href="#">exprement</a></li>
-                                            <li><a data-ripple="" title="" href="#">research</a></li>
-                                        </ul>
-                                        <a href="#" title="" class="main-btn">view Answers</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="main-wraper">
-                                <div class="friend-info">
-                                    <h2 class="question-title"><a href="#" title="">Is React compatible with jQuery?</a></h2>
-                                    <div class="more">
-                                        <div class="more-post-optns">
-                                            <i class="">
-<svg class="feather feather-more-horizontal" stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="currentColor" fill="none" viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg"><circle r="1" cy="12" cx="12"/><circle r="1" cy="12" cx="19"/><circle r="1" cy="12" cx="5"/></svg></i>
-                                            <ul>
-                                                <li>
-                                                    <i class="icofont-pen-alt-1"></i>Edit Post
-                                                    <span>Edit This Post within a Hour</span>
-                                                </li>
-                                                <li>
-                                                    <i class="icofont-ban"></i>Hide Post
-                                                    <span>Hide This Post</span>
-                                                </li>
-                                                <li>
-                                                    <i class="icofont-ui-delete"></i>Delete Post
-                                                    <span>If inappropriate Post By Mistake</span>
-                                                </li>
-                                                <li>
-                                                    <i class="icofont-flag"></i>Report
-                                                    <span>Inappropriate content</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <figure>
-                                        <img src="images/resources/user4.jpg" alt="">
-                                    </figure>
-                                    <div class="friend-name">
-
-                                        <ins><a href="time-line.html" title="">Danial Cardos</a> added a chapter</ins>
-                                        <span><i class="icofont-globe"></i> published: Sep,15 2020</span>
-                                    </div>
-                                    <div class="question-meta">
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eum nihili facit; Quacumque enim ingredimur, in aliqua historia vestigium ponimus.
-                                        </p>
-                                        <ul class="tags">
-                                            <li><a data-ripple="" title="" href="#">Thesis</a></li>
-                                            <li><a data-ripple="" title="" href="#">exprement</a></li>
-                                            <li><a data-ripple="" title="" href="#">research</a></li>
-                                        </ul>
-                                        <a href="#" title="" class="main-btn">view Answers</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="load">
+                            {{-- <div class="load">
                                 <ul class="pagination">
                                     <li><a href="#" title=""><i class="icofont-arrow-left"></i></a></li>
                                     <li><a class="active" href="#" title="">1</a></li>
@@ -229,7 +130,7 @@
                                     <li><a href="#" title="">10</a></li>
                                     <li><a href="#" title=""><i class="icofont-arrow-right"></i></a></li>
                                 </ul>
-                            </div>
+                            </div> --}}
                         </div>
 
                     </div>

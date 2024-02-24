@@ -1,216 +1,18 @@
 
-<div class="gap no-gap">
-    <div class="top-area mate-black low-opacity">
-
-    <!-- <img src="{{asset('storage/covers/cover.jpeg')}}" alt="User Image" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"> -->
-
-    <div class="bg-image" style="background-image: url(http://127.0.0.1:8000/storage/covers/index_background.jpg)"></div>
 
 
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="post-subject">
-                        <div class="university-tag">
-                                <div class="getStart">
-                                    <h4 class="mainHeading">lets Start your evaluation</h4>
-
-                                    <div class="loadmore">
-                                        <a href="{{ url('User/Evaluation') }}" title="" data-ripple="">Get Start</a>
-                                    <!-- loadmore buttons -->
-                                    </div>
-
-                            </div>
-                            <!-- <a data-ripple="" title="" href="#" class="invite">Invite Colleagues</a> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
+<section>
+    <div class="gap overlap nogap mate-black low-opacity">
+        <div class="bg-image" style="background-image: url(http://127.0.0.1:8000/storage/covers/index_background.jpg)"></div>
+        <div class="feature-meta">
+            <h1>Discover Your <span>Scientific</span> Knowledge</h1>
+            <h3>and stay connected with <span></span></h3>
+            <a href="{{ url('User/Evaluation') }}" title="" class="main-btn" data-ripple="">Join Free</a>
         </div>
     </div>
-</div><!-- top Head -->
-
-{{-- <div class="language">
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="language_slider_container">
-
-                    <!-- Language Slider -->
-
-                    <div class="owl-carousel owl-theme language_slider owl-loaded owl-drag">
-
-                        <!-- Flag -->
+</section>
 
 
-                        <!-- Flag -->
-
-
-                        <!-- Flag -->
-
-
-                        <!-- Flag -->
-
-
-                        <!-- Flag -->
-
-
-                        <!-- Flag -->
-
-
-                        <!-- Flag -->
-
-
-                        <!-- Flag -->
-
-
-                        <!-- Flag -->
-
-
-                    <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-1266px, 0px, 0px); transition: all 1.2s ease 0s; width: 3108px;"><div class="owl-item cloned" style="width: 115.111px;"><div class="owl-item language_item">
-                            <a href="#">
-                                <div class="flag"><img src="{{asset('user/images/Ukrainian.svg') }}') }}" alt=""></div>
-                                <div class="lang_name">Ukrainian</div>
-                            </a>
-                        </div></div><div class="owl-item cloned" style="width: 115.111px;"><div class="owl-item language_item">
-                            <a href="#">
-                                <div class="flag"><img src="{{asset('user/images/Japanese.svg') }}" alt=""></div>
-                                <div class="lang_name">Japanese</div>
-                            </a>
-                        </div></div><div class="owl-item cloned" style="width: 115.111px;"><div class="owl-item language_item">
-                            <a href="#">
-                                <div class="flag"><img src="{{asset('user/images/Lithuanian.svg') }}" alt=""></div>
-                                <div class="lang_name">Lithuanian</div>
-                            </a>
-                        </div></div><div class="owl-item cloned" style="width: 115.111px;"><div class="owl-item language_item">
-                            <a href="#">
-                                <div class="flag"><img src="{{asset('user/images/Swedish.svg') }}" alt=""></div>
-                                <div class="lang_name">Swedish</div>
-                            </a>
-                        </div></div><div class="owl-item cloned" style="width: 115.111px;"><div class="owl-item language_item">
-                            <a href="#">
-                                <div class="flag"><img src="{{asset('user/images/English.svg') }}" alt=""></div>
-                                <div class="lang_name">English</div>
-                            </a>
-                        </div></div><div class="owl-item cloned" style="width: 115.111px;"><div class="owl-item language_item">
-                            <a href="#">
-                                <div class="flag"><img src="{{asset('user/images/Italian.svg') }}" alt=""></div>
-                                <div class="lang_name">Italian</div>
-                            </a>
-                        </div></div><div class="owl-item cloned" style="width: 115.111px;"><div class="owl-item language_item">
-                            <a href="#">
-                                <div class="flag"><img src="{{asset('user/images/Chinese.svg') }}" alt=""></div>
-                                <div class="lang_name">Chinese</div>
-                            </a>
-                        </div></div><div class="owl-item cloned" style="width: 115.111px;"><div class="owl-item language_item">
-                            <a href="#">
-                                <div class="flag"><img src="{{asset('user/images/French.svg') }}" alt=""></div>
-                                <div class="lang_name">French</div>
-                            </a>
-                        </div></div><div class="owl-item cloned" style="width: 115.111px;"><div class="owl-item language_item">
-                            <a href="#">
-                                <div class="flag"><img src="{{asset('user/images/German.svg') }}" alt=""></div>
-                                <div class="lang_name">German</div>
-                            </a>
-                        </div></div><div class="owl-item" style="width: 115.111px;"><div class="owl-item language_item">
-                            <a href="#">
-                                <div class="flag"><img src="{{asset('user/images/Ukrainian.svg') }}" alt=""></div>
-                                <div class="lang_name">Ukrainian</div>
-                            </a>
-                        </div></div><div class="owl-item" style="width: 115.111px;"><div class="owl-item language_item">
-                            <a href="#">
-                                <div class="flag"><img src="{{asset('user/images/Japanese.svg') }}" alt=""></div>
-                                <div class="lang_name">Japanese</div>
-                            </a>
-                        </div></div><div class="owl-item active" style="width: 115.111px;"><div class="owl-item language_item">
-                            <a href="#">
-                                <div class="flag"><img src="{{asset('user/images/Lithuanian.svg') }}" alt=""></div>
-                                <div class="lang_name">Lithuanian</div>
-                            </a>
-                        </div></div><div class="owl-item active" style="width: 115.111px;"><div class="owl-item language_item">
-                            <a href="#">
-                                <div class="flag"><img src="{{asset('user/images/Swedish.svg') }}" alt=""></div>
-                                <div class="lang_name">Swedish</div>
-                            </a>
-                        </div></div><div class="owl-item active" style="width: 115.111px;"><div class="owl-item language_item">
-                            <a href="#">
-                                <div class="flag"><img src="{{asset('user/images/English.svg') }}" alt=""></div>
-                                <div class="lang_name">English</div>
-                            </a>
-                        </div></div><div class="owl-item active" style="width: 115.111px;"><div class="owl-item language_item">
-                            <a href="#">
-                                <div class="flag"><img src="{{asset('user/images/Italian.svg') }}" alt=""></div>
-                                <div class="lang_name">Italian</div>
-                            </a>
-                        </div></div><div class="owl-item active" style="width: 115.111px;"><div class="owl-item language_item">
-                            <a href="#">
-                                <div class="flag"><img src="{{asset('user/images/Chinese.svg') }}" alt=""></div>
-                                <div class="lang_name">Chinese</div>
-                            </a>
-                        </div></div><div class="owl-item active" style="width: 115.111px;"><div class="owl-item language_item">
-                            <a href="#">
-                                <div class="flag"><img src="{{asset('user/images/French.svg') }}" alt=""></div>
-                                <div class="lang_name">French</div>
-                            </a>
-                        </div></div><div class="owl-item active" style="width: 115.111px;"><div class="owl-item language_item">
-                            <a href="#">
-                                <div class="flag"><img src="{{asset('user/images/German.svg') }}" alt=""></div>
-                                <div class="lang_name">German</div>
-                            </a>
-                        </div></div><div class="owl-item cloned active" style="width: 115.111px;"><div class="owl-item language_item">
-                            <a href="#">
-                                <div class="flag"><img src="{{asset('user/images/Ukrainian.svg') }}" alt=""></div>
-                                <div class="lang_name">Ukrainian</div>
-                            </a>
-                        </div></div><div class="owl-item cloned active" style="width: 115.111px;"><div class="owl-item language_item">
-                            <a href="#">
-                                <div class="flag"><img src="{{asset('user/images/Japanese.svg') }}" alt=""></div>
-                                <div class="lang_name">Japanese</div>
-                            </a>
-                        </div></div><div class="owl-item cloned" style="width: 115.111px;"><div class="owl-item language_item">
-                            <a href="#">
-                                <div class="flag"><img src="{{asset('user/images/Lithuanian.svg') }}" alt=""></div>
-                                <div class="lang_name">Lithuanian</div>
-                            </a>
-                        </div></div><div class="owl-item cloned" style="width: 115.111px;"><div class="owl-item language_item">
-                            <a href="#">
-                                <div class="flag"><img src="{{asset('user/images/Swedish.svg') }}" alt=""></div>
-                                <div class="lang_name">Swedish</div>
-                            </a>
-                        </div></div><div class="owl-item cloned" style="width: 115.111px;"><div class="owl-item language_item">
-                            <a href="#">
-                                <div class="flag"><img src="{{asset('user/images/English.svg') }}" alt=""></div>
-                                <div class="lang_name">English</div>
-                            </a>
-                        </div></div><div class="owl-item cloned" style="width: 115.111px;"><div class="owl-item language_item">
-                            <a href="#">
-                                <div class="flag"><img src="{{asset('user/images/Italian.svg') }}" alt=""></div>
-                                <div class="lang_name">Italian</div>
-                            </a>
-                        </div></div><div class="owl-item cloned" style="width: 115.111px;"><div class="owl-item language_item">
-                            <a href="#">
-                                <div class="flag"><img src="{{asset('user/images/Chinese.svg') }}" alt=""></div>
-                                <div class="lang_name">Chinese</div>
-                            </a>
-                        </div></div><div class="owl-item cloned" style="width: 115.111px;"><div class="owl-item language_item">
-                            <a href="#">
-                                <div class="flag"><img src="{{asset('user/images/French.svg') }}" alt=""></div>
-                                <div class="lang_name">French</div>
-                            </a>
-                        </div></div><div class="owl-item cloned" style="width: 115.111px;"><div class="owl-item language_item">
-                            <a href="#">
-                                <div class="flag"><img src="{{asset('user/images/German.svg') }}" alt=""></div>
-                                <div class="lang_name">German</div>
-                            </a>
-                        </div></div></div></div><div class="owl-nav disabled"><div class="owl-prev">prev</div><div class="owl-next">next</div></div><div class="owl-dots disabled"></div></div>
-
-                    <div class="lang_nav lang_prev"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
-                    <div class="lang_nav lang_next"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> --}}
 
 
 <section>
@@ -522,6 +324,31 @@
 
 
 	@include('user.layout.askquestion')
+
+    <div class="auto-popup">
+		<div class="popup-innner">
+			<div class="popup-head">
+				<h4>We want to hear from you!</h4>
+			</div>
+			<div class="popup-meta">
+				<span>What are you struggling with right now? what we can help you with?</span>
+				<form method="post" class="inquiry-about">
+					<input type="text" placeholder="Your Answer">
+					<h5>How did you hear about us?</h5>
+					<label><input type="radio" name="hear"> Facebook</label>
+					<label><input type="radio" name="hear"> instagram</label>
+					<label><input type="radio" name="hear"> Google Search</label>
+					<label><input type="radio" name="hear"> Twitter</label>
+					<label><input type="radio" name="hear"> Whatsapp</label>
+					<label><input type="radio" name="hear"> Other</label>
+					<input type="text" placeholder="Writh Other">
+					<button type="submit" class="primary button">Submit</button>
+					<button class="canceled button outline-primary" type="button">Cancel</button>
+				</form>
+			</div>
+		</div>
+	</div> <!-- auto popup -->
+
 	@include('user.UserAction.createpost')
 
 

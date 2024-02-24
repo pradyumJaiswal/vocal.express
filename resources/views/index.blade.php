@@ -1,6 +1,5 @@
 @extends('User.layout.masterLayout')
 
-@section('title', 'Welcome Home Page')
 
 @if(!empty(auth()->user()) && auth()->user()->role=='Teacher')
 	@section('Content')
@@ -10,11 +9,10 @@
 	@section('Content')
 		@include('User.welcome')
 	@endsection
-@else 
+@else
 	@section('Content')
 		@include('home')
 	@endsection
 @endif
 
-	
-	
+
