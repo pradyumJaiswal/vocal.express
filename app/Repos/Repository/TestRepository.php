@@ -21,7 +21,7 @@ class TestRepository implements TestInterface {
 
     public function testQuestions()
     {
-      return Test::with('questions')->latest()->paginate(10);;
+      return Test::with('questions')->latest()->paginate(10);
     }
 
 

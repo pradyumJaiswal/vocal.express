@@ -4,10 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\post;
+use App\Models\Test;
+use App\Repos\Repository\TestRepository;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Resources\PostResource;
 class UserController extends Controller
 {
+
+    private $tests;
+    public function __construct(TestRepository $tests){
+        $this->tests =$tests;
+    }
+
+
     public function dashboard()
     {
         $UserDetails = post::withCount('reactions')
@@ -124,9 +133,8 @@ class UserController extends Controller
     }
     public function proficiencyTest()
     {
-        return view('User.proficiency');
+        $TestQuestions = $this->tests->testQuestions();
+
+        return view('User.proficiency',compact('TestQuestions'));
     }
-
-
-
 }

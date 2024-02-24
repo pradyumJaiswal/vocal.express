@@ -10,23 +10,38 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="mainHeading1">Hey, Start Your test</h1>
+                    <h1 class="mainHeading1">Hello ,{{ ucfirst(Auth()->user()->name) }}, Complete Your Test</h1>
+                    <h4 class="mainHeading1"><small> your Proficiency Level , And then improve your communication.</small></h4>
+                    {{-- <h4>{{ $user->name }}<span>{{ $user->user_name }}</span></h4> --}}
                     <div id="page-contents" class="row merged20">
 
-                        <div class="col-lg-9">
+                        <div class="col-lg-12">
                             {{-- <div class="search-question">
                                  <form method="post">
                                     <input type="text" placeholder="Search Questoin?">
                                     <button type="submit"><i class="icofont-search-1"></i></button>
                                 </form>
                             </div> --}}
+@php
+    $count =1;
+@endphp
+                            @foreach ($TestQuestions as $test)
                             <div class="main-wraper">
+
+                            <h1 class="mainHeading1"><a href="#" title="">{{ $test->TestType }} Test</a></h1>
+
+                           <h2 class="question-title"><a href="#" title="">Instruction - </a> <small>{{ $test->Description }} </small></h2>
+                        </div>
+
+                            @foreach ($test->questions  as $question)
+                            <div class="main-wraper">
+
                                 <div class="friend-info">
-                                    <h2 class="question-title"><a href="#" title="">What's a mutation observer?</a></h2>
+                                    <h2 class="question-title"><a href="#" title="">{{  $count }} :  {{ $question->QuestionText }}</a></h2>
                                     <div class="more">
                                         <div class="more-post-optns">
                                             <i class="">
-<svg class="feather feather-more-horizontal" stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="currentColor" fill="none" viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg"><circle r="1" cy="12" cx="12"/><circle r="1" cy="12" cx="19"/><circle r="1" cy="12" cx="5"/></svg></i>
+                                               <svg class="feather feather-more-horizontal" stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="currentColor" fill="none" viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg"><circle r="1" cy="12" cx="12"/><circle r="1" cy="12" cx="19"/><circle r="1" cy="12" cx="5"/></svg></i>
                                             <ul>
                                                 <li>
                                                     <i class="icofont-pen-alt-1"></i>Edit Post
@@ -47,18 +62,20 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    <figure>
-                                        <img src="images/resources/user2.jpg" alt="">
-                                    </figure>
-                                    <div class="friend-name">
-
-                                        <ins><a href="time-line.html" title="">Maria k.</a> added a chapter</ins>
-                                        <span><i class="icofont-globe"></i> published: Sep,15 2020</span>
+                                <div class="row">
+                                    <div class="col-lg-8">
+                                        <textarea class="col-lg-12" placeholder="Write Answer"></textarea>
                                     </div>
+
+                                    <div>
+                                        <a href="#" title=""><i class="">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mic"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg></i>Record Your Answer</a>
+                                    </div>
+                                </div>
                                     <div class="question-meta">
-                                        <p>
+                                        {{-- <p>
                                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eum nihili facit; Quacumque enim ingredimur, in aliqua historia vestigium ponimus.
-                                        </p>
+                                        </p> --}}
                                         <ul class="tags">
                                             <li><a data-ripple="" title="" href="#">Thesis</a></li>
                                             <li><a data-ripple="" title="" href="#">exprement</a></li>
@@ -68,6 +85,15 @@
                                     </div>
                                 </div>
                             </div>
+
+                            @php
+                                $count++;
+                            @endphp
+                            @endforeach
+                            @endforeach
+
+
+
                             <div class="main-wraper">
                                 <div class="friend-info">
                                     <h2 class="question-title"><a href="#" title="">Is there a simple guide for Sass Mixins?</a></h2>
@@ -178,73 +204,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-lg-3">
-                            <aside class="sidebar static right mt-5">
-                                <div class="widget">
-                                    <h4 class="widget-title">Ask Research Question?</h4>
-                                    <div class="ask-question">
-                                        <i class="icofont-question-circle"></i>
-                                        <h6>Ask questions in Q&A to get help from experts in your field.</h6>
-                                        <a class="ask-qst" href="#" title="">Ask a question</a>
-                                    </div>
-                                </div>
-                                <div class="widget stick-widget">
-                                    <h4 class="widget-title">Who's follownig</h4>
-                                    <ul class="followers" >
-                                        <li>
-                                            <figure><img alt="" src="images/resources/friend-avatar.jpg"></figure>
-                                            <div class="friend-meta">
-                                                <h4>
-                                                    <a title="" href="time-line.html">Kelly Bill</a>
-                                                    <span>Dept colleague</span>
-                                                </h4>
-                                                <a class="underline" title="" href="#">Follow</a>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <figure><img alt="" src="images/resources/friend-avatar2.jpg"></figure>
-                                            <div class="friend-meta">
-                                                <h4>
-                                                    <a title="" href="time-line.html">Issabel</a>
-                                                    <span>Dept colleague</span>
-                                                </h4>
-                                                <a class="underline" title="" href="#">Follow</a>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <figure><img alt="" src="images/resources/friend-avatar3.jpg"></figure>
-                                            <div class="friend-meta">
-                                                <h4>
-                                                    <a title="" href="time-line.html">Andrew</a>
-                                                    <span>Dept colleague</span>
-                                                </h4>
-                                                <a class="underline" title="" href="#">Follow</a>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <figure><img alt="" src="images/resources/friend-avatar4.jpg"></figure>
-                                            <div class="friend-meta">
-                                                <h4>
-                                                    <a title="" href="time-line.html">Sophia</a>
-                                                    <span>Dept colleague</span>
-                                                </h4>
-                                                <a class="underline" title="" href="#">Follow</a>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <figure><img alt="" src="images/resources/friend-avatar5.jpg"></figure>
-                                            <div class="friend-meta">
-                                                <h4>
-                                                    <a title="" href="time-line.html">Allen</a>
-                                                    <span>Dept colleague</span>
-                                                </h4>
-                                                <a class="underline" title="" href="#">Follow</a>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </aside>
-                        </div>
+
                     </div>
                 </div>
             </div>
