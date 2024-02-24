@@ -9,6 +9,7 @@ use App\http\Controllers\AuthController;
 use App\http\Controllers\ProfileController;
 use App\http\Controllers\PostController;
 use App\http\Controllers\UserFollowingController;
+use App\http\Controllers\TestController;
 
 
 
@@ -45,7 +46,13 @@ Route::group(['prefix' => 'Admin', 'middleware' => ['web','isAdmin']],function()
     Route::get('/ManageMoments', [AdminController::class, 'ManageMoments']);
     Route::get('/ManageGroups', [AdminController::class, 'ManageGroups']);
     Route::get('/ManageTests', [AdminController::class, 'ManageTests']);
-    Route::get('/ManageTestQuestion', [AdminController::class, 'ManageTestQuestion']);
+    Route::get('/ManageTestQuestion/{test}', [AdminController::class, 'ManageTestQuestion']);
+
+         //-------------- Admin Action Routes --------------------//
+    Route::post('/test',[TestController::class, 'storeTest'])->name('test.create');
+    Route::post('/question',[TestController::class, 'storeQuestion'])->name('question.create');
+
+
 
 });
 

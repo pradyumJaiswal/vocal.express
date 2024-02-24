@@ -292,7 +292,7 @@
                                                             </div>
                                                         </div><!-- create new post -->
 
-                                                        @push('customCss')
+@push('customCss')
     <link rel="stylesheet" href="{{asset('user/customCss/carasolePost.css')}}">
 @endpush
 @foreach ($postDetails as $post)

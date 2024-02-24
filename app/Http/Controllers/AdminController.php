@@ -4,13 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Repos\AdminRepo;
+use App\Repos\Repository\TestRepository;
+use App\Models\Test;
+
 class AdminController extends Controller
 {
     private $repo;
 
-    public function __construct(AdminRepo $repo){
+    public function __construct(AdminRepo $repo,TestRepository $tests){
 
         $this->repo = $repo;
+        $this->tests =$tests;
     }
     public function dashboard()
     {
@@ -49,10 +53,14 @@ class AdminController extends Controller
 
     public function ManageTests()
     {
-        return view('Admin.AdminPages.proficiencyTest');
+        $TestDetails = $this->tests->tests();
+        return view('Admin.AdminPages.proficiencyTest')->with('TestDetails',$TestDetails);
     }
-    public function ManageTestQuestion()
+    public function ManageTestQuestion(Test $test)
     {
-        return view('Admin.AdminPages.testQuestions');
+        $TestDetails = $this->tests->insideTest($test->id);
+        $TestQuestions = $this->tests->testQuestions();
+        // dd($TestQuestions);
+        return view('Admin.AdminPages.testQuestions',compact('TestDetails','TestQuestions'));
     }
 }

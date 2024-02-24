@@ -6,8 +6,94 @@
           <div class="card mb-4">
             <div class="card-header pb-0">
                 <div class="d-flex justify-content-between">
-                    <H6 class=" mb-0 d-none d-lg-block">Proficiency Test Details</h6>
-                    <a href="javascript:;" class="btn btn-sm btn-dark float-right mb-0 d-none d-lg-block">Add New Question</a>
+                    <H6 class=" mb-0 d-none d-lg-block"> {{ $TestDetails->TestType }} Test Details</h6>
+                    <a href="javascript:;" class="btn btn-sm btn-dark float-right mb-0 d-none d-lg-block" onclick="showModal()">Add New Question</a>
+
+
+   <!-- Modal -->
+   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="myModalLabel">Add Question for --------- Test</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+        <!-- Modal Body Content Goes Here -->
+        <form action="{{route('question.create')}}" method="post">
+            @csrf
+        <div class="card col-md-12">
+
+            <div class="card-body">
+
+                <p class="text-uppercase text-sm">Test Type - {{ $TestDetails->TestType }}</p>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+
+                            <label for="example-text-input" class="form-control-label">{{ $TestDetails->Description }}</label>
+                            <input class="form-control" type="text" name="test_id"
+                               placeholder="" value="{{ $TestDetails->id }}" hidden>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="horizontal dark">
+
+                <p class="text-uppercase text-sm">Question</p>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="example-text-input" class="form-control-label">Prepare Question</label>
+                            <input class="form-control" type="text" name="Question"
+                               placeholder="">
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="horizontal dark">
+                <p class="text-uppercase text-sm">Answere</p>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="example-text-input" class="form-control-label">Correct Answere</label>
+                            <input class="form-control" type="text" name="Answer"
+                                placeholder="">
+                        </div>
+                    </div>
+                </div>
+                <hr class="horizontal dark">
+                <p class="text-uppercase text-sm">Level</p>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="example-text-input" class="form-control-label">Level of Question</label>
+                            <input class="form-control" type="text" name="level"
+                                placeholder="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+        <div class="row">
+
+        <div class="d-flex align-items-left col-md-7">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancle</button>
+        </div>
+        <div class="d-flex align-items-right col-md-5">
+            <button type="submit" class="btn btn-primary btn-sm ms-auto">Add</button>
+        </div>
+    </div>
+
+</form>
+    </div>
+    </div>
+</div>
+
+
                   </div>
 
             </div>
@@ -27,36 +113,38 @@
                     </tr>
                   </thead>
                   <tbody>
-                  {{-- @foreach ($UserDetails as $user) --}}
-                    <tr>
+                  @foreach ($TestQuestions as $test)
+                  @foreach ($test->questions  as $question)
 
+                  @if($test->TestType == $TestDetails->TestType)
+                    <tr>
                           <td>
                             <div class="d-flex px-2 py-1">
                               {{-- <div>
                                 <img src="../Admin/assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1">
                               </div> --}}
                               <div class="d-flex flex-column justify-content-center">
-                                <h6 class="mb-0 text-sm">Reading test</h6>
+                                <h6 class="mb-0 text-sm">{{ $test->TestType }}</h6>
                                 {{-- <p class="text-xs text-secondary mb-0">{{ $user->user_name }}</p>--}}
                               </div>
                             </div>
                           </td>
 
                           <td>
-                            <a href="/Admin/ManageTestQuestion" class="btn btn-link text-secondary mb-0">
-                                View Question
+                            <a href="#" class="btn btn-link text-secondary mb-0">
+                                {{ $question->QuestionText }}
                              </a>
                           </td>
                           <td>
                          {{-- <p class="text-xs font-weight-bold mb-0">view Questions</p> --}}
-                         <a href="/Admin/ManageTestQuestion" class="btn btn-link text-secondary mb-0">
-                            View Answer
+                         <a href="#" class="btn btn-link text-secondary mb-0">
+                            {{ $question->CorrectAnswer}}
                          </a>
                             {{-- <p class="text-xs font-weight-bold mb-0">{{ $user->role }}</p> --}}
 
                           </td>
                           <td class="align-middle text-center text-sm">
-                         <p class="text-xs font-weight-bold mb-0">10</p>
+                         <p class="text-xs font-weight-bold mb-0">{{ $question->Level }}</p>
 
                             {{-- <span class="badge badge-sm bg-gradient-success">Online</span> --}}
                           </td>
@@ -73,7 +161,9 @@
                             {{-- <span class="text-secondary text-xs font-weight-bold">Edit</span> --}}
                           </td>
                     </tr>
-                    {{-- @endforeach --}}
+                    @endif
+                    @endforeach
+                    @endforeach
                   </tbody>
                 </table>
               </div>

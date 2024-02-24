@@ -22,7 +22,7 @@
                             </div>
                             <div class="modal-body">
                             <!-- Modal Body Content Goes Here -->
-                            <form action="" method="post">
+                            <form action="{{route('test.create')}}" method="post">
                                 @csrf
                             <div class="card">
                                 <div class="card-body">
@@ -31,7 +31,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="example-text-input" class="form-control-label">Type</label>
-                                                <input class="form-control" type="text" name="type"
+                                                <input class="form-control" type="text" name="Test"
                                                    placeholder="">
                                             </div>
                                         </div>
@@ -42,7 +42,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="example-text-input" class="form-control-label">About Test</label>
-                                                <input class="form-control" type="text" name="description"
+                                                <input class="form-control" type="text" name="Description"
                                                     placeholder="">
                                             </div>
                                         </div>
@@ -53,7 +53,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="example-text-input" class="form-control-label">Maximum Mark</label>
-                                                <input class="form-control" type="text" name="marks"
+                                                <input class="form-control" type="text" name="TotalMarks"
                                                     placeholder="">
                                             </div>
                                         </div>
@@ -67,7 +67,7 @@
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancle</button>
                             </div>
                             <div class="d-flex align-items-right col-md-5">
-                                <button type="button" class="btn btn-primary btn-sm ms-auto">Add</button>
+                                <button type="submit" class="btn btn-primary btn-sm ms-auto">Add</button>
                             </div>
                         </div>
 
@@ -97,7 +97,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                  {{-- @foreach ($UserDetails as $user) --}}
+                  @foreach ($TestDetails as $test)
                     <tr>
 
                           <td>
@@ -106,26 +106,25 @@
                                 <img src="../Admin/assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1">
                               </div> --}}
                               <div class="d-flex flex-column justify-content-center">
-                                <h6 class="mb-0 text-sm">Reading test</h6>
-                                {{-- <p class="text-xs text-secondary mb-0">{{ $user->user_name }}</p>--}}
+                                <h6 class="mb-0 text-sm">{{ $test->TestType }}</h6>
+                                <p class="text-xs text-secondary mb-0">{{ $test->TestType }}</p>
                               </div>
                             </div>
                           </td>
 
                           <td>
-                         <p class="text-xs font-weight-bold mb-0 fixed-width-for-td">users reading test h</p>
-
+                         <p class="text-xs font-weight-bold mb-0 fixed-width-for-td">{{ $test->Description }}</p>
                           </td>
                           <td>
                          {{-- <p class="text-xs font-weight-bold mb-0">view Questions</p> --}}
-                         <a href="/Admin/ManageTestQuestion" class="btn btn-link text-secondary mb-0">
+                         <a href="/Admin/ManageTestQuestion/{{ $test->id }}" class="btn btn-link text-secondary mb-0">
                             View Questions
                          </a>
                             {{-- <p class="text-xs font-weight-bold mb-0">{{ $user->role }}</p> --}}
 
                           </td>
                           <td class="align-middle text-center text-sm">
-                         <p class="text-xs font-weight-bold mb-0">10</p>
+                         <p class="text-xs font-weight-bold mb-0">{{ $test->TotalMarks }}</p>
 
                             {{-- <span class="badge badge-sm bg-gradient-success">Online</span> --}}
                           </td>
@@ -146,7 +145,7 @@
                             {{-- <span class="text-secondary text-xs font-weight-bold">Edit</span> --}}
                           </td>
                     </tr>
-                    {{-- @endforeach --}}
+                    @endforeach
                   </tbody>
                 </table>
               </div>

@@ -27,11 +27,16 @@
                   <tbody>
                   @foreach ($UserDetails as $user)
                     <tr>
-                    
+
                           <td>
                             <div class="d-flex px-2 py-1">
                               <div>
-                                <img src="../Admin/assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1">
+                                @if(empty($user->avatar_path))
+										<img class="avatar avatar-sm me-3" src="{{asset('storage/avatars/defaultAvatar.jpg')}}" alt="User Image" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+									@else
+										<img class="avatar avatar-sm me-3" src="{{ asset('storage/'.$user->avatar_path)}}" alt="">
+									@endif
+                                {{-- <img src="../Admin/assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1"> --}}
                               </div>
                               <div class="d-flex flex-column justify-content-center">
                                 <h6 class="mb-0 text-sm">{{ $user->name }}</h6>
@@ -39,14 +44,14 @@
                               </div>
                             </div>
                           </td>
-                         
+
                           <td>
                             <p class="text-xs font-weight-bold mb-0">{{ $user->email }}</p>
-                            
+
                           </td>
                           <td>
                             <p class="text-xs font-weight-bold mb-0">{{ $user->role }}</p>
-                            
+
                           </td>
                           <td class="align-middle text-center text-sm">
                             <span class="badge badge-sm bg-gradient-success">Online</span>
@@ -64,7 +69,7 @@
                             <span class="text-secondary text-xs font-weight-bold">Edit</span>
                           </td>
                     </tr>
-                    @endforeach  
+                    @endforeach
                   </tbody>
                 </table>
               </div>
