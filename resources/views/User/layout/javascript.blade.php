@@ -9,6 +9,7 @@
 <script src="{{asset('user/js/jquery.wizard-init.js')}}"></script>
 <script src="{{asset('user/js/webcam.min.js')}}"></script>
 <script src="{{asset('user/js/date-time.js')}}"></script>
+<script src="{{asset('user/js/Voice.js')}}"></script>
 {{-- <script src="{{asset('user/js/date-time.js')}}"></script> --}}
 @stack("customJs")
 @stack("linguaJs")

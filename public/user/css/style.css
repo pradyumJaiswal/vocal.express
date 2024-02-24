@@ -13744,3 +13744,23 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007db9e8', e
     padding-top: 50px;
     padding-bottom: 50px;
 } */
+
+.text-hide-only{
+    display: none;
+}
+
+.speaker-icon{
+    align-items: center;
+    position: relative;
+    margin-left: 400px;
+    padding-top: 10px;
+    padding-bottom: 30px;
+}
+
+.answer-mic{
+    padding-top: 12px;
+}
+
+.Answer-title{
+   padding-top: 20px;
+}
