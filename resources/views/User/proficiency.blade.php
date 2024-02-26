@@ -63,14 +63,14 @@
 
                                         Q {{  $count }} :
 
-                                    @if($test->TestType == 'Word Power')
+                                    {{-- @if($test->TestType == 'Word Power')
                                          {{ $question->QuestionText }}
                                     @endif
 
                                     @if($test->TestType == 'reading')
                                          {{ $question->QuestionText }}
-                                    @endif
-
+                                    @endif --}}
+                                    {{ $question->QuestionText }}
 
 
                                     </a></h2>
@@ -83,31 +83,45 @@
 
                                         </div>
                                         <div class="speaker-icon">
-                                            <i class="icofont-record main-btn listenQuestion" data-question-id="question{{ $loop->parent->index }}-{{ $loop->index }}">Listen Now</i>
+                                            <i class="icofont-record main-btn listenQuestion mic-btn" data-question-id="question{{ $loop->parent->index }}-{{ $loop->index }}">Listen Now</i>
 
                                         </div>
                                 </div>
                                 <h2 class="question-title"><a href="#" title="">Answer :</a></h2>
-                                <div class="row">
+                                {{-- <div class="row">
                                     <div class="col-lg-8">
-                                        <textarea class="col-lg-12" placeholder="Write Answer"></textarea>
+                                        <textarea class="col-lg-12 converted_text" placeholder="Write Answer"></textarea>
                                     </div>
 
                                     <div class="answer-mic">
-                                        <a href="#" title=""><i class="">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mic"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg></i>Record Your Answer</a>
+                                        <button type="button" class="main-btn mic-btn" id="convert_to_text" ><i class="" >
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mic"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg></i>Record Your Answer
+                                        </button>
+                                    </div>
+                                </div> --}}
+
+                                <div class="row">
+                                    <div class="col-lg-8">
+                                        <textarea class="col-lg-12 converted_text" id="answer{{ $loop->parent->index }}_{{ $loop->index }}" placeholder="Write Answer"></textarea>
+                                    </div>
+
+                                    <div class="answer-mic">
+                                        <button type="button" class="main-btn mic-btn convert_to_text" data-answer-id="answer{{ $loop->parent->index }}_{{ $loop->index }}">Record Your Answer</button>
                                     </div>
                                 </div>
                                     <div class="question-meta">
                                         {{-- <p>
                                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eum nihili facit; Quacumque enim ingredimur, in aliqua historia vestigium ponimus.
                                         </p> --}}
-                                        <ul class="tags">
+                                        {{-- <ul class="tags">
                                             <li><a data-ripple="" title="" href="#">Thesis</a></li>
                                             <li><a data-ripple="" title="" href="#">exprement</a></li>
                                             <li><a data-ripple="" title="" href="#">research</a></li>
-                                        </ul>
-                                        <a href="#" title="" class="main-btn">view Answers</a>
+                                        </ul> --}}
+                                        {{-- <a href="#" title="" class="main-btn">view Answers</a> --}}
+                                        <input type="submit" value="Submit Answers" class="main-btn">
+
+
                                     </div>
                                 </div>
                             </div>

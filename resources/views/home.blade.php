@@ -62,7 +62,7 @@
         <div class="feature-meta">
             <h1>Language <span>Exchange</span> Easily</h1>
             <h3>Become fluent , dream big. <span></span></h3>
-            <a href="#" title="" class="main-btn" data-ripple="">Let's Start</a>
+            <a href="/Userlogin" title="" class="main-btn" data-ripple="">Let's Start</a>
         </div>
     </div>
 </section>
@@ -353,7 +353,7 @@
 </section>
 
 <section>
-    <div class="gap no-top">
+    {{-- <div class="gap no-top">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -408,5 +408,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 </section>

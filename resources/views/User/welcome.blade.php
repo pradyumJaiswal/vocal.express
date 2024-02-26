@@ -5,9 +5,9 @@
     <div class="gap overlap nogap mate-black low-opacity">
         <div class="bg-image" style="background-image: url(http://127.0.0.1:8000/storage/covers/index_background.jpg)"></div>
         <div class="feature-meta">
-            <h1>Discover Your <span>Scientific</span> Knowledge</h1>
-            <h3>and stay connected with <span></span></h3>
-            <a href="{{ url('User/Evaluation') }}" title="" class="main-btn" data-ripple="">Join Free</a>
+            <h1>Language <span>Exchange</span> Easily</h1>
+            <h3>Become fluent , dream big. <span></span></h3>
+            <a href="{{ url('User/Evaluation') }}" title="" class="main-btn" data-ripple="">Lets Start</a>
         </div>
     </div>
 </section>

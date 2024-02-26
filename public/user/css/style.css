@@ -13758,12 +13758,19 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007db9e8', e
 }
 
 .answer-mic{
-    padding-top: 12px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+
 }
 
 .Answer-title{
    padding-top: 20px;
+
 }
 .style-contact{
     padding-top: 80px;
+}
+.mic-btn{
+    background-color: #ccf1f7;
+    color: black;
 }
