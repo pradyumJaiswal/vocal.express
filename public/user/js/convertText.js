@@ -38,10 +38,8 @@
 //                     .map(result => result[0])
 //                     .map(result => result.transcript)
 //                     .join('');
-
 //                 textarea.value = transcript;
 //             });
-
 //             recognition.start();
 //         });
 //     });
@@ -49,24 +47,19 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     const convertButtons = document.querySelectorAll('.convert_to_text');
-
     convertButtons.forEach(button => {
         button.addEventListener('click', function() {
             const answerId = this.dataset.answerId;
             const textarea = document.getElementById(answerId);
-
             const recognition = new webkitSpeechRecognition();
             recognition.interimResult = true;
-
             recognition.addEventListener('result', e => {
                 const transcript = Array.from(e.results)
                     .map(result => result[0])
                     .map(result => result.transcript)
                     .join('');
-
                 textarea.value = transcript;
             });
-
             recognition.start();
         });
     });

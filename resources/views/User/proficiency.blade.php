@@ -27,7 +27,7 @@
                             @foreach ($TestQuestions as $test)
                             <div class="main-wraper">
 
-                            <h1 class="mainHeading1"><a href="#" title="">{{ $test->TestType }} Test</a></h1>
+                            <h1 class="mainHeading1 test-heading-title"><a href="#" title="">{{ $test->TestType }} Test</a></h1>
 
                            <h2 class="question-title"><a href="#" title="">Instruction - </a> <small>{{ $test->Description }} </small></h2>
                         </div>
