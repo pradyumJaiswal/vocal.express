@@ -16,6 +16,10 @@ return new class extends Migration
         Schema::create('voice_call_logs', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('conversation_id');
+            $table->unsignedBigInteger('initiator_id');
+            $table->unsignedBigInteger('receiver_id');
+            $table->enum('status', ['initiated', 'ongoing', 'ended'])->default('initiated');
+
             $table->dateTime('start_time');
             $table->dateTime('end_time')->nullable();
             $table->integer('duration')->nullable();
@@ -23,6 +27,9 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('conversation_id')->references('id')->on('conversations');
+            $table->foreign('initiator_id')->references('id')->on('users');
+            $table->foreign('receiver_id')->references('id')->on('users');
+
         });
     }
 

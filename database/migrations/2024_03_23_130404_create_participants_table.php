@@ -13,18 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('messages', function (Blueprint $table) {
+        Schema::create('participants', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('conversation_id');
-            // $table->unsignedBigInteger('participants_id');
             $table->unsignedBigInteger('user_id');
-            $table->text('message');
-            $table->enum('status', ['text', 'image', 'video', 'audio'])->default('text');
-            // Add any additional fields you need for messages
+            // $table->unsignedBigInteger('user2_id');
+            $table->enum('status', ['active', 'ended'])->default('active');
+            // Add any additional fields you need for conversations
             $table->timestamps();
 
             $table->foreign('conversation_id')->references('id')->on('conversations');
             $table->foreign('user_id')->references('id')->on('users');
+            // $table->foreign('user2_id')->references('id')->on('users');
+
         });
     }
 
@@ -35,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('messages');
+        Schema::dropIfExists('participants');
     }
 };

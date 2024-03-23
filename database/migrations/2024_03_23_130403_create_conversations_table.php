@@ -15,14 +15,10 @@ return new class extends Migration
     {
         Schema::create('conversations', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user1_id');
-            $table->unsignedBigInteger('user2_id');
-            $table->enum('status', ['active', 'ended'])->default('active');
+            $table->string('CallTitle');
+            $table->enum('status', ['one_to_one', 'group'])->default('one_to_one');
             // Add any additional fields you need for conversations
             $table->timestamps();
-
-            $table->foreign('user1_id')->references('id')->on('users');
-            $table->foreign('user2_id')->references('id')->on('users');
 
         });
     }
