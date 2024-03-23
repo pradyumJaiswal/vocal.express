@@ -37,7 +37,6 @@ class ProfileController extends Controller
     public function updateAvatar(Request $request){
             $user = $request->user();
             $avatar = $request->avatar_path;
-            // dd($avatar);
             if($avatar){
                 $path = $avatar->store('avatars/'.$user->id,'public');
                 $user->update(['avatar_path' => $path]);
@@ -68,7 +67,6 @@ class ProfileController extends Controller
         // return view('index')->with('UserDetails',$UserDetails);
         // dd($UserDetails);
         $postDetails =PostResource::collection($UserDetails);
-
 
         $user = User::find($user)->first();
         return view('User.profile2', compact('user','isCurrentUserFollower','followerCount','followingCount','currentUserPosts','postDetails'));

@@ -340,7 +340,7 @@
                             <span>our Contact</span>
                             <h3>Send Mail</h3>
                         </div>
-                        <form method="post">
+                        <form action="mailto:hunterdreaded@gmail.com" method="post" enctype="text/plain">
                             <input type="text" placeholder="Email @">
                             <button type="submit" class="main-btn" data-ripple=""><i class="icofont-paper-plane"></i></button>
                         </form>
