@@ -85,9 +85,8 @@ Route::group(['prefix' => 'User', 'middleware' => ['web','isUser']],function(){
     Route::get('/Evaluation', [UserController::class,'proficiencyTest'])->name('proficiency.test');
 
 
-//--------------------------------**** Action Routes****--------------------------------------//
+    //---------------------------**** Action Routes****--------------------------------------//
     //profile
-
     Route::get('/Profile/{user}/profile', [ProfileController::class,'viewProfile'])->name('view.profile');
 
     //post
@@ -98,10 +97,7 @@ Route::group(['prefix' => 'User', 'middleware' => ['web','isUser']],function(){
     Route::post('/post/{post}/comment', [PostController::class,'createComment'])->name('post.comment.create');
 
     //follower and following
-
     Route::get('/follow/{user}',[UserFollowingController::class,'follow'])->name('user.follow');
-
-
 
 });
 
