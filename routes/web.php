@@ -52,8 +52,6 @@ Route::group(['prefix' => 'Admin', 'middleware' => ['web','isAdmin']],function()
     Route::post('/test',[TestController::class, 'storeTest'])->name('test.create');
     Route::post('/question',[TestController::class, 'storeQuestion'])->name('question.create');
 
-
-
 });
 
 
