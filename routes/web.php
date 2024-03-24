@@ -107,6 +107,12 @@ Route::group(['prefix' => 'User', 'middleware' => ['web','isTeacher']],function(
 
 });
 
+//-------------------------PDF Reading and Note Making Route--------------------------------------//
+Route::get('/pdf', 'PDFController@index')->name('pdf.index');
+Route::post('/pdf/upload', 'PDFController@upload')->name('pdf.upload');
+Route::get('/pdf/{id}', 'PDFController@show')->name('pdf.show');
+
+Route::post('/annotation/add', 'AnnotationController@add')->name('annotation.add');
 
 
 
