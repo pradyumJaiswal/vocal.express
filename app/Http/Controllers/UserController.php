@@ -109,6 +109,11 @@ class UserController extends Controller
     {
         return view('User.message');
     }
+
+    public function forgotpassword()
+    {
+        return view('User.forgotpassword');
+    }
     
 
     

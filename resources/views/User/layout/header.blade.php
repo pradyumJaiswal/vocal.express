@@ -258,8 +258,13 @@
                     <input type="text" placeholder="Enter Email">
                     <button type="submit" class="main-btn">Invite</button>
                 </form>
+                
             </div>
+           
         </div>
+        <form method="post" style="" > 
+            <a href="" style="padding-left: 20px;" ><img src="{{asset('user/images/whatsapp.png')}}" alt=""><br> Invite On Whatsapp</a>
+        </form>
     </div>
 </div>
 <!-- invite email close-->

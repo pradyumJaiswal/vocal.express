@@ -2687,16 +2687,16 @@ ul.welcome-caro li.welcome-box figure img {
     width: auto !important;
 }
 /*page loader spiner*/
-.page-loader {
+/* .page-loader {
     position: fixed;
     z-index: 99999999;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
-    background: #088dcd;
+    /* background: #088dcd; 
     display: block;
-}
+} */
 .page-loader .fa {
     font-size: 2.5rem;
 }
@@ -2732,7 +2732,7 @@ ul.welcome-caro li.welcome-box figure img {
   margin: 0 2px;
   background-color: #ffffff;
 }
-.loader .loader-item:nth-child(1) {
+/* .loader .loader-item:nth-child(1) {
   -webkit-animation: loader-item-1 2s linear infinite;
           animation: loader-item-1 2s linear infinite;
 }
@@ -2771,7 +2771,7 @@ ul.welcome-caro li.welcome-box figure img {
 .loader .loader-item:nth-child(10) {
   -webkit-animation: loader-item-10 2s linear infinite;
           animation: loader-item-10 2s linear infinite;
-}
+} */
 .loader:after {
   content: 'Voice';
   font-size: 25px;
@@ -2784,7 +2784,7 @@ ul.welcome-caro li.welcome-box figure img {
   bottom: -32px;
   margin: auto;
 }
-@-webkit-keyframes loader-item-1 {
+/* @-webkit-keyframes loader-item-1 {
   1% {
     -webkit-transform: scaleY(1);
             transform: scaleY(1);
@@ -3143,7 +3143,7 @@ ul.welcome-caro li.welcome-box figure img {
     -webkit-transform: scaleY(1);
             transform: scaleY(1);
   }
-}
+} */
 /*--- ask question widget ---*/
 .ask-question {
     display: inline-block;

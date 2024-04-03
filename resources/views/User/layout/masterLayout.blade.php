@@ -13,7 +13,7 @@
 	
 	@include('user.layout.sidebar')
 	
-	@include('user.layout.middle-section')
+	{{-- @include('user.layout.middle-section') --}}
 	
     @yield('Content')
 

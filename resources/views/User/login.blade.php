@@ -37,14 +37,24 @@
 					Sell your online lectures, videos, books and many more with Socimo.
 				</p>
 			</li>
-			
 		</ul>
 	</div>
 	<div class="auth-login">
-		<div class="logo"><img src="{{asset('user/images/logo.png')}}" alt=""><span>VOICE</span></div>
+		<div class="logo"><img src="{{asset('user/images/logo.png')}}" alt=""><span>Vocal Express</span></div>
 		<div class="mockup left-bottom"><img src="{{asset('user/images/mockup.png')}}" alt=""></div>
 		<div class="verticle-center">
+			
 			<div class="login-form">
+				{{-- @if (session()->has('success'))
+					<div class="alert alert-success col-lg-12">{{ session()->get('success') }}</div>
+				@endif --}}
+
+				@if(session()->has('success'))
+					<div class="alert alert-success">
+						{{ session()->get('success') }}
+					</div>
+				@endif
+				
 				<h4><i class="icofont-key-hole"></i> Login
 					@if($errors->has('errors'))
 					<small class = "text-danger fs-6 fw-bold">{{ $errors->first('errors') }}</small>
@@ -70,7 +80,7 @@
 					<button class="main-btn" type="submit"><i class="icofont-key"></i> Login</button>
 					<br><a class="account" href="{{Route('Usersignup')}}">Create Account !</a>
 				</form>
-				<a href="{{Route('Usersignup')}}">Don't Have An Account ?</a>
+				<a href="{{url('forgotpassword')}}">Forgot Password ?</a>
 			</div>
 		</div>
 		<div class="mockup right"><img src="{{asset('user/images/star-shape.png')}}" alt=""></div>

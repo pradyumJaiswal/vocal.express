@@ -164,8 +164,12 @@
 		height: 100vh;
 	}
 	.main-btn{
-		padding: 6px 12px;
+		padding: 6px 12px 10px 12px;
 		font-size: 12px;
+	}
+	.whatsapp-btn{
+		padding-left: 25px;
+		
 	}
 	.main-btn.purchase-btn{font-size: 12px;}
 	.ask-question > h6{

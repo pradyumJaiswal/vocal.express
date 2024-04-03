@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use App\Http\Requests\RegValidation;
 use App\Http\Requests\logValidation;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
+use App\Mail\Registermail;
 class AuthController extends Controller
 {
     public function loadRegister()
@@ -32,8 +35,12 @@ class AuthController extends Controller
             $user->password = $request->password;
             $user->role = $request->role;
             $user->password = Hash::make($request->password);
+            $user->remember_token= Str::random(40);
             $user->save();
-            return back()->with('success','Your Registration has been successfull.');
+            Mail::to($user->email)->send(new Registermail($user));
+            // return view('User.login')->with('message','verify to proceed next');
+            // return redirect()->back()->with('message', 'check your mail & verify it !');
+            return view('User.login')->with('success','Your Registration has been successfull. Please check your email to Verify');
         }
         else{
             return redirect()->back()->withInput();
@@ -113,6 +120,20 @@ class AuthController extends Controller
         $request->session()->flush();
         Auth::logout();
         return redirect('/vocal.express');
+    }
+
+    public function verify($token){
+        $user=User::where('remember_token', '=', $token)->first();
+        if(!empty($user)){
+            $user->email_verified_at = date('Y-m-d H:i:s');
+            $user->save();
+            return view('User.login')->with('success','Your Registration has been successfull.');
+        }
+        else
+        {
+            abort(404);
+        }
+
     }
 }
 

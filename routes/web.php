@@ -20,6 +20,9 @@ Route::get('/', function () {
 Route::get('/admin_login', function () {
     return view('admin.login');
 });
+Route::get('/forgotpassword', function () {
+    return view('User.forgotpassword');
+});
 
 //-------------------------Main Routes--------------------------------------//
 Route::get('/register',[AuthController::class,'loadRegister'])->name('Usersignup');
@@ -30,6 +33,7 @@ Route::get('/Userlogout',[AuthController::class,'logout']);
 Route::get('/vocal.express',[AuthController::class,'AdminloadLogin']);
 Route::post('/vocal.express',[AuthController::class,'login'])->name('Adminlogin');
 Route::get('/logout',[AuthController::class,'Adminlogout']);
+Route::get('verify/{token}',[AuthController::class,'verify']);
 
 
 //-------------------------Admin new Route--------------------------------------//

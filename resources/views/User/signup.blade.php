@@ -31,12 +31,18 @@
 			<div class="bg-image"></div>
 		</div>
 	</div>
-	@if (Session::has('success'))
-					<div class="alert alert-success">{{ session::get('success') }}</div>
-				@endif
+	
 	<div class="auth-login">
 		<div class="verticle-center">
 			<div class="signup-form">
+				{{-- @if (Session::has('success'))
+					<div class="alert alert-success col-lg-12">{{ session::get('success') }}</div>
+				@endif --}}
+				@if(session()->has('message'))
+					<div class="alert alert-success">
+						{{ session()->get('message') }}
+					</div>
+				@endif
 				<h4><i class="icofont-lock"></i> Singup</h4>
 				<form method="post" action="{{ route('register') }}" class="c-form">
 				@csrf
@@ -72,9 +78,9 @@
 						</div> -->
 						<div class="col-lg-12">
 							<div class="gender">
-							  <input type="radio" id="Learner" name="role" value="User">
+							  <input type="radio" id="Learner" name="role" value="User" required>
 							  <label for="Learner">Learner</label>
-							  <input type="radio" id="Teacher" name="role" value="Teacher">
+							  <input type="radio" id="Teacher" name="role" value="Teacher" required>
 							  <label for="Teacher">Teacher</label>
 							</div>	
 						</div>
