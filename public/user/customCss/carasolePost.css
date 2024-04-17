@@ -1,0 +1,35 @@
+.customeinput{
+
+        /* Reset default styles */
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        /* Apply your own styles */
+
+        color: #82828e;
+        background-color: #eae9ee;
+        /* padding: 10px 20px; */
+        border: none;
+        /* border-radius: 5px; */
+        cursor: pointer;
+
+
+}
+
+.customeLikeinput{
+
+        /* Reset default styles */
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        /* Apply your own styles */
+
+        color: #088dcd;
+        background-color: #eae9ee;
+        /* padding: 10px 20px; */
+        border: none;
+        /* border-radius: 5px; */
+        cursor: pointer;
+
+
+}
